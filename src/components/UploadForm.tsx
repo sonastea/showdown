@@ -66,7 +66,13 @@ const UploadForm = () => {
           id="uploadForm"
           encType="multipart/form-data"
         >
-          <input type="file" name="image" onChange={handleFileInput} multiple />
+          <input
+            className="text-white"
+            type="file"
+            name="image"
+            onChange={handleFileInput}
+            multiple
+          />
           <input
             className={`${
               !files ? "cursor-not-allowed" : "cursor-pointer hover:bg-once/80"
@@ -82,8 +88,8 @@ const UploadForm = () => {
           Array.from(files).map((photo, index) => {
             return (
               <Image
-                height={200}
-                width={200}
+                // height={200}
+                // width={200}
                 key={index.toString()}
                 src={URL.createObjectURL(photo)}
                 alt=""

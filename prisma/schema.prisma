@@ -12,6 +12,16 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
+model Vote {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  votedFor   Meme   @relation(name: "votesFor", fields: [votedForId], references: [id])
+  votedForId String
+
+  @@index([votedForId])
+}
+
 model Meme {
   id   String @id
   name String
