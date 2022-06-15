@@ -1,4 +1,4 @@
-import { appRouter, AppRouter } from "@router";
+import { appRouter, AppRouter } from "@router/index";
 import { inferProcedureOutput } from "@trpc/server";
 import * as trpcNext from "@trpc/server/adapters/next";
 
