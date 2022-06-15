@@ -53,6 +53,7 @@ const UploadForm = () => {
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length >= 3) {
       alert("You can upload only 1 or 2 images");
+      (document.getElementById("filesInput") as HTMLInputElement).value = "";
       return;
     }
     setFiles(e.target.files);
@@ -60,40 +61,45 @@ const UploadForm = () => {
 
   return (
     <>
-      <div>
-        <form
-          onSubmit={handleSubmit}
-          id="uploadForm"
-          encType="multipart/form-data"
-        >
-          <input
-            className="text-white"
-            type="file"
-            name="image"
-            onChange={handleFileInput}
-            multiple
-          />
-          <input
-            className={`${
-              !files ? "cursor-not-allowed" : "cursor-pointer hover:bg-once/80"
-            } rounded bg-once p-1 font-bold text-white`}
-            type="submit"
-            value="Upload"
-            disabled={!files}
-          />
-        </form>
+      <form
+        className="grid sm:grid-cols-2 sm:p-8 sm:justify-items-end"
+        onSubmit={handleSubmit}
+        id="uploadForm"
+        encType="multipart/form-data"
+      >
+        <input
+          className="text-white"
+          id="filesInput"
+          type="file"
+          name="image"
+          onChange={handleFileInput}
+          multiple
+        />
+        <input
+          className={`${
+            !files
+              ? "cursor-not-allowed bg-once/70 text-white/80"
+              : "cursor-pointer hover:bg-once/80"
+          } rounded bg-once/90 p-1 m-4 sm:m-1 font-bold justify-self-center sm:justify-self-end text-white w-min`}
+          type="submit"
+          value="Upload"
+          disabled={!files}
+        />
+      </form>
 
+      <div className="flex flex-wrap justify-center">
         {files &&
           files.length >= 1 &&
           Array.from(files).map((photo, index) => {
             return (
-              <Image
-                // height={200}
-                // width={200}
-                key={index.toString()}
-                src={URL.createObjectURL(photo)}
-                alt=""
-              />
+              <div key={index} className="m-1">
+                <Image
+                  height={192}
+                  width={192}
+                  src={URL.createObjectURL(photo)}
+                  alt=""
+                />
+              </div>
             );
           })}
       </div>
