@@ -5,6 +5,7 @@ const url = "https://api.cloudinary.com/v1_1/k-showdown/auto/upload";
 
 const UploadForm = () => {
   const [files, setFiles] = useState<FileList | null>();
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,47 +62,73 @@ const UploadForm = () => {
 
   return (
     <>
-      <form
-        className="grid sm:grid-cols-2 sm:p-8 sm:justify-items-end"
-        onSubmit={handleSubmit}
-        id="uploadForm"
-        encType="multipart/form-data"
-      >
-        <input
-          className="text-white"
-          id="filesInput"
-          type="file"
-          name="image"
-          onChange={handleFileInput}
-          multiple
-        />
-        <input
-          className={`${
-            !files
-              ? "cursor-not-allowed bg-once/70 text-white/80"
-              : "cursor-pointer hover:bg-once/80"
-          } rounded bg-once/90 p-1 m-4 sm:m-1 font-bold justify-self-center sm:justify-self-end text-white w-min`}
-          type="submit"
-          value="Upload"
-          disabled={!files}
-        />
-      </form>
+      <div className="flex justify-center">
+        {open ? (
+          <>
+            <div
+              onClick={() => setOpen((open) => !open)}
+              className="z-10 absolute flex justify-center w-full min-h-screen backdrop-blur"
+            >
+              <div
+                onClick={(e: React.MouseEvent<HTMLDivElement>) =>
+                  e.stopPropagation()
+                }
+                className="bg-slate-500 absolute inset-x-0 rounded shadow-md sm:inset-x-auto top-20 p-2"
+              >
+                <form
+                  className="grid sm:grid-cols-2 sm:p-8 sm:justify-items-end"
+                  onSubmit={handleSubmit}
+                  id="uploadForm"
+                  encType="multipart/form-data"
+                >
+                  <input
+                    className="text-white"
+                    id="filesInput"
+                    type="file"
+                    name="image"
+                    onChange={handleFileInput}
+                    multiple
+                  />
+                  <input
+                    className={`${
+                      !files
+                        ? "cursor-not-allowed bg-once/70 text-white/80"
+                        : "cursor-pointer hover:bg-once/80"
+                    } rounded bg-once/90 p-1 m-4 sm:m-1 font-bold justify-self-center sm:justify-self-end text-white w-min`}
+                    type="submit"
+                    value="Upload"
+                    disabled={!files}
+                  />
+                </form>
 
-      <div className="flex flex-wrap justify-center">
-        {files &&
-          files.length >= 1 &&
-          Array.from(files).map((photo, index) => {
-            return (
-              <div key={index} className="m-1">
-                <Image
-                  height={192}
-                  width={192}
-                  src={URL.createObjectURL(photo)}
-                  alt=""
-                />
+                <div className="flex flex-wrap justify-center">
+                  {files &&
+                    files.length >= 1 &&
+                    Array.from(files).map((photo, index) => {
+                      return (
+                        <div key={index} className="m-1">
+                          <Image
+                            height={192}
+                            width={192}
+                            src={URL.createObjectURL(photo)}
+                            alt=""
+                          />
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
-            );
-          })}
+            </div>
+          </>
+        ) : (
+          <button
+            onClick={() => setOpen((open) => !open)}
+            type="button"
+            className="z-10 p-2 m-4 text-once border-2 border-once bg-white hover:bg-white/80 rounded-md transition duration-400"
+          >
+            Submit a meme
+          </button>
+        )}
       </div>
     </>
   );
