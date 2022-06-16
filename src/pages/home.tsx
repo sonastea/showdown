@@ -44,11 +44,11 @@ const Home: NextPage = () => {
       </Head>
       <div className="bg-slate-600 min-h-screen w-screen flex flex-col items-center justify-center relative">
         <UploadForm />
-        <div className="flex flex-col">
-          <div className="m-6 text-xl text-white text-center">
-            Which meme is funnier?
-          </div>
-          {memePair && (
+        {memePair && (
+          <div className="flex flex-col">
+            <div className="m-6 text-xl text-white text-center">
+              Which meme is funnier?
+            </div>
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
               <MemeContainer
                 meme={memePair.meme1}
@@ -62,17 +62,16 @@ const Home: NextPage = () => {
                 disabled={fetchingNext}
               />
             </div>
-          )}
-          {!memePair && (
-            <Image
-              src="/ripple_1s_200s.svg"
-              height={500}
-              width={500}
-              alt="Ripple loader indicator"
-              priority={true}
-            />
-          )}
-        </div>
+          </div>
+        )}
+        {!memePair && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            className="w-96 h-96"
+            src="/ripple_1s_200s.svg"
+            alt="Ripple loader indicator"
+          />
+        )}
       </div>
     </>
   );
