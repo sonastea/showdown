@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
+const { withPlausibleProxy } = require("next-plausible");
+
 const nextConfig = {
   reactStrictMode: true,
 };
 
-module.exports = {
+module.exports = withPlausibleProxy()({
   nextConfig,
   images: {
     domains: ["res.cloudinary.com"],
   },
-};
+});

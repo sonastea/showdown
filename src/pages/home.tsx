@@ -1,10 +1,11 @@
-import { Meme } from "@prisma/client";
 import { NextPage } from "next";
+import { usePlausible } from "next-plausible";
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 import { trpc } from "src/utils/trpc";
 import UploadForm from "../components/UploadForm";
+import { inferQueryResponse } from "./api/trpc/[trpc]";
 
 const Home: NextPage = () => {
   const {
@@ -17,7 +18,23 @@ const Home: NextPage = () => {
     refetchOnWindowFocus: false,
   });
 
-  const fetchingNext = false;
+  const plausible = usePlausible();
+  const voteForMeme = trpc.useMutation(["add-vote"]);
+
+  const handleVoteForFunnier = (select: string) => {
+    if (!memePair) return;
+
+    if (memePair?.meme1.id === select) {
+      voteForMeme.mutate({ votedFor: memePair.meme1.id });
+    } else {
+      voteForMeme.mutate({ votedFor: memePair.meme2.id });
+    }
+
+    plausible("add-vote");
+    refetch();
+  };
+
+  const fetchingNext = isLoading || voteForMeme.isLoading;
 
   return (
     <>
@@ -28,20 +45,20 @@ const Home: NextPage = () => {
       <div className="bg-slate-600 min-h-screen w-screen flex flex-col items-center justify-center relative">
         <UploadForm />
         <div className="flex flex-col">
-          <div className="p-6 text-xl text-white text-center pt-8">
+          <div className="m-6 text-xl text-white text-center">
             Which meme is funnier?
           </div>
           {memePair && (
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
               <MemeContainer
                 meme={memePair.meme1}
-                vote={() => null}
+                vote={() => handleVoteForFunnier(memePair.meme1.id)}
                 disabled={fetchingNext}
               />
               <div className="p-6 font-bold text-xl text-ponce">vs</div>
               <MemeContainer
                 meme={memePair.meme2}
-                vote={() => null}
+                vote={() => handleVoteForFunnier(memePair.meme2.id)}
                 disabled={fetchingNext}
               />
             </div>
@@ -62,7 +79,7 @@ const Home: NextPage = () => {
 };
 
 const MemeContainer: React.FC<{
-  meme: Meme;
+  meme: inferQueryResponse<"get-meme-pair">["meme1"];
   vote: () => void;
   disabled: boolean;
 }> = (props) => {
@@ -70,23 +87,21 @@ const MemeContainer: React.FC<{
 
   return (
     <div className="flex flex-col items-center" key={meme.id}>
-      <div className="w-48 md:w-96 relative">
+      <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
         <Image
           alt=""
           className="animate-fade-in"
-          layout="responsive"
+          layout="fill"
           src={meme.url}
-          height={250}
-          width={250}
           priority={true}
         />
       </div>
       <button
-        className="p-2 text-5xl md:text-3xl hover:animate-[pulse_0.75s_ease-in-out_infinite]"
+        className="font-medium shadow-sm m-4 p-2 text-xl md:text-3xl bg-once/90 text-white hover:animate-[pulse_0.75s_ease-in-out_infinite] rounded-md focus:outline-none focus:ring-ponce focus:ring-2 focus:ring-offset-2"
         onClick={() => vote()}
         disabled={disabled}
       >
-        😂
+        HAHA
       </button>
     </div>
   );

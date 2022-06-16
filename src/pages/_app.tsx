@@ -1,12 +1,17 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <PlausibleProvider domain="showdown.vercel.app">
+      <Component {...pageProps} />
+    </PlausibleProvider>
+  );
 }
 
 import { withTRPC } from "@trpc/next";
-import type { AppRouter } from "@router";
+import type { AppRouter } from "@router/index";
+import PlausibleProvider from "next-plausible";
 
 function getBaseUrl() {
   if (typeof window === "undefined") return "";
