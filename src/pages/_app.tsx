@@ -13,20 +13,15 @@ import { withTRPC } from "@trpc/next";
 import type { AppRouter } from "@router/index";
 import PlausibleProvider from "next-plausible";
 
-function getBaseUrl() {
-  if (typeof window === "undefined") return "";
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-
-  return `http://${window.location.hostname}:${process.env.PORT ?? 3000}`;
-}
-
 export default withTRPC<AppRouter>({
   config({ ctx }) {
     /**
      * If you want to use SSR, you need to use the server's full URL
      * @link https://trpc.io/docs/ssr
      */
-    const url = `${getBaseUrl()}/api/trpc`;
+    const url = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}/api/trpc`
+      : `http://${window.location.hostname}:${process.env.PORT ?? 3000}`;
 
     return {
       url,
