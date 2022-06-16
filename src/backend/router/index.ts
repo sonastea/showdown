@@ -10,8 +10,8 @@ export const appRouter = trpc
       const bothMemes: Meme[] =
         await prisma.$queryRaw`SELECT * from Meme order by rand() limit 2;`;
 
-      if (bothMemes.length !== 2) {
-        throw new Error("Could not get two memes");
+      if (bothMemes.length < 1) {
+        throw new Error("Could not retrieve memes");
       }
 
       return { meme1: bothMemes[0], meme2: bothMemes[1] };

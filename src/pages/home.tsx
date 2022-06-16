@@ -11,6 +11,7 @@ const Home: NextPage = () => {
   const {
     data: memePair,
     refetch,
+    isError,
     isLoading,
   } = trpc.useQuery(["get-meme-pair"], {
     refetchInterval: false,
@@ -55,16 +56,24 @@ const Home: NextPage = () => {
                 vote={() => handleVoteForFunnier(memePair.meme1.id)}
                 disabled={fetchingNext}
               />
-              <div className="p-6 font-bold text-xl text-ponce">vs</div>
-              <MemeContainer
-                meme={memePair.meme2}
-                vote={() => handleVoteForFunnier(memePair.meme2.id)}
-                disabled={fetchingNext}
-              />
+              {memePair.meme2 ? (
+                <>
+                  <div className="p-6 font-bold text-xl text-ponce">vs</div>
+                  <MemeContainer
+                    meme={memePair.meme2}
+                    vote={() => handleVoteForFunnier(memePair.meme2.id)}
+                    disabled={fetchingNext}
+                  />
+                </>
+              ) : (
+                <div className="p-6 text-ponce text-xl md:text-3xl">
+                  Upload a meme for the showdown!
+                </div>
+              )}
             </div>
           </div>
         )}
-        {!memePair && (
+        {!memePair && !isError && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             className="w-96 h-96"
