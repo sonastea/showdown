@@ -35,7 +35,7 @@ const Home: NextPage = () => {
     refetch();
   };
 
-  const fetchingNext = isLoading || voteForMeme.isLoading;
+  const fetchingNext = isLoading || voteForMeme.isLoading || !memePair?.meme2;
 
   return (
     <>
@@ -105,7 +105,7 @@ const MemeContainer: React.FC<{
         />
       </div>
       <button
-        className="font-medium shadow-sm m-4 p-2 text-xl md:text-3xl bg-once/90 text-white hover:animate-[pulse_0.75s_ease-in-out_infinite] rounded-md focus:outline-none focus:ring-ponce focus:ring-2 focus:ring-offset-2"
+        className="font-medium shadow-sm m-4 p-2 text-xl md:text-3xl bg-once/90 text-white disabled:cursor-not-allowed enabled:hover:animate-[pulse_0.75s_ease-in-out_infinite] rounded-md focus:outline-none focus:ring-ponce focus:ring-2 focus:ring-offset-2"
         onClick={() => vote()}
         disabled={disabled}
       >
