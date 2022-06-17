@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const url = "https://api.cloudinary.com/v1_1/k-showdown/auto/upload";
+const preset = process.env.CLOUDINARY_PRESET ?? "development";
 
 const UploadForm = () => {
   const [files, setFiles] = useState<FileList | null>();
@@ -26,7 +27,7 @@ const UploadForm = () => {
         const signed = await sig.json();
 
         formData.append("file", files[i]);
-        formData.append("upload_preset", "upload_v1");
+        formData.append("upload_preset", preset);
         formData.append("api_key", process.env.CLOUDINARY_API_KEY!);
         formData.append("timestamp", signed.timestamp);
         formData.append("api_key", signed.api_key);
