@@ -66,8 +66,8 @@ const Home: NextPage = () => {
                   />
                 </>
               ) : (
-                <div className="p-6 text-ponce text-xl md:text-3xl">
-                  Upload a meme for the showdown!
+                <div className="p-6 text-ponce text-xl md:text-3xl w-48 md:w-72 lg:w-96 text-center">
+                  Upload meme for the showdown!
                 </div>
               )}
             </div>
