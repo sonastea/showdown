@@ -2,12 +2,16 @@ import { NextPage } from "next";
 import { usePlausible } from "next-plausible";
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { useState } from "react";
+import MobileNav from "src/components/MobileNav";
+import SubmitMemeButton from "src/components/SubmitMemeButton";
+import UploadForm from "src/components/UploadForm";
 import { trpc } from "src/utils/trpc";
-import UploadForm from "../components/UploadForm";
 import { inferQueryResponse } from "./api/trpc/[trpc]";
 
 const Home: NextPage = () => {
+  const [showUploadForm, setShowUploadForm] = useState<boolean>(false);
   const {
     data: memePair,
     refetch,
@@ -43,8 +47,13 @@ const Home: NextPage = () => {
         <title>Showdown / Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-slate-600 min-h-screen w-screen flex flex-col items-center justify-center relative">
-        <UploadForm />
+      <div className="bg-slate-600 min-h-screen w-screen flex flex-col items-center justify-between relative">
+        <SubmitMemeButton
+          formIsActive={showUploadForm}
+          toggleForm={setShowUploadForm}
+        />
+        <MobileNav toggleForm={setShowUploadForm} />
+        {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
         {memePair && (
           <div className="flex flex-col">
             <div className="m-6 text-xl text-white text-center">
@@ -90,9 +99,7 @@ const MemeContainer: React.FC<{
   meme: inferQueryResponse<"get-meme-pair">["meme1"];
   vote: () => void;
   disabled: boolean;
-}> = (props) => {
-  const { meme, vote, disabled } = props;
-
+}> = ({ meme, vote, disabled }) => {
   return (
     <div className="flex flex-col items-center" key={meme.id}>
       <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">

@@ -2,17 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const MobileNav: React.FC<{
-  isActive: boolean;
-  toggleActive: Function;
-  toggleForm: Function;
-}> = ({ isActive, toggleActive, toggleForm }) => {
+const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
+  const [isActive, setActive] = React.useState(false);
+
   return (
     <>
       <div className="w-full sm:hidden p-4 top-0 text-right bg-inherit">
         <button
           className="mobile-menu-toggle"
-          onClick={() => toggleActive((open: boolean) => !open)}
+          onClick={() => setActive((open: boolean) => !open)}
         >
           <svg
             className="w-8 h-8 text-white"
@@ -34,7 +32,7 @@ const MobileNav: React.FC<{
         className={`${
           isActive ? "flex" : "hidden"
         } z-50 min-h-full min-w-full backdrop-blur-sm sm:hidden absolute justify-end right-0`}
-        onClick={() => toggleActive((open: boolean) => !open)}
+        onClick={() => setActive((open: boolean) => !open)}
       >
         <button className="absolute right-6 top-6 w-4 h-4 text-white">
           <Image
@@ -54,8 +52,8 @@ const MobileNav: React.FC<{
               <button
                 className="flex justify-between w-full mr-2"
                 onClick={() => {
+                  setActive(false);
                   toggleForm(true);
-                  toggleActive(false);
                 }}
               >
                 <span className="ml-10">Submit Meme</span>
