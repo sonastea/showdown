@@ -26,9 +26,20 @@ const headers = async () => {
   ];
 };
 
+const redirects = async () => {
+  return [
+    {
+      source: "/results/All",
+      destination: "/results",
+      permanent: false,
+    },
+  ];
+};
+
 module.exports = withPlausibleProxy()({
   nextConfig,
   headers,
+  redirects,
   images: {
     domains: ["res.cloudinary.com"],
   },

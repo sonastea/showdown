@@ -29,6 +29,77 @@ export const appRouter = trpc
       });
       return { success: true, vote: voted };
     },
+  })
+  .query("get-top-all-memes", {
+    async resolve() {
+      const memes = await prisma.meme.findMany({
+        orderBy: { VotesFor: { _count: "desc" } },
+        select: {
+          id: true,
+          url: true,
+          _count: {
+            select: {
+              VotesFor: true,
+            },
+          },
+        },
+        take: 50,
+      });
+      return { memes };
+    },
+  })
+  .query("get-top-day-memes", {
+    async resolve() {
+      const memes = await prisma.meme.findMany({
+        take: 25,
+        select: {
+          id: true,
+          name: true,
+          url: true,
+          VotesFor: {
+            where: {
+              createdAt: {
+                gte: new Date(
+                  new Date().toJSON().slice(0, 10).replace(/-/g, "-")
+                ),
+              },
+            },
+          },
+        },
+        orderBy: {
+          VotesFor: {
+            _count: "asc",
+          },
+        },
+      });
+      return memes;
+    },
+  })
+  .query("get-top-week-memes", {
+    async resolve() {
+      const memes = await prisma.meme.findMany({
+        take: 25,
+        select: {
+          id: true,
+          name: true,
+          url: true,
+          VotesFor: {
+            where: {
+              createdAt: {
+                gte: new Date(new Date().setDate(new Date().getDate() - 7)),
+              },
+            },
+          },
+        },
+        orderBy: {
+          VotesFor: {
+            _count: "desc",
+          },
+        },
+      });
+      console.log(memes);
+      return memes;
+    },
   });
 
 export type AppRouter = typeof appRouter;

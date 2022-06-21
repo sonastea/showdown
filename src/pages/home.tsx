@@ -90,6 +90,15 @@ const Home: NextPage = () => {
             alt="Ripple loader indicator"
           />
         )}
+        <div className="w-full text-xl text-white text-center p-2 hidden sm:block">
+          <Link href="/home">
+            <a className="hover:text-slate-300">Home</a>
+          </Link>
+          <span>{" • "}</span>
+          <Link href="/results">
+            <a className="hover:text-slate-300">Results</a>
+          </Link>
+        </div>
       </div>
     </>
   );
