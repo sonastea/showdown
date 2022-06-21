@@ -36,7 +36,6 @@ export const getStaticProps = async (
     `get-top-${context.params?.filter}-memes` as FilterTypes;
 
   await ssg.fetchQuery(filter);
-  console.log(filter);
   return {
     props: {
       trpcState: ssg.dehydrate(),

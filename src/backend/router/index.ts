@@ -97,7 +97,6 @@ export const appRouter = trpc
           },
         },
       });
-      console.log(memes);
       return memes;
     },
   });
