@@ -56,7 +56,7 @@ const Home: NextPage = () => {
         {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
         {memePair && (
           <div className="flex flex-col">
-            <div className="m-6 text-xl text-white text-center">
+            <div className="m-2 text-xl text-white text-center">
               Which meme is funnier?
             </div>
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">

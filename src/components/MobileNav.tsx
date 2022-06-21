@@ -7,7 +7,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
 
   return (
     <>
-      <div className="w-full sm:hidden p-4 top-0 text-right bg-inherit">
+      <div className="w-full sm:hidden pt-4 px-4 top-0 text-right bg-inherit">
         <button
           className="mobile-menu-toggle"
           onClick={() => setActive((open: boolean) => !open)}
