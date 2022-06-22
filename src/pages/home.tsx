@@ -117,7 +117,7 @@ const MemeContainer: React.FC<{
           className="animate-fade-in"
           layout="fill"
           src={meme.url}
-          priority={true}
+          priority={false}
         />
       </div>
       <button

@@ -27,9 +27,9 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
 
         formData.append("file", files[i]);
         formData.append("upload_preset", preset);
-        formData.append("api_key", process.env.CLOUDINARY_API_KEY!);
+        formData.append("api_key", process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY!);
         formData.append("timestamp", signed.timestamp);
-        formData.append("api_key", signed.api_key);
+        formData.append("signature", signed.signature);
 
         const response = await fetch(url, {
           method: "POST",
