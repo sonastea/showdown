@@ -23,6 +23,10 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
     for (let i = 0; i < files.length; i++) {
       try {
         const sig = await fetch("/api/files/sign");
+        if (sig.status === 429) {
+          alert("You have reached the limit of uploads");
+          return;
+        }
         const signed = await sig.json();
 
         formData.append("file", files[i]);

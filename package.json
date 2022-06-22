@@ -17,6 +17,7 @@
     "@trpc/react": "^9.25.2",
     "@trpc/server": "^9.25.2",
     "cloudinary": "^1.30.0",
+    "express-rate-limit": "^6.4.0",
     "next": "12.1.6",
     "next-plausible": "^3.2.0",
     "react": "18.1.0",

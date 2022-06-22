@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import initRateLimiter from "src/lib/init-rate-limiter";
+import { rateLimiter } from "src/lib/rate-limiter";
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
@@ -8,7 +10,11 @@ cloudinary.config({
   secure: true,
 });
 
+const rate_limiter = initRateLimiter(rateLimiter);
+
 export const sign = async (req: NextApiRequest, res: NextApiResponse) => {
+  await rate_limiter(req, res);
+
   const timestamp = Math.round(Date.now() / 1000);
   const signature = await cloudinary.utils.api_sign_request(
     {
