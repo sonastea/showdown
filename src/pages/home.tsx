@@ -47,7 +47,7 @@ const Home: NextPage = () => {
         <title>Showdown / Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-slate-600 min-h-screen w-screen flex flex-col items-center justify-between relative">
+      <div className="bg-slate-600 min-h-screen w-screen flex flex-col items-center sm:justify-between relative">
         <SubmitMemeButton
           formIsActive={showUploadForm}
           toggleForm={setShowUploadForm}
@@ -56,7 +56,7 @@ const Home: NextPage = () => {
         {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
         {memePair && (
           <div className="flex flex-col">
-            <div className="m-2 text-xl text-white text-center">
+            <div className="m-4 text-xl text-white text-center">
               Which meme is funnier?
             </div>
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
