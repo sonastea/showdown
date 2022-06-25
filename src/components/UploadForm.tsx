@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const url = "https://api.cloudinary.com/v1_1/k-showdown/auto/upload";
-const preset = process.env.CLOUDINARY_PRESET ?? "development";
+const preset = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET ?? "development";
 
 const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
   const [files, setFiles] = useState<FileList | null>();

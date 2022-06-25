@@ -18,7 +18,7 @@ export const sign = async (req: NextApiRequest, res: NextApiResponse) => {
   const timestamp = Math.round(Date.now() / 1000);
   const signature = await cloudinary.utils.api_sign_request(
     {
-      upload_preset: process.env.CLOUDINARY_PRESET ?? "development",
+      upload_preset: process.env.NEXT_PUBLIC_CLOUDINARY_PRESET ?? "development",
       timestamp: timestamp,
     },
     process.env.CLOUDINARY_API_SECRET
