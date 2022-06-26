@@ -36,6 +36,7 @@ const MemeListing: React.FC<{
             alt="Bronze medal"
           />
         )}
+        {rank > 3 && <span style={{ width: "24px", height: "24px" }} />}
         <span className="px-1">{rank}</span>
       </div>
       <div className="w-24 h-24 sm:w-48 sm:h-48 relative">
@@ -47,8 +48,8 @@ const MemeListing: React.FC<{
           priority
         />
       </div>
-      <span className="bg-once/75 text-white font-semibold self-center rounded-md px-2">
-        {meme._count?.VotesFor || meme.VotesFor.length}
+      <span className="bg-once/75 text-white font-semibold self-center rounded-md px-2 pb-px">
+        {meme._count?.VotesFor || meme.VotesFor?.length || 0}
       </span>
     </div>
   );
