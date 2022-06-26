@@ -1,11 +1,13 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import AlertSuccess from "./AlertSuccess";
 
 const url = "https://api.cloudinary.com/v1_1/k-showdown/auto/upload";
 const preset = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET ?? "development";
 
 const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
   const [files, setFiles] = useState<FileList | null>();
+  const [success, setSuccess] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
 
     for (let i = 0; i < files.length; i++) {
       try {
+        setSuccess(false);
         const sig = await fetch("/api/files/sign");
         if (sig.status === 429) {
           alert("You have reached the limit of uploads");
@@ -42,11 +45,14 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
         const data = await response.json();
 
         if (!data.secure_url) return;
-        await fetch("/api/files/upload-success", {
+        const upload = await fetch("/api/files/upload-success", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
+        if (upload.ok) {
+          setSuccess(true);
+        }
       } catch (e) {
         console.error(e);
       }
@@ -98,6 +104,7 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
             disabled={!files}
           />
         </form>
+        <AlertSuccess onSuccess={success} toggleActive={setSuccess} />
 
         <div className="flex flex-wrap justify-center">
           {files &&
