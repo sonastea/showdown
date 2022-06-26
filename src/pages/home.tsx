@@ -45,7 +45,10 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Showdown / Home</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="KPOP Meme Showdown, upload and vote for the funniest meme."
+        />
       </Head>
       <div className="bg-slate-600 min-h-screen w-screen flex flex-col items-center sm:justify-between relative">
         <SubmitMemeButton

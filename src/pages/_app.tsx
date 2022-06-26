@@ -4,6 +4,14 @@ import type { AppProps } from "next/app";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <PlausibleProvider domain="showdown.vercel.app">
+      <Head>
+        <meta name="title" content="kpoppop / Showdown" />
+        <meta lang="en" />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+      </Head>
       <Component {...pageProps} />
     </PlausibleProvider>
   );
@@ -12,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 import { withTRPC } from "@trpc/next";
 import type { AppRouter } from "@router/index";
 import PlausibleProvider from "next-plausible";
+import Head from "next/head";
 
 function getBaseUrl() {
   if (typeof window === "undefined") return ""; // Browser should use current path
