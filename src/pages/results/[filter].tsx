@@ -15,7 +15,7 @@ import UploadForm from "src/components/UploadForm";
 import { trpc } from "src/utils/trpc";
 import superjson from "superjson";
 
-type FilterTypes = "get-top-day-memes" | "get-top-week-memes";
+type FilterTypes = "meme.get-top-day-memes" | "meme.get-top-week-memes";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -33,7 +33,7 @@ export const getStaticProps = async (
     transformer: superjson,
   });
   const filter: FilterTypes =
-    `get-top-${context.params?.filter}-memes` as FilterTypes;
+    `meme.get-top-${context.params?.filter}-memes` as FilterTypes;
 
   await ssg.fetchQuery(filter);
   return {
