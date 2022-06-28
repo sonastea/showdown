@@ -17,16 +17,16 @@ const Home: NextPage = () => {
     refetch,
     isError,
     isLoading,
-  } = trpc.useQuery(["get-meme-pair"], {
+  } = trpc.useQuery(["meme.get-meme-pair"], {
     refetchInterval: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
   });
 
   const plausible = usePlausible();
-  const voteForMeme = trpc.useMutation(["add-vote"]);
+  const voteForMeme = trpc.useMutation(["meme.add-vote"]);
 
-  const handleVoteForFunnier = (select: string) => {
+  const handleVoteForFunnier = (select: number) => {
     if (!memePair) return;
 
     if (memePair?.meme1.id === select) {
@@ -108,7 +108,7 @@ const Home: NextPage = () => {
 };
 
 const MemeContainer: React.FC<{
-  meme: inferQueryResponse<"get-meme-pair">["meme1"];
+  meme: inferQueryResponse<"meme.get-meme-pair">["meme1"];
   vote: () => void;
   disabled: boolean;
 }> = ({ meme, vote, disabled }) => {

@@ -9,7 +9,7 @@ export const uploadSuccess = async (
   const data: UploadApiResponse = req.body;
   const added = await prisma.meme.create({
     data: {
-      id: data.asset_id,
+      asset_id: data.asset_id,
       name: data.public_id,
       url: data.secure_url,
     },

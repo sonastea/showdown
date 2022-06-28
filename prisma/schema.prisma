@@ -17,16 +17,19 @@ model Vote {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
 
-  votedFor   Meme   @relation(name: "votesFor", fields: [votedForId], references: [id])
-  votedForId String
+  votedFor   Meme @relation(name: "votesFor", fields: [votedForId], references: [id])
+  votedForId Int
 
   @@index([votedForId])
 }
 
 model Meme {
-  id   String @id
-  name String
-  url  String
+  id       Int    @id @default(autoincrement())
+  asset_id String @unique
+  name     String
+  url      String
 
   VotesFor Vote[] @relation("votesFor")
+
+  @@index([id])
 }
