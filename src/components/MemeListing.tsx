@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { inferQueryResponse } from "src/pages/api/trpc/[trpc]";
 
-export type TopAllMemes = inferQueryResponse<"get-top-all-memes">["memes"];
-export type TopDayMemes = inferQueryResponse<"get-top-day-memes">;
-export type TopWeekMemes = inferQueryResponse<"get-top-week-memes">;
+export type TopAllMemes = inferQueryResponse<"meme.get-top-all-memes">["memes"];
+export type TopDayMemes = inferQueryResponse<"meme.get-top-day-memes">;
+export type TopWeekMemes = inferQueryResponse<"meme.get-top-week-memes">;
 
 const MemeListing: React.FC<{
   meme: TopAllMemes[0] & TopDayMemes[0] & TopWeekMemes[0];
