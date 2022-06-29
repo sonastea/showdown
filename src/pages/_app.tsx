@@ -1,19 +1,25 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <PlausibleProvider domain="showdown.vercel.app">
-      <Head>
-        <meta name="title" content="kpoppop / Showdown" />
-        <meta lang="en" />
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
-      </Head>
-      <Component {...pageProps} />
-    </PlausibleProvider>
+    <SessionProvider session={session}>
+      <PlausibleProvider domain="showdown.vercel.app">
+        <Head>
+          <meta name="title" content="kpoppop / Showdown" />
+          <meta lang="en" />
+          <meta charSet="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/favicon.ico" />
+        </Head>
+        <Component {...pageProps} />
+      </PlausibleProvider>
+    </SessionProvider>
   );
 }
 

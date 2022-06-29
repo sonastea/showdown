@@ -4,6 +4,32 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { trpc } from "src/utils/trpc";
 
+import { unstable_getServerSession } from "next-auth/next";
+import { authOptions } from "./api/auth/[...nextauth]";
+
+export async function getServerSideProps(context: any) {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/api/auth/signin",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      session: session.user.email,
+    },
+  };
+}
+
 const skeleton = new Array(10).fill(0);
 
 const Admin: NextPage = () => {
