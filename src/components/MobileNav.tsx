@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
   const [isActive, setActive] = React.useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -43,80 +45,87 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
         </button>
         <div
           id="mobileNav"
-          className={`shadow-slate-300 shadow-md w-1/2 place-items-end bg-slate-500`}
+          className={`shadow-slate-300 shadow-md w-2/3 place-items-end bg-slate-500 overflow-auto`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="self-end mt-32">
-            <div className="flex flex-col items-end space-y-5 w-full text-white">
+            <nav className="flex flex-col items-end space-y-5 w-full text-white">
               <div className="border-slate-400 border-t mb-8 w-full" />
-              <div className="flex justify-between relative w-full mr-2">
-                <Link href="/home">
-                  <a className="ml-10">Home</a>
-                </Link>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="#fff"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+              <ul className="flex flex-col items-end w-full space-y-5">
+                <li className={`${router.pathname === "/home" ? "bg-slate-400/75 " : "" }flex flex-wrap justify-between relative w-full group py-1 rounded-r-xl mr-2`}>
+                  <Link href="/home">
+                    <a className="group-hover:text-slate-300 ml-10">Home</a>
+                  </Link>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-12 group-hover:animate-pulse group-hover:text-teal-500"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                    <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                  </svg>
+                </li>
+                <button
+                  className="flex flex-wrap justify-between relative w-full group mr-2"
+                  onClick={() => {
+                    setActive(false);
+                    toggleForm(true);
+                  }}
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-                  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-                </svg>
-              </div>
-              <button
-                className="flex justify-between w-full mr-2"
-                onClick={() => {
-                  setActive(false);
-                  toggleForm(true);
-                }}
-              >
-                <span className="ml-10">Submit Meme</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                  <line x1="12" y1="11" x2="12" y2="17" />
-                  <polyline points="9 14 12 11 15 14" />
-                </svg>
-              </button>
-              <div className="flex justify-between relative w-full mr-2">
-                <Link href="/results">
-                  <a className="ml-10"> Results</a>
-                </Link>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M12 4v3m-4 -3v6m8 -6v6" />
-                  <path d="M12 18.5l-3 1.5l.5 -3.5l-2 -2l3 -.5l1.5 -3l1.5 3l3 .5l-2 2l.5 3.5z" />
-                </svg>
-              </div>
-            </div>
+                  <span className="ml-10 cursor-pointer group-hover:text-slate-300">
+                    Submit Meme
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-12 group-hover:text-once/80 group-hover:animate-pulse"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                    <line x1="12" y1="11" x2="12" y2="17" />
+                    <polyline points="9 14 12 11 15 14" />
+                  </svg>
+                </button>
+                <li className={`${router.pathname === "/results" ? "bg-slate-400/75 " : "" }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2`}>
+                  <Link href="/results">
+                    <a className="ml-10 group-hover:text-slate-300">Results</a>
+                  </Link>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-12 group-hover:animate-pulse group-hover:text-yellow-300"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 4v3m-4 -3v6m8 -6v6" />
+                    <path d="M12 18.5l-3 1.5l.5 -3.5l-2 -2l3 -.5l1.5 -3l1.5 3l3 .5l-2 2l.5 3.5z" />
+                  </svg>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
