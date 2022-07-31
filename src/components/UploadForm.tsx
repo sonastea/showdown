@@ -8,6 +8,7 @@ const preset = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET ?? "development";
 const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
   const [files, setFiles] = useState<FileList | null>();
   const [success, setSuccess] = useState<boolean>(false);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
     for (let i = 0; i < files.length; i++) {
       try {
         setSuccess(false);
+        setIsUploading(true);
         const sig = await fetch("/api/files/sign");
         if (sig.status === 429) {
           alert("You have reached the limit of uploads");
@@ -51,7 +53,10 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
           body: JSON.stringify(data),
         });
         if (upload.ok) {
-          setSuccess(true);
+          setTimeout(() => {
+            setSuccess(true);
+            setIsUploading(false);
+          }, 1000);
         }
       } catch (e) {
         console.error(e);
@@ -104,6 +109,17 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
             disabled={!files}
           />
         </form>
+        {isUploading && (
+          <div className="grid">
+            <Image
+              className="justify-self-center"
+              src="/spinner-1s-200px.svg"
+              alt="spinner loader"
+              height={36}
+              width={36}
+            />
+          </div>
+        )}
         <AlertSuccess onSuccess={success} toggleActive={setSuccess} />
 
         <div className="flex flex-wrap justify-center">

@@ -68,7 +68,7 @@ export const memeRouter = trpc
         },
         orderBy: {
           VotesFor: {
-            _count: "asc",
+            _count: "desc",
           },
         },
       });
