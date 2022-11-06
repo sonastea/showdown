@@ -1,12 +1,8 @@
 import Image from "next/image";
-import { inferQueryResponse } from "src/pages/api/trpc/[trpc]";
-
-export type TopAllMemes = inferQueryResponse<"meme.get-top-all-memes">["memes"];
-export type TopDayMemes = inferQueryResponse<"meme.get-top-day-memes">;
-export type TopWeekMemes = inferQueryResponse<"meme.get-top-week-memes">;
+import { TopAllMemes, TopDayMemes, TopWeekMemes } from "src/backend/trpc";
 
 const MemeListing: React.FC<{
-  meme: TopAllMemes[0] & TopDayMemes[0] & TopWeekMemes[0];
+  meme: TopAllMemes & TopDayMemes & TopWeekMemes;
   rank: number;
 }> = ({ meme, rank }) => {
   return (
@@ -42,13 +38,15 @@ const MemeListing: React.FC<{
       <div className="w-24 h-24 sm:w-48 sm:h-48 relative">
         <Image
           className="rounded-md"
-          layout="fill"
+          fill
           src={meme?.url}
+          sizes="(max-width: 640px) 12rem,
+                  6rem"
           alt=""
           priority
         />
       </div>
-      <span className="bg-once/75 text-white font-semibold self-center rounded-md px-2 pb-px">
+      <span className="bg-once/75 text-white font-semibold self-center rounded-md px-2 pb-px text-center w-16 flex-none">
         {meme._count?.VotesFor || meme.VotesFor?.length || 0}
       </span>
     </div>

@@ -38,8 +38,8 @@ const Results: React.FC<{ memes: any }> = ({ memes }) => {
       </Head>
       <MobileNav toggleForm={setShowUploadForm} />
       <div className="w-full text-xl text-white text-center p-2 hidden sm:block">
-        <Link href="/home">
-          <a className="hover:text-slate-300">Home</a>
+        <Link className="hover:text-slate-300" href="/home">
+          Home
         </Link>
         <span className="p-1">{" | "}</span>
         <span>Results Page</span>

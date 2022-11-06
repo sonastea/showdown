@@ -1,13 +1,8 @@
-import { appRouter, AppRouter } from "@router/index";
-import { inferProcedureOutput } from "@trpc/server";
+import { appRouter } from "@router/_app";
 import * as trpcNext from "@trpc/server/adapters/next";
 
 // export API handler
 export default trpcNext.createNextApiHandler({
   router: appRouter,
-  createContext: () => null,
+  createContext: () => ({}),
 });
-
-export type inferQueryResponse<
-  TRouteKey extends keyof AppRouter["_def"]["queries"]
-> = inferProcedureOutput<AppRouter["_def"]["queries"][TRouteKey]>;

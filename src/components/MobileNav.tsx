@@ -39,7 +39,8 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
         <button className="absolute right-6 top-6 w-4 h-4 text-white">
           <Image
             src="/x_mark_white.svg"
-            layout="fill"
+            height="16"
+            width="16"
             alt="Toggle mobile nav"
           />
         </button>
@@ -52,9 +53,16 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
             <nav className="flex flex-col items-end space-y-5 w-full text-white">
               <div className="border-slate-400 border-t mb-8 w-full" />
               <ul className="flex flex-col items-end w-full space-y-5">
-                <li className={`${router.pathname === "/home" ? "bg-slate-400/75 " : "" }flex flex-wrap justify-between relative w-full group py-1 rounded-r-xl mr-2`}>
-                  <Link href="/home">
-                    <a className="group-hover:text-slate-300 ml-10">Home</a>
+                <li
+                  className={`${
+                    router.pathname === "/home" ? "bg-slate-400/75 " : ""
+                  }flex flex-wrap justify-between relative w-full group py-1 rounded-r-xl mr-2`}
+                >
+                  <Link
+                    className="group-hover:text-slate-300 ml-10"
+                    href="/home"
+                  >
+                    Home
                   </Link>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -103,9 +111,16 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                     <polyline points="9 14 12 11 15 14" />
                   </svg>
                 </button>
-                <li className={`${router.pathname === "/results" ? "bg-slate-400/75 " : "" }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2`}>
-                  <Link href="/results">
-                    <a className="ml-10 group-hover:text-slate-300">Results</a>
+                <li
+                  className={`${
+                    router.pathname === "/results" ? "bg-slate-400/75 " : ""
+                  }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2`}
+                >
+                  <Link
+                    className="ml-10 group-hover:text-slate-300"
+                    href="/results"
+                  >
+                    Results
                   </Link>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

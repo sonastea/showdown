@@ -1,6 +1,6 @@
 import { prisma } from "@db/client";
-import * as trpc from "@trpc/server";
 import { z } from "zod";
+import { publicProcedure, router } from "../trpc";
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
@@ -9,14 +9,16 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const adminRouter = trpc
-  .router()
-  .query("get-recent-memes", {
-    input: z.object({
-      cursor: z.number().nullish().default(0),
-    }),
-    async resolve({ input }) {
-      const limit = 10;
+const LIMIT_MEMES: number = 10;
+
+export const adminRouter = router({
+  getRecentMemes: publicProcedure
+    .input(
+      z.object({
+        cursor: z.number().nullish().default(0),
+      })
+    )
+    .query(async ({ input }) => {
       const memes = await prisma.meme.findMany({
         cursor: input.cursor ? { id: input.cursor } : undefined,
         orderBy: {
@@ -27,15 +29,15 @@ export const adminRouter = trpc
           name: true,
           url: true,
         },
-        take: limit + 1,
+        take: LIMIT_MEMES + 1,
       });
 
       let prevCursor: typeof input.cursor | undefined = undefined;
       let nextCursor: typeof input.cursor | undefined = undefined;
 
-      if (input.cursor) prevCursor = memes[0]?.id - limit;
+      if (input.cursor && memes[0]) prevCursor = memes[0].id - LIMIT_MEMES;
 
-      if (memes.length > limit) {
+      if (memes.length > LIMIT_MEMES) {
         const nextItem = memes.pop();
         nextCursor = nextItem?.id;
       }
@@ -45,13 +47,10 @@ export const adminRouter = trpc
         prevCursor,
         nextCursor,
       };
-    },
-  })
-  .mutation("delete-meme", {
-    input: z.object({
-      id: z.number(),
     }),
-    async resolve({ input }) {
+  deleteMeme: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ input }) => {
       const deleted = await prisma.meme.delete({
         where: {
           id: input.id,
@@ -60,5 +59,5 @@ export const adminRouter = trpc
       await cloudinary.uploader.destroy(deleted.name);
 
       return { success: true, meme: deleted };
-    },
-  });
+    }),
+});

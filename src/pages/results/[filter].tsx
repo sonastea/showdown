@@ -1,5 +1,5 @@
-import { appRouter } from "@router/index";
-import { createSSGHelpers } from "@trpc/react/ssg";
+import { appRouter } from "@router/_app";
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import {
   GetStaticPaths,
   GetStaticPropsContext,
@@ -15,8 +15,6 @@ import UploadForm from "src/components/UploadForm";
 import { trpc } from "src/utils/trpc";
 import superjson from "superjson";
 
-type FilterTypes = "meme.get-top-day-memes" | "meme.get-top-week-memes";
-
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [{ params: { filter: "day" } }, { params: { filter: "week" } }],
@@ -27,15 +25,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps = async (
   context: GetStaticPropsContext<{ filter: string }>
 ) => {
-  const ssg = await createSSGHelpers({
+  const ssg = createProxySSGHelpers({
     router: appRouter,
     ctx: {},
     transformer: superjson,
   });
-  const filter: FilterTypes =
-    `meme.get-top-${context.params?.filter}-memes` as FilterTypes;
+  const filter = context.params?.filter as string;
+  switch (context.params?.filter) {
+    case "day":
+      await ssg.meme.getTopDayMemes.prefetch();
+      break;
 
-  await ssg.fetchQuery(filter);
+    case "week":
+      await ssg.meme.getTopWeekMemes.prefetch();
+      break;
+  }
+
   return {
     props: {
       trpcState: ssg.dehydrate(),
@@ -50,10 +55,11 @@ const ResultsFilter = (
 ) => {
   const [showUploadForm, setShowUploadForm] = useState<boolean>(false);
   const { filter } = props;
-  const { data: memes, isLoading } = trpc.useQuery([filter], {
-    refetchInterval: false,
-    refetchOnWindowFocus: false,
-  });
+
+  const { data, isLoading } =
+    filter === "day"
+      ? trpc.meme.getTopDayMemes.useQuery()
+      : trpc.meme.getTopWeekMemes.useQuery();
 
   return (
     <div className="flex flex-col items-center min-h-screen min-w-screen bg-slate-600">
@@ -64,27 +70,28 @@ const ResultsFilter = (
       {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
 
       <div className="w-full text-xl text-white text-center p-2 hidden sm:block">
-        <Link href="/home">
-          <a className="hover:text-slate-300">Home</a>
+        <Link className="hover:text-slate-300" href="/home">
+          Home
         </Link>
         <span className="p-1">{" | "}</span>
         <span>Results Page</span>
       </div>
       <FilterListBox />
-      {memes && (
-        <div className="flex flex-col w-full max-w-3xl">
-          {memes.map((meme: any, index: number) => {
+      {data && (
+        <div className="flex flex-col w-full max-w-3xl divide-y divide-slate-500">
+          {data.map((meme: any, index: number) => {
             return <MemeListing meme={meme} rank={index + 1} key={index} />;
           })}
         </div>
       )}
       {isLoading && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          className="w-96 h-96"
-          src="/ripple_1s_200s.svg"
-          alt="Ripple loader indicator"
-        />
+        <picture>
+          <img
+            className="w-96 h-96"
+            src="/ripple_1s_200s.svg"
+            alt="Ripple loader indicator"
+          />
+        </picture>
       )}
     </div>
   );

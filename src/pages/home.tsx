@@ -4,11 +4,11 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { MemePair } from "src/backend/trpc";
 import MobileNav from "src/components/MobileNav";
 import SubmitMemeButton from "src/components/SubmitMemeButton";
 import UploadForm from "src/components/UploadForm";
 import { trpc } from "src/utils/trpc";
-import { inferQueryResponse } from "./api/trpc/[trpc]";
 
 const Home: NextPage = () => {
   const [showUploadForm, setShowUploadForm] = useState<boolean>(false);
@@ -17,14 +17,14 @@ const Home: NextPage = () => {
     refetch,
     isError,
     isLoading,
-  } = trpc.useQuery(["meme.get-meme-pair"], {
+  } = trpc.meme.getMemePair.useQuery(undefined, {
     refetchInterval: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
   });
 
   const plausible = usePlausible();
-  const voteForMeme = trpc.useMutation(["meme.add-vote"]);
+  const voteForMeme = trpc.meme.addVote.useMutation();
 
   const handleVoteForFunnier = (select: number) => {
     if (!memePair) return;
@@ -94,12 +94,12 @@ const Home: NextPage = () => {
           />
         )}
         <div className="w-full text-xl text-white text-center p-2 hidden sm:block">
-          <Link href="/home">
-            <a className="hover:text-slate-300">Home</a>
+          <Link className="hover:text-slate-300" href="/home">
+            Home
           </Link>
           <span>{" • "}</span>
-          <Link href="/results">
-            <a className="hover:text-slate-300">Results</a>
+          <Link className="hover:text-slate-300" href="/results">
+            Results
           </Link>
         </div>
       </div>
@@ -108,20 +108,22 @@ const Home: NextPage = () => {
 };
 
 const MemeContainer: React.FC<{
-  meme: inferQueryResponse<"meme.get-meme-pair">["meme1"];
+  meme: MemePair["meme1"];
   vote: () => void;
   disabled: boolean;
 }> = ({ meme, vote, disabled }) => {
   return (
     <div className="flex flex-col items-center" key={meme.id}>
-      <div className="relative w-48 md:w-72 lg:w-96">
+      <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
         <Image
           alt=""
           className="animate-fade-in"
-          width="100%"
-          height="100%"
-          layout="responsive"
-          objectFit="contain"
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 18rem,
+                  (max-width: 1280px) 24rem,
+                  12rem
+          "
           src={meme.url}
           priority={false}
         />

@@ -41,9 +41,10 @@ const Admin: NextPage = () => {
     fetchNextPage,
     isFetching,
     hasPreviousPage,
-  } = trpc.useInfiniteQuery(["admin.get-recent-memes", {}], {
-    getPreviousPageParam: (firstPage) => firstPage.prevCursor,
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
+  } = trpc.admin.getRecentMemes.useInfiniteQuery({
+    getPreviousPageParam: (firstPage: { prevCursor: number }) =>
+      firstPage.prevCursor,
+    getNextPageParam: (lastPage: { nextCursor: number }) => lastPage.nextCursor,
     refetchInterval: false,
     refetchOnWindowFocus: false,
   });
@@ -57,7 +58,7 @@ const Admin: NextPage = () => {
     });
   };
 
-  const deleteMeme = trpc.useMutation("admin.delete-meme");
+  const deleteMeme = trpc.admin.deleteMeme.useMutation();
 
   return (
     <>
@@ -114,7 +115,16 @@ const Admin: NextPage = () => {
               data.pages[page - 1].memes.map((meme) => (
                 <li className="flex flex-wrap justify-around p-2" key={meme.id}>
                   <span className="text-white self-center m-2">{meme.id}</span>
-                  <Image src={meme.url} width={96} height={96} alt="" />
+                  <Image
+                    src={meme.url}
+                    width={96}
+                    height={96}
+                    alt=""
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
+                  />
                   <button
                     className="w-12 text-white bg-once h-8 px-1 text-sm rounded-lg self-center m-2 disabled:w-16 disabled:cursor-not-allowed disabled:bg-once/80 disabled:line-through"
                     data-id={meme.id}
@@ -126,7 +136,7 @@ const Admin: NextPage = () => {
                 </li>
               ))}
             {isFetching &&
-              skeleton.map((s, index: number) => {
+              skeleton.map((_, index: number) => {
                 return <MemeListingSkeleton key={index} />;
               })}
           </ul>
