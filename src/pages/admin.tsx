@@ -41,13 +41,18 @@ const Admin: NextPage = () => {
     fetchNextPage,
     isFetching,
     hasPreviousPage,
-  } = trpc.admin.getRecentMemes.useInfiniteQuery({
-    getPreviousPageParam: (firstPage: { prevCursor: number }) =>
-      firstPage.prevCursor,
-    getNextPageParam: (lastPage: { nextCursor: number }) => lastPage.nextCursor,
-    refetchInterval: false,
-    refetchOnWindowFocus: false,
-  });
+  } = trpc.admin.getRecentMemes.useInfiniteQuery(
+    {
+      getPreviousPageParam: (firstPage: { prevCursor: number }) =>
+        firstPage.prevCursor,
+      getNextPageParam: (lastPage: { nextCursor: number }) =>
+        lastPage.nextCursor,
+    },
+    {
+      refetchInterval: false,
+      refetchOnWindowFocus: false,
+    }
+  );
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     const idx = parseInt(e.currentTarget.dataset.id as string);
@@ -126,7 +131,7 @@ const Admin: NextPage = () => {
                     }}
                   />
                   <button
-                    className="w-12 text-white bg-once h-8 px-1 text-sm rounded-lg self-center m-2 disabled:w-16 disabled:cursor-not-allowed disabled:bg-once/80 disabled:line-through"
+                    className="p-0.5 text-white bg-once text-sm rounded-md self-center m-2 disabled:w-16 disabled:cursor-not-allowed disabled:bg-once/80 disabled:line-through"
                     data-id={meme.id}
                     onClick={handleDelete}
                     disabled={removed.includes(meme.id)}

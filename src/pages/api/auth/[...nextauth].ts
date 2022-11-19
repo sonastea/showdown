@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials, _req) {
         let user: User | null = null;
         await signInWithEmailAndPassword(
           auth,
@@ -28,7 +28,6 @@ export const authOptions: NextAuthOptions = {
           credentials!.password!
         )
           .then((userCredential) => {
-          console.log(userCredential.user.uid);
             user = {
               id: userCredential.user.uid,
               email: userCredential.user.email,
@@ -46,6 +45,16 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      console.log(url.startsWith("/"));
+      console.log(new URL(url).origin === baseUrl);
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      // Allows callback URLs on the same origin, return to admin page if successful
+      else if (new URL(url).origin === baseUrl) return `${baseUrl}/admin`;
+      return baseUrl;
+    },
+  },
 };
 
 export default NextAuth(authOptions);
