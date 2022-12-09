@@ -1,4 +1,6 @@
-import { prisma } from "@db/client";
+import { appRouter } from "@router/_app";
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -6,30 +8,28 @@ import FilterListBox from "src/components/FilterListBox";
 import MemeListing from "src/components/MemeListing";
 import MobileNav from "src/components/MobileNav";
 import UploadForm from "src/components/UploadForm";
-
-const getTopMemes = async () => {
-  return await prisma.meme.findMany({
-    orderBy: { VotesFor: { _count: "desc" } },
-    select: {
-      id: true,
-      url: true,
-      _count: {
-        select: {
-          VotesFor: true,
-        },
-      },
-    },
-    take: 50,
-  });
-};
+import superjson from "superjson";
 
 export async function getStaticProps() {
-  const memes = await getTopMemes();
-  return { props: { memes }, revalidate: 7200 };
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: {},
+    transformer: superjson,
+  });
+  const memes = await ssg.meme.getTopAllMemes.fetch();
+
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+      memes,
+    },
+    revalidate: 3600,
+  };
 }
 
-const Results: React.FC<{ memes: any }> = ({ memes }) => {
+const Results = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [showUploadForm, setShowUploadForm] = useState<boolean>(false);
+  const { memes } = props.memes;
 
   return (
     <div className="flex flex-col items-center min-h-screen min-w-screen bg-slate-600">

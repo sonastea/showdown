@@ -52,6 +52,9 @@ export const memeRouter = router({
         name: true,
         url: true,
         VotesFor: {
+          select: {
+            id: true,
+          },
           where: {
             createdAt: {
               gte: new Date(
@@ -77,6 +80,9 @@ export const memeRouter = router({
         name: true,
         url: true,
         VotesFor: {
+          select: {
+            id: true,
+          },
           where: {
             createdAt: {
               gte: new Date(new Date().setDate(new Date().getDate() - 7)),
