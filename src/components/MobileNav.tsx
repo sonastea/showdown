@@ -13,6 +13,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
         <button
           className="mobile-menu-toggle"
           onClick={() => setActive((open: boolean) => !open)}
+          aria-label="Toggle mobile nav"
         >
           <svg
             className="w-8 h-8 text-white"
@@ -55,11 +56,11 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
               <ul className="flex flex-col items-end w-full space-y-5">
                 <li
                   className={`${
-                    router.pathname === "/home" ? "bg-slate-400/75 " : ""
+                    router.pathname === "/" ? "bg-slate-400/75 " : ""
                   }flex flex-wrap justify-between relative w-full group py-1 rounded-r-xl mr-2`}
                 >
                   <Link
-                    className="group-hover:text-slate-300 ml-10"
+                    className="group-hover:text-slate-200 ml-10"
                     href="/home"
                   >
                     Home
@@ -74,7 +75,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="mr-12 group-hover:animate-pulse group-hover:text-teal-500"
+                    className="mr-12 group-hover:text-teal-300"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <polyline points="5 12 3 12 12 3 21 12 19 12" />
@@ -82,42 +83,44 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                     <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
                   </svg>
                 </li>
-                <button
-                  className="flex flex-wrap justify-between relative w-full group mr-2"
-                  onClick={() => {
-                    setActive(false);
-                    toggleForm(true);
-                  }}
-                >
-                  <span className="ml-10 cursor-pointer group-hover:text-slate-300">
-                    Submit Meme
-                  </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-12 group-hover:text-once/80 group-hover:animate-pulse"
+                <li className="flex flex-wrap justify-between w-full group mr-2">
+                  <button
+                    className="flex flex-wrap justify-between w-full"
+                    onClick={() => {
+                      setActive(false);
+                      toggleForm(true);
+                    }}
                   >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                    <line x1="12" y1="11" x2="12" y2="17" />
-                    <polyline points="9 14 12 11 15 14" />
-                  </svg>
-                </button>
+                    <span className="ml-10 cursor-pointer group-hover:text-slate-200">
+                      Submit Meme
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="mr-12 group-hover:text-once/80"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                      <line x1="12" y1="11" x2="12" y2="17" />
+                      <polyline points="9 14 12 11 15 14" />
+                    </svg>
+                  </button>
+                </li>
                 <li
                   className={`${
                     router.pathname === "/results" ? "bg-slate-400/75 " : ""
                   }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2`}
                 >
                   <Link
-                    className="ml-10 group-hover:text-slate-300"
+                    className="ml-10 group-hover:text-slate-200"
                     href="/results"
                   >
                     Results
@@ -132,7 +135,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="mr-12 group-hover:animate-pulse group-hover:text-yellow-300"
+                    className="mr-12 group-hover:text-yellow-300"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 4v3m-4 -3v6m8 -6v6" />

@@ -38,7 +38,7 @@ const Results = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       </Head>
       <MobileNav toggleForm={setShowUploadForm} />
       <div className="w-full text-xl text-white text-center p-2 hidden sm:block">
-        <Link className="hover:text-slate-300" href="/home">
+        <Link className="hover:text-slate-300" href="/">
           Home
         </Link>
         <span className="p-1">{" | "}</span>
