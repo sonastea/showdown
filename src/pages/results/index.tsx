@@ -1,5 +1,5 @@
 import { appRouter } from "@router/_app";
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import { createServerSideHelpers } from "@trpc/react-query/server";
 import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import UploadForm from "src/components/UploadForm";
 import superjson from "superjson";
 
 export async function getStaticProps() {
-  const ssg = createProxySSGHelpers({
+  const ssg = createServerSideHelpers({
     router: appRouter,
     ctx: {},
     transformer: superjson,
