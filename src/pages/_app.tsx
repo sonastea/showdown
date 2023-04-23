@@ -17,7 +17,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <script
           async
           src="https://umami-sonastea.vercel.app/script.js"
-          data-website-id="9820fc3c-ab7b-4577-9804-dfc1478282b8"
+          data-website-id="49754ed1-364e-4593-9a40-3cbbdd75b1ad"
+          data-domains="kpopshowdown.com"
         ></script>
       </Head>
       <Component {...pageProps} />
