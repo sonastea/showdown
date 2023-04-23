@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import { usePlausible } from "next-plausible";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,7 +22,6 @@ const Home: NextPage = () => {
     refetchOnWindowFocus: false,
   });
 
-  const plausible = usePlausible();
   const voteForMeme = trpc.meme.addVote.useMutation();
 
   const handleVoteForFunnier = (select: number) => {
@@ -35,7 +33,6 @@ const Home: NextPage = () => {
       voteForMeme.mutate({ votedFor: memePair.meme2.id });
     }
 
-    plausible("add-vote");
     refetch();
   };
 
