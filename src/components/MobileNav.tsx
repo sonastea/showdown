@@ -56,7 +56,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                 >
                   <Link
                     className="group-hover:text-slate-100 ml-10"
-                    href="/home"
+                    href="/"
                   >
                     Home
                   </Link>

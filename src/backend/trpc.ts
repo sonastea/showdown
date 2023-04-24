@@ -10,6 +10,6 @@ export const publicProcedure = t.procedure;
 type RouterOutput = inferRouterOutputs<AppRouter>;
 
 export type MemePair = RouterOutput["meme"]["getMemePair"];
-export type TopAllMemes = RouterOutput["meme"]["getTopAllMemes"]["memes"][0];
+export type TopAllMemes = RouterOutput["meme"]["getTopAllMemes"][0];
 export type TopDayMemes = RouterOutput["meme"]["getTopDayMemes"][0];
 export type TopWeekMemes = RouterOutput["meme"]["getTopWeekMemes"][0];

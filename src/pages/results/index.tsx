@@ -4,6 +4,7 @@ import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useState } from "react";
+import { TopAllMemes } from "src/backend/trpc";
 import FilterListBox from "src/components/FilterListBox";
 import MemeListing from "src/components/MemeListing";
 import MobileNav from "src/components/MobileNav";
@@ -29,7 +30,7 @@ export async function getStaticProps() {
 
 const Results = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [showUploadForm, setShowUploadForm] = useState<boolean>(false);
-  const { memes } = props.memes;
+  const { memes } = props;
 
   return (
     <div className="flex flex-col items-center min-h-screen min-w-screen bg-slate-600">
@@ -49,7 +50,7 @@ const Results = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       <FilterListBox />
       <div className="flex flex-col w-full max-w-3xl divide-y divide-slate-500">
         {memes &&
-          memes.map((meme: any, index: number) => {
+          memes.map((meme: TopAllMemes, index: number) => {
             return <MemeListing meme={meme} rank={index + 1} key={meme.id} />;
           })}
       </div>

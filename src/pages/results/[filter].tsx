@@ -8,6 +8,7 @@ import {
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
+import { TopAllMemes, TopDayMemes, TopWeekMemes } from "src/backend/trpc";
 import FilterListBox from "src/components/FilterListBox";
 import MemeListing from "src/components/MemeListing";
 import MobileNav from "src/components/MobileNav";
@@ -79,8 +80,8 @@ const ResultsFilter = (
       <FilterListBox />
       {data && (
         <div className="flex flex-col w-full max-w-3xl divide-y divide-slate-500">
-          {data.map((meme: any, index: number) => {
-            return <MemeListing meme={meme} rank={index + 1} key={index} />;
+          {data.map((meme: TopDayMemes | TopWeekMemes, index: number) => {
+            return <MemeListing meme={meme as TopAllMemes} rank={index + 1} key={index} />;
           })}
         </div>
       )}
