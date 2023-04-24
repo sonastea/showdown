@@ -15,13 +15,13 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
-        <Script
-          async
-          src="https://umami-sonastea.vercel.app/script.js"
-          data-website-id="49754ed1-364e-4593-9a40-3cbbdd75b1ad"
-          data-domains="kpopshowdown.com"
-        />
       </Head>
+      <Script
+        async
+        src="https://umami-sonastea.vercel.app/script.js"
+        data-website-id="49754ed1-364e-4593-9a40-3cbbdd75b1ad"
+        data-domains="kpopshowdown.com"
+      />
       <Component {...pageProps} />
     </SessionProvider>
   );
