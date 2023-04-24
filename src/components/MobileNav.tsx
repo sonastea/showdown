@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { XMarkIcon } from '@heroicons/react/24/solid'
 
 const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
   const [isActive, setActive] = React.useState(false);
@@ -37,30 +37,25 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
         } z-50 min-h-full min-w-full backdrop-blur-sm sm:hidden absolute justify-end right-0`}
         onClick={() => setActive((open: boolean) => !open)}
       >
-        <button className="absolute right-6 top-6 w-4 h-4 text-white">
-          <Image
-            src="/x_mark_white.svg"
-            height="16"
-            width="16"
-            alt="Toggle mobile nav"
-          />
+        <button className="absolute right-6 top-6">
+          <XMarkIcon className="w-6 h-6 text-slate-100 hover:text-slate-300"/>
         </button>
         <div
           id="mobileNav"
-          className={`shadow-slate-300 shadow-md w-2/3 place-items-end bg-slate-500 overflow-auto`}
+          className={`shadow-slate-500 shadow-md w-2/3 place-items-end bg-slate-700 overflow-auto`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="self-end mt-32">
-            <nav className="flex flex-col items-end space-y-5 w-full text-white">
-              <div className="border-slate-400 border-t mb-8 w-full" />
+            <nav className="flex flex-col items-end space-y-5 w-full text-slate-100">
+              <div className="border-slate-600 border-t mb-8 w-full" />
               <ul className="flex flex-col items-end w-full space-y-5">
                 <li
                   className={`${
-                    router.pathname === "/" ? "bg-slate-400/75 " : ""
+                    router.pathname === "/" ? "bg-slate-600/75 " : ""
                   }flex flex-wrap justify-between relative w-full group py-1 rounded-r-xl mr-2`}
                 >
                   <Link
-                    className="group-hover:text-slate-200 ml-10"
+                    className="group-hover:text-slate-100 ml-10"
                     href="/home"
                   >
                     Home
@@ -85,13 +80,13 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                 </li>
                 <li className="flex flex-wrap justify-between w-full group mr-2">
                   <button
-                    className="flex flex-wrap justify-between w-full"
+                    className="flex flex-wrap justify-between w-full cursor-default"
                     onClick={() => {
                       setActive(false);
                       toggleForm(true);
                     }}
                   >
-                    <span className="ml-10 cursor-pointer group-hover:text-slate-200">
+                    <span className="ml-10 cursor-pointer group-hover:text-slate-100">
                       Submit Meme
                     </span>
                     <svg
@@ -104,7 +99,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="mr-12 group-hover:text-once/80"
+                      className="mr-12 group-hover:text-mina-300"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -116,11 +111,11 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                 </li>
                 <li
                   className={`${
-                    router.pathname === "/results" ? "bg-slate-400/75 " : ""
+                    router.pathname === "/results" ? "bg-slate-600/75 " : ""
                   }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2`}
                 >
                   <Link
-                    className="ml-10 group-hover:text-slate-200"
+                    className="ml-10 group-hover:text-slate-100"
                     href="/results"
                   >
                     Results

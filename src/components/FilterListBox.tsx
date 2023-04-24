@@ -26,7 +26,7 @@ const FilterListBox: React.FC = () => {
       <Listbox value={selectedQuery} onChange={setQuery}>
         {({ open }) => (
           <div className="relative mt-1">
-            <Listbox.Button className="flex justify-between w-full cursor-default bg-slate-400 rounded-lg py-2 pr-10 pl-4 text-left shadow-md focus-outline-none focus-visible:border-once focus-visible:ring-2">
+            <Listbox.Button className="flex justify-between w-full cursor-default bg-slate-400 rounded-lg py-2 pr-10 pl-4 text-left shadow-md focus-outline-none focus-visible:border-mina focus-visible:ring-2">
               <span className="font-bold">{selectedQuery?.name}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,7 @@ const FilterListBox: React.FC = () => {
                     <Listbox.Option
                       className={({ active }) =>
                         `relative cursor-default select-none pl-10 pr-4 flex items-center justify-between w-full ${
-                          active ? "bg-slate-300 text-once" : "text-black"
+                          active ? "bg-slate-300 text-mina" : "text-black"
                         }`
                       }
                       value={query}
@@ -71,7 +71,7 @@ const FilterListBox: React.FC = () => {
                       {({ selected }) => (
                         <>
                           {selected ? (
-                            <span className="pl-3 left-0 text-once absolute">
+                            <span className="pl-3 left-0 text-mina absolute">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4"

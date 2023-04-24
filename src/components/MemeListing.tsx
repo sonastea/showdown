@@ -46,7 +46,7 @@ const MemeListing: React.FC<{
           priority
         />
       </div>
-      <span className="bg-once/75 text-white font-semibold self-center rounded-md px-2 pb-px text-center w-16 flex-none">
+      <span className="bg-mina/75 text-white font-semibold self-center rounded-md px-2 pb-px text-center w-16 flex-none">
         {meme._count?.VotesFor || meme.VotesFor?.length || 0}
       </span>
     </div>

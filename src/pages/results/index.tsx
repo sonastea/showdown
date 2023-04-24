@@ -37,12 +37,12 @@ const Results = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <title>Showdown / Funniest Meme Results</title>
       </Head>
       <MobileNav toggleForm={setShowUploadForm} />
-      <div className="w-full text-xl text-white text-center p-2 hidden sm:block">
-        <Link className="hover:text-slate-300" href="/">
+      <div className="w-full text-xl text-mina-50 text-center p-2 hidden sm:block">
+        <Link className="hover:text-mina-300" href="/">
           Home
         </Link>
-        <span className="p-1">{" | "}</span>
-        <span>Results Page</span>
+        <span className="p-1">{" • "}</span>
+        <span className="text-mina-200">Results Page</span>
       </div>
       {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
 

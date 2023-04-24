@@ -4,15 +4,11 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { trpc } from "src/utils/trpc";
 
-import { unstable_getServerSession } from "next-auth/next";
+import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 export async function getServerSideProps(context: any) {
-  const session = await unstable_getServerSession(
-    context.req,
-    context.res,
-    authOptions
-  );
+  const session = await getServerSession(context.req, context.res, authOptions);
 
   if (!session) {
     return {
@@ -77,7 +73,7 @@ const Admin: NextPage = () => {
             <ul className="inline-flex flex-wrap">
               <li>
                 <button
-                  className="px-2 text-once transition-colors duration-150 bg-white rounded-l-lg focus:shadow-outline disabled:bg-white/80 disabled:cursor-not-allowed"
+                  className="px-2 text-mina-200 transition-colors duration-150 bg-mina-800 hover:bg-mina-800/70 rounded-l-lg focus:shadow-outline disabled:bg-mina-800/70 disabled:cursor-not-allowed"
                   disabled={page === 1 || hasPreviousPage}
                   onClick={() => {
                     fetchPreviousPage().then((res) => {
@@ -91,14 +87,14 @@ const Admin: NextPage = () => {
                 </button>
               </li>
               <li>
-                <button className="px-2 text-white bg-once transition-colors duration-150">
+                <button className="px-2 text-mina-900 bg-mina-100 transition-colors duration-150">
                   {page}
                 </button>
               </li>
 
               <li>
                 <button
-                  className="px-2 text-once transition-colors duration-150 bg-white rounded-r-lg focus:shadow-outline disabled:bg-white/80 disabled:cursor-not-allowed"
+                  className="px-2 text-mina-200 transition-colors duration-150 bg-mina-800 hover:bg-mina-800/70 rounded-r-lg focus:shadow-outline disabled:bg-mina-800/70 disabled:cursor-not-allowed"
                   disabled={!data?.pages[page - 1].nextCursor}
                   onClick={() => {
                     fetchNextPage().then((res) => {
@@ -119,7 +115,9 @@ const Admin: NextPage = () => {
             {data &&
               data.pages[page - 1].memes.map((meme) => (
                 <li className="flex flex-wrap justify-around p-2" key={meme.id}>
-                  <span className="text-white self-center m-2">{meme.id}</span>
+                  <span className="text-mina-50 self-center m-2">
+                    {meme.id}
+                  </span>
                   <Image
                     src={meme.url}
                     width={96}
@@ -131,7 +129,7 @@ const Admin: NextPage = () => {
                     }}
                   />
                   <button
-                    className="p-0.5 text-white bg-once text-sm rounded-md self-center m-2 disabled:w-16 disabled:cursor-not-allowed disabled:bg-once/80 disabled:line-through"
+                    className="p-1 text-mina-900 bg-mina-300 hover:bg-mina-300/90 text-sm rounded-md self-center m-2 disabled:w-16 disabled:cursor-not-allowed disabled:bg-mina/80 disabled:line-through"
                     data-id={meme.id}
                     onClick={handleDelete}
                     disabled={removed.includes(meme.id)}
@@ -159,7 +157,7 @@ const MemeListingSkeleton = () => {
         className="bg-gray-200"
         style={{ width: "96px", height: "96px" }}
       ></div>
-      <button className="w-12 bg-gray-200 h-8 px-1 text-sm rounded-lg self-center m-2 disabled:cursor-not-allowed disabled:bg-once/80 disabled:line-through"></button>
+      <button className="w-12 bg-gray-200 h-8 px-1 text-sm rounded-lg self-center m-2 disabled:cursor-not-allowed disabled:bg-mina-400/80 disabled:line-through"></button>
     </li>
   );
 };

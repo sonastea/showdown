@@ -56,8 +56,8 @@ const Home: NextPage = () => {
         {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
         {memePair && (
           <div className="flex flex-col">
-            <div className="m-4 text-xl text-white text-center">
-              Which meme is funnier?
+            <div className="m-4 font-semibold text-xl text-mina-200 text-center">
+              Which is funnier?
             </div>
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
               <MemeContainer
@@ -67,7 +67,7 @@ const Home: NextPage = () => {
               />
               {memePair.meme2 ? (
                 <>
-                  <div className="p-6 font-bold text-xl text-ponce">vs</div>
+                  <div className="p-6 text-xl text-mina-50">vs</div>
                   <MemeContainer
                     meme={memePair.meme2}
                     vote={() => handleVoteForFunnier(memePair.meme2.id)}
@@ -75,7 +75,7 @@ const Home: NextPage = () => {
                   />
                 </>
               ) : (
-                <div className="p-6 text-ponce text-xl md:text-3xl w-48 md:w-72 lg:w-96 text-center">
+                <div className="p-6 text-mina text-xl md:text-3xl w-48 md:w-72 lg:w-96 text-center">
                   Upload meme for the showdown!
                 </div>
               )}
@@ -91,12 +91,12 @@ const Home: NextPage = () => {
           />
         )}
         <footer>
-          <div className="w-full text-xl text-white text-center p-2 hidden sm:block">
-            <Link className="hover:text-slate-300" href="/">
+          <div className="w-full text-xl text-mina-50 text-center p-2 hidden sm:block">
+            <Link className="text-mina-50 hover:text-mina-300" href="/">
               Home
             </Link>
             <span>{" • "}</span>
-            <Link className="hover:text-slate-300" href="/results">
+            <Link className="text-mina-50 hover:text-mina-200" href="/results">
               Results
             </Link>
           </div>
@@ -128,7 +128,7 @@ const MemeContainer: React.FC<{
         />
       </div>
       <button
-        className="font-medium shadow-sm m-4 p-2 text-xl md:text-3xl bg-once/90 text-[#5b0126] disabled:bg-once/40 disabled:cursor-not-allowed enabled:hover:animate-[pulse_0.75s_ease-in-out_infinite] rounded-md focus:outline-none focus:ring-ponce focus:ring-2 focus:ring-offset-2"
+        className="font-medium shadow-md m-4 p-2 text-xl md:text-3xl bg-mina-200 text-mina-900 hover:bg-mina-300 disabled:bg-mina-200/70 disabled:cursor-not-allowed rounded-md focus:outline-none focus:ring-mina focus:ring-2 focus:ring-offset-2"
         onClick={() => vote()}
         disabled={disabled}
       >

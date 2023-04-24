@@ -82,7 +82,7 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
     >
       <div
         onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
-        className="bg-slate-500 absolute rounded shadow-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inset-x-auto p-2"
+        className="bg-slate-500 absolute rounded shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inset-x-auto p-2"
       >
         <form
           className="flex flex-wrap sm:p-8 sm:justify-items-end place-content-center"
@@ -101,9 +101,9 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
           <input
             className={`${
               !files
-                ? "cursor-not-allowed bg-once/70 text-white/80"
-                : "cursor-pointer hover:bg-once/80"
-            } rounded bg-once/90 p-1 m-4 sm:m-1 font-bold justify-self-center sm:justify-self-end text-white w-min`}
+                ? "cursor-not-allowed bg-mina/70 text-mina-900"
+                : "cursor-pointer hover:bg-mina-400"
+            } rounded bg-mina p-1 m-4 sm:m-1 font-bold justify-self-center sm:justify-self-end text-mina-900 w-min`}
             type="submit"
             value="Upload"
             disabled={!files}
@@ -127,10 +127,11 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
             files.length >= 1 &&
             Array.from(files).map((photo, index) => {
               return (
-                <div key={index} className="m-1">
+                <div key={index} className="m-1 object-scale-down">
                   <Image
-                    height={192}
-                    width={192}
+                    className="h-auto w-48"
+                    height={0}
+                    width={0}
                     src={URL.createObjectURL(photo)}
                     alt=""
                   />
