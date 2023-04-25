@@ -70,7 +70,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="mr-12 group-hover:text-teal-300"
+                    className="mr-12 group-hover:text-once-300"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <polyline points="5 12 3 12 12 3 21 12 19 12" />

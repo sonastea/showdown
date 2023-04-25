@@ -133,7 +133,7 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
                     height={0}
                     width={0}
                     src={URL.createObjectURL(photo)}
-                    alt=""
+                    alt={photo.name}
                   />
                 </div>
               );

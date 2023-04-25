@@ -7,7 +7,7 @@ const MemeListing: React.FC<{
 }> = ({ meme, rank }) => {
   return (
     <div className="flex flex-wrap p-3 justify-between" key={meme?.id}>
-      <div className="inline-flex text-white self-center px-2">
+      <div className="inline-flex text-mina-50 self-center px-2">
         {rank === 1 && (
           <Image
             src="/gold_medal.svg"
@@ -42,11 +42,11 @@ const MemeListing: React.FC<{
           src={meme?.url}
           sizes="(max-width: 640px) 12rem,
                   6rem"
-          alt=""
+          alt={meme?.name.split("/")[1]}
           priority
         />
       </div>
-      <span className="bg-mina/75 text-white font-semibold self-center rounded-md px-2 pb-px text-center w-16 flex-none">
+      <span className="bg-mina-200 text-mina-950 font-semibold self-center rounded-md px-2 pb-px text-center w-16 flex-none">
         {meme._count?.VotesFor || meme.VotesFor?.length || 0}
       </span>
     </div>

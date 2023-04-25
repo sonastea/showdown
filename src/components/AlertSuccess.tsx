@@ -7,10 +7,10 @@ const AlertSuccess = ({
 }) => {
   if (!onSuccess) return null;
   return (
-    <div className="flex p-4 mb-4 rounded-lg bg-white" role="alert">
+    <div className="flex p-4 mb-4 rounded-lg bg-mina-50" role="alert">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="flex-shrink-0 h-5 w-5 text-mina"
+        className="flex-shrink-0 h-5 w-5 text-mina-800"
         viewBox="0 0 20 20"
         fill="currentColor"
       >
@@ -20,12 +20,12 @@ const AlertSuccess = ({
           clipRule="evenodd"
         />
       </svg>
-      <div className="ml-3 text-sm font-medium text-mina">
+      <div className="ml-3 text-sm font-medium text-mina-900">
         Successfully uploaded
       </div>
       <button
         type="button"
-        className="ml-auto -mx-1.5 -my-1.5 rounded-lg text-mina focus:ring-2 focus:ring-mina p-1.5 hover:bg-slate-200 inline-flex h-8 w-8"
+        className="ml-auto -mx-1.5 -my-1.5 rounded-lg text-mina-900 focus:ring-2 focus:ring-mina p-1.5 hover:bg-slate-200/75 inline-flex h-8 w-8"
         aria-label="Close"
         onClick={() => toggleActive(false)}
       >

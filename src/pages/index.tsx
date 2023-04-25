@@ -47,7 +47,7 @@ const Home: NextPage = () => {
           content="KPOP Meme Showdown, upload and vote for the funniest meme."
         />
       </Head>
-      <div className="bg-slate-600 min-h-screen w-screen flex flex-col items-center sm:justify-between relative overflow-auto">
+      <div className="bg-slate-600 min-h-screen flex flex-col items-center sm:justify-between relative overflow-hidden">
         <SubmitMemeButton
           formIsActive={showUploadForm}
           toggleForm={setShowUploadForm}
@@ -115,16 +115,15 @@ const MemeContainer: React.FC<{
     <div className="flex flex-col items-center" key={meme.id}>
       <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
         <Image
-          alt=""
-          className="animate-fade-in"
+          alt={meme.name.split("/")[1]}
+          className="animate-fade-in object-fill"
           fill
-          style={{ objectFit: "cover" }}
           sizes="(max-width: 768px) 18rem,
                   (max-width: 1280px) 24rem,
                   12rem
           "
           src={meme.url}
-          priority={false}
+          priority={true}
         />
       </div>
       <button

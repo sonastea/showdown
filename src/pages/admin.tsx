@@ -122,7 +122,7 @@ const Admin: NextPage = () => {
                     src={meme.url}
                     width={96}
                     height={96}
-                    alt=""
+                    alt={meme.name.split("/")[1]}
                     style={{
                       maxWidth: "100%",
                       height: "auto",
