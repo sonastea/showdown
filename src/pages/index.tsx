@@ -116,7 +116,7 @@ const MemeContainer: React.FC<{
       <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
         <Image
           alt={meme.name.split("/")[1]}
-          className="animate-fade-in object-fill"
+          className="animate-fade-in aspect-video object-cover shadow-[0_1px_8px_0_hsl(217,33%,17%)]"
           fill
           sizes="(max-width: 768px) 18rem,
                   (max-width: 1280px) 24rem,
@@ -127,7 +127,7 @@ const MemeContainer: React.FC<{
         />
       </div>
       <button
-        className="font-medium shadow-md m-4 p-2 text-xl md:text-3xl bg-mina-200 text-mina-900 hover:bg-mina-300 disabled:bg-mina-200/70 disabled:cursor-not-allowed rounded-md focus:outline-none focus:ring-mina focus:ring-2 focus:ring-offset-2"
+        className="font-medium shadow-[0_1px_3px_0_hsla(0,0%,0%,.5)] m-4 p-2 text-xl md:text-3xl bg-mina-200 text-mina-900 hover:bg-mina-300 disabled:bg-mina-200/70 disabled:cursor-not-allowed rounded-md focus:outline-none focus:ring-mina focus:ring-2 focus:ring-offset-2"
         onClick={() => vote()}
         disabled={disabled}
       >
