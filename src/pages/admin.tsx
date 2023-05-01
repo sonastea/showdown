@@ -1,6 +1,6 @@
 import { NextPage } from "next";
+import { CldImage } from "next-cloudinary";
 import Head from "next/head";
-import Image from "next/image";
 import React, { useState } from "react";
 import { trpc } from "src/utils/trpc";
 
@@ -115,18 +115,15 @@ const Admin: NextPage = () => {
             {data &&
               data.pages[page - 1].memes.map((meme) => (
                 <li className="flex flex-wrap justify-around p-2" key={meme.id}>
-                  <span className="text-mina-50 self-center m-2">
+                  <span className="text-mina-50 self-center m-2 w-24 overflow-x-auto">
                     {meme.id}
                   </span>
-                  <Image
-                    src={meme.url}
+                  <CldImage
+                    className="w-24 h-24"
                     width={96}
                     height={96}
+                    src={meme.url}
                     alt={meme.name.split("/")[1]}
-                    style={{
-                      maxWidth: "100%",
-                      height: "auto",
-                    }}
                   />
                   <button
                     className="p-1 text-mina-900 bg-mina-300 hover:bg-mina-300/90 text-sm rounded-md self-center m-2 disabled:w-16 disabled:cursor-not-allowed disabled:bg-mina/80 disabled:line-through"
@@ -152,7 +149,7 @@ const Admin: NextPage = () => {
 const MemeListingSkeleton = () => {
   return (
     <li className="flex flex-wrap justify-around animate-pulse p-2">
-      <div className="text-gray-200 self-center m-2 blur-sm">0</div>
+      <div className="text-gray-200 self-center m-2 blur-sm w-24">0</div>
       <div
         className="bg-gray-200"
         style={{ width: "96px", height: "96px" }}

@@ -1,3 +1,4 @@
+import { CldImage } from "next-cloudinary";
 import Image from "next/image";
 import { TopAllMemes, TopDayMemes, TopWeekMemes } from "src/backend/trpc";
 
@@ -36,7 +37,7 @@ const MemeListing: React.FC<{
         <span className="px-1">{rank}</span>
       </div>
       <div className="w-24 h-24 sm:w-48 sm:h-48 relative">
-        <Image
+        <CldImage
           className="rounded-md"
           fill
           src={meme?.url}

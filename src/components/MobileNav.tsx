@@ -70,7 +70,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="mr-12 group-hover:text-once-300"
+                    className="mr-10 sm:mr-6 group-hover:text-once-300"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <polyline points="5 12 3 12 12 3 21 12 19 12" />
@@ -99,7 +99,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="mr-12 group-hover:text-mina-300"
+                      className="mr-10 sm:mr-6 group-hover:text-mina-300"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -130,7 +130,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="mr-12 group-hover:text-yellow-300"
+                    className="mr-10 group-hover:text-yellow-300"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 4v3m-4 -3v6m8 -6v6" />

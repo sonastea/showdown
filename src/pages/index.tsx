@@ -1,6 +1,6 @@
 import { NextPage } from "next";
+import { CldImage } from "next-cloudinary";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { MemePair } from "src/backend/trpc";
@@ -114,16 +114,16 @@ const MemeContainer: React.FC<{
   return (
     <div className="flex flex-col items-center" key={meme.id}>
       <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
-        <Image
+        <CldImage
+          className="object-cover"
           alt={meme.name.split("/")[1]}
-          className="animate-fade-in aspect-video object-cover shadow-[0_1px_8px_0_hsl(217,33%,17%)]"
+          src={meme.url}
           fill
+          priority
           sizes="(max-width: 768px) 18rem,
                   (max-width: 1280px) 24rem,
                   12rem
           "
-          src={meme.url}
-          priority={true}
         />
       </div>
       <button
