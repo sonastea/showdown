@@ -65,7 +65,7 @@ const Admin: NextPage = () => {
     <>
       <Head>
         <title>Showdown / Admin</title>
-        <meta name="description" content="Admin page for the showdown" />
+        <meta name="description" content="kpop showdown admin page" />
       </Head>
       <div className="bg-slate-600 min-h-screen w-screen">
         <div className="flex justify-center p-4">
@@ -73,7 +73,7 @@ const Admin: NextPage = () => {
             <ul className="inline-flex flex-wrap">
               <li>
                 <button
-                  className="px-2 text-mina-200 transition-colors duration-150 bg-mina-800 hover:bg-mina-800/70 rounded-l-lg focus:shadow-outline disabled:bg-mina-800/70 disabled:cursor-not-allowed"
+                  className="px-4 py-1 text-mina-200 transition-colors duration-150 bg-mina-800 hover:bg-mina-800/70 rounded-l-lg focus:shadow-outline disabled:bg-mina-800/70 disabled:cursor-not-allowed"
                   disabled={page === 1 || hasPreviousPage}
                   onClick={() => {
                     fetchPreviousPage().then((res) => {
@@ -87,14 +87,14 @@ const Admin: NextPage = () => {
                 </button>
               </li>
               <li>
-                <button className="px-2 text-mina-900 bg-mina-100 transition-colors duration-150">
+                <button className="px-4 py-1 text-mina-900 bg-mina-100 transition-colors duration-150">
                   {page}
                 </button>
               </li>
 
               <li>
                 <button
-                  className="px-2 text-mina-200 transition-colors duration-150 bg-mina-800 hover:bg-mina-800/70 rounded-r-lg focus:shadow-outline disabled:bg-mina-800/70 disabled:cursor-not-allowed"
+                  className="px-4 py-1 text-mina-200 transition-colors duration-150 bg-mina-800 hover:bg-mina-800/70 rounded-r-lg focus:shadow-outline disabled:bg-mina-800/70 disabled:cursor-not-allowed"
                   disabled={!data?.pages[page - 1].nextCursor}
                   onClick={() => {
                     fetchNextPage().then((res) => {
@@ -119,11 +119,12 @@ const Admin: NextPage = () => {
                     {meme.id}
                   </span>
                   <CldImage
-                    className="w-24 h-24"
+                    className="w-24 h-24 object-contain"
                     width={96}
                     height={96}
                     src={meme.url}
                     alt={meme.name.split("/")[1]}
+                    priority
                   />
                   <button
                     className="p-1 text-mina-900 bg-mina-300 hover:bg-mina-300/90 text-sm rounded-md self-center m-2 disabled:w-16 disabled:cursor-not-allowed disabled:bg-mina/80 disabled:line-through"

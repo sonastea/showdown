@@ -38,13 +38,13 @@ const MemeListing: React.FC<{
       </div>
       <div className="w-24 h-24 sm:w-48 sm:h-48 relative">
         <CldImage
-          className="rounded-md"
-          fill
+          className="object-cover rounded-md"
+          alt={meme?.name.split("/")[1]}
           src={meme?.url}
+          fill
+          priority
           sizes="(max-width: 640px) 12rem,
                   6rem"
-          alt={meme?.name.split("/")[1]}
-          priority
         />
       </div>
       <span className="bg-mina-200 text-mina-950 font-semibold self-center rounded-md px-2 pb-px text-center w-16 flex-none">

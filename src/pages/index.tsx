@@ -75,7 +75,7 @@ const Home: NextPage = () => {
                   />
                 </>
               ) : (
-                <div className="p-6 text-mina text-xl md:text-3xl w-48 md:w-72 lg:w-96 text-center">
+                <div className="p-6 text-mina-50 text-xl md:text-3xl w-48 md:w-72 lg:w-96 text-center">
                   Upload meme for the showdown!
                 </div>
               )}
@@ -115,7 +115,7 @@ const MemeContainer: React.FC<{
     <div className="flex flex-col items-center" key={meme.id}>
       <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
         <CldImage
-          className="object-cover"
+          className="object-contain"
           alt={meme.name.split("/")[1]}
           src={meme.url}
           fill

@@ -35,7 +35,11 @@ const Results = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div className="flex flex-col items-center min-h-screen min-w-screen bg-slate-600">
       <Head>
-        <title>Showdown / Funniest Meme Results</title>
+        <title>Showdown / Results</title>
+        <meta
+          name="description"
+          content="kpop showdown results"
+        />
       </Head>
       <MobileNav toggleForm={setShowUploadForm} />
       <div className="w-full text-xl text-mina-50 text-center p-2 hidden sm:block">
