@@ -42,7 +42,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
         </button>
         <div
           id="mobileNav"
-          className={`shadow-slate-500 shadow-md w-2/3 place-items-end bg-slate-700 overflow-auto`}
+          className={`rounded-l-md shadow-slate-500 shadow-md w-2/3 place-items-end bg-slate-700 overflow-auto`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="self-end mt-32">
