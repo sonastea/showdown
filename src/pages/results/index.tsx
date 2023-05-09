@@ -36,10 +36,7 @@ const Results = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <div className="flex flex-col items-center min-h-screen min-w-screen bg-slate-600">
       <Head>
         <title>Showdown / Results</title>
-        <meta
-          name="description"
-          content="kpop showdown results"
-        />
+        <meta name="description" content="kpop showdown results" />
       </Head>
       <MobileNav toggleForm={setShowUploadForm} />
       <div className="w-full text-xl text-mina-50 text-center p-2 hidden sm:block">
@@ -49,7 +46,12 @@ const Results = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <span className="p-1">{" • "}</span>
         <span className="text-mina-200">Results Page</span>
       </div>
-      {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
+      {showUploadForm && (
+        <UploadForm
+          refetchPair={() => undefined}
+          toggleActive={setShowUploadForm}
+        />
+      )}
 
       <FilterListBox />
       <div className="flex flex-col w-full max-w-3xl divide-y divide-slate-500">

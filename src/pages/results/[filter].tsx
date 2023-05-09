@@ -68,7 +68,12 @@ const ResultsFilter = (
         <title>Showdown / Funniest Meme Results</title>
       </Head>
       <MobileNav toggleForm={setShowUploadForm} />
-      {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
+      {showUploadForm && (
+        <UploadForm
+          refetchPair={() => undefined}
+          toggleActive={setShowUploadForm}
+        />
+      )}
 
       <div className="w-full text-xl text-white text-center p-2 hidden sm:block">
         <Link className="hover:text-slate-300" href="/">
@@ -81,7 +86,13 @@ const ResultsFilter = (
       {data && (
         <div className="flex flex-col w-full max-w-3xl divide-y divide-slate-500">
           {data.map((meme: TopDayMemes | TopWeekMemes, index: number) => {
-            return <MemeListing meme={meme as TopAllMemes} rank={index + 1} key={index} />;
+            return (
+              <MemeListing
+                meme={meme as TopAllMemes}
+                rank={index + 1}
+                key={index}
+              />
+            );
           })}
         </div>
       )}

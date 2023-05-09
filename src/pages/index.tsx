@@ -53,7 +53,9 @@ const Home: NextPage = () => {
           toggleForm={setShowUploadForm}
         />
         <MobileNav toggleForm={setShowUploadForm} />
-        {showUploadForm && <UploadForm toggleActive={setShowUploadForm} />}
+        {showUploadForm && (
+          <UploadForm refetchPair={refetch} toggleActive={setShowUploadForm} />
+        )}
         {memePair && (
           <div className="flex flex-col">
             <div className="m-4 font-semibold text-xl text-mina-200 text-center">

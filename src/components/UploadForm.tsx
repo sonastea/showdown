@@ -7,7 +7,10 @@ import AlertSuccess from "./AlertSuccess";
 const url = "https://api.cloudinary.com/v1_1/k-showdown/auto/upload";
 const preset = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET ?? "development";
 
-const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
+const UploadForm: React.FC<{
+  refetchPair: Function;
+  toggleActive: Function;
+}> = ({ refetchPair, toggleActive }) => {
   const [image, setImage] = useState<File | null>();
   const [previewURL, setPreviewURL] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
@@ -40,7 +43,7 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [previewURL]);
 
   const validator = (file: File) => {
     if (file && file.length >= 2) {
@@ -112,6 +115,7 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
         setTimeout(() => {
           setSuccess(true);
           setIsUploading(false);
+          refetchPair();
         }, 1000);
       }
     } catch (e) {
@@ -123,7 +127,7 @@ const UploadForm: React.FC<{ toggleActive: Function }> = ({ toggleActive }) => {
 
   return (
     <div
-      className="z-10 absolute flex justify-center w-full min-h-screen backdrop-blur"
+      className="z-10 fixed flex justify-center w-full min-h-screen backdrop-blur"
       onClick={() => toggleActive(false)}
     >
       <div
