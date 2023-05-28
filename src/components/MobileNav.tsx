@@ -46,13 +46,13 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="self-end mt-32">
-            <nav className="flex flex-col items-end space-y-5 w-full text-slate-100">
+            <nav className="flex flex-col items-end space-y-4 w-full text-slate-100">
               <div className="border-slate-600 border-t mb-8 w-full" />
-              <ul className="flex flex-col items-end w-full space-y-5">
+              <ul className="flex flex-col items-end w-full space-y-4">
                 <li
                   className={`${
                     router.pathname === "/" ? "bg-slate-600/75 " : ""
-                  }flex flex-wrap justify-between relative w-full group py-1 rounded-r-xl mr-2`}
+                  }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2 py-1`}
                 >
                   <Link
                     className="group-hover:text-slate-100 ml-10"
@@ -112,7 +112,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                 <li
                   className={`${
                     router.pathname === "/results" ? "bg-slate-600/75 " : ""
-                  }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2`}
+                  }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2 py-1`}
                 >
                   <Link
                     className="ml-10 group-hover:text-slate-100"
