@@ -47,7 +47,7 @@ const Home: NextPage = () => {
           content="KPOP Meme Showdown, upload and vote for the funniest meme."
         />
       </Head>
-      <div className="bg-slate-600 min-h-screen flex flex-col items-center sm:justify-between relative overflow-hidden">
+      <div className="bg-slate-600 min-h-screen flex flex-col items-center justify-between relative overflow-hidden">
         <SubmitMemeButton
           formIsActive={showUploadForm}
           toggleForm={setShowUploadForm}
@@ -57,8 +57,8 @@ const Home: NextPage = () => {
           <UploadForm refetchPair={refetch} toggleActive={setShowUploadForm} />
         )}
         {memePair && (
-          <div className="flex flex-col mt-[3rem] md:mt-0">
-            <div className="m-4 font-semibold text-xl text-mina-200 text-center">
+          <div className="flex flex-col">
+            <div className="mb-4 font-semibold text-xl text-mina-200 text-center">
               Which is funnier?
             </div>
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
