@@ -24,7 +24,7 @@ export async function getStaticProps() {
       trpcState: ssg.dehydrate(),
       memes,
     },
-    revalidate: 3600,
+    revalidate: 1800,
   };
 }
 

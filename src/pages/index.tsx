@@ -3,10 +3,10 @@ import { CldImage } from "next-cloudinary";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useState } from "react";
-import { MemePair } from "src/backend/trpc";
 import MobileNav from "src/components/MobileNav";
 import SubmitMemeButton from "src/components/SubmitMemeButton";
 import UploadForm from "src/components/UploadForm";
+import { Meme } from "src/lib/drizzle";
 import { trpc } from "src/utils/trpc";
 
 const Home: NextPage = () => {
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
           <UploadForm refetchPair={refetch} toggleActive={setShowUploadForm} />
         )}
         {memePair && (
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-[3rem] md:mt-0">
             <div className="m-4 font-semibold text-xl text-mina-200 text-center">
               Which is funnier?
             </div>
@@ -69,7 +69,9 @@ const Home: NextPage = () => {
               />
               {memePair.meme2 ? (
                 <>
-                  <div className="p-6 text-xl text-mina-50">vs</div>
+                  <div className="hidden md:block md:p-6 text-xl text-mina-50">
+                    ⚔️
+                  </div>
                   <MemeContainer
                     meme={memePair.meme2}
                     vote={() => handleVoteForFunnier(memePair.meme2.id)}
@@ -109,7 +111,7 @@ const Home: NextPage = () => {
 };
 
 const MemeContainer: React.FC<{
-  meme: MemePair["meme1"];
+  meme: Meme;
   vote: () => void;
   disabled: boolean;
 }> = ({ meme, vote, disabled }) => {
@@ -129,11 +131,11 @@ const MemeContainer: React.FC<{
         />
       </div>
       <button
-        className="font-medium shadow-[0_1px_3px_0_hsla(0,0%,0%,.5)] m-4 p-2 text-xl md:text-3xl bg-mina-200 text-mina-900 hover:bg-mina-300 disabled:bg-mina-200/70 disabled:cursor-not-allowed rounded-md focus:outline-none focus:ring-mina focus:ring-2 focus:ring-offset-2"
+        className="font-medium shadow-[0_1px_3px_0_hsla(0,0%,0%,.5)] m-4 p-2 px-6 text-xl md:text-3xl bg-mina-200 text-mina-900 hover:bg-mina-300 disabled:bg-mina-200/70 disabled:cursor-not-allowed rounded-md focus:outline-none focus:ring-mina focus:ring-2 focus:ring-offset-2"
         onClick={() => vote()}
         disabled={disabled}
       >
-        HAHA
+        😂
       </button>
     </div>
   );

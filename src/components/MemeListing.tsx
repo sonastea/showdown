@@ -48,7 +48,7 @@ const MemeListing: React.FC<{
         />
       </div>
       <span className="bg-mina-200 text-mina-950 font-semibold self-center rounded-md px-2 pb-px text-center w-16 flex-none">
-        {meme._count?.VotesFor || meme.VotesFor?.length || 0}
+        {meme.VotesFor || 0}
       </span>
     </div>
   );

@@ -1,18 +1,19 @@
 import { UploadApiResponse } from "cloudinary";
+import { meme } from "drizzle/schema";
 import { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "@db/client";
+import { db } from "src/lib/drizzle";
 
 export const uploadSuccess = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
+  req;
+  res;
   const data: UploadApiResponse = req.body;
-  const added = await prisma.meme.create({
-    data: {
-      asset_id: data.asset_id,
-      name: data.public_id,
-      url: data.secure_url,
-    },
+  const added = await db.insert(meme).values({
+    assetId: data.asset_id,
+    name: data.public_id,
+    url: data.secure_url,
   });
   return res.status(200).json(added);
 };
