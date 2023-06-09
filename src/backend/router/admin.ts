@@ -21,6 +21,7 @@ export const adminRouter = router({
       })
     )
     .query(async ({ input }) => {
+      console.log(input)
       let memes;
 
       memes = await db

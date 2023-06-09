@@ -1,4 +1,4 @@
-import imageCompression, { Options } from "browser-image-compression";
+import { Options } from "browser-image-compression";
 import Image from "next/image";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
@@ -16,34 +16,38 @@ const UploadForm: React.FC<{
   const [success, setSuccess] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
 
-  const handleFileInput = useCallback((file: File[]) => {
-    if (file.length === 0) return;
+  const handleFileInput = useCallback(
+    (file: File[]) => {
+      if (file.length === 0) return;
 
-    const imageFile = file[0];
-    setImage(imageFile);
-
-    if (previewURL) URL.revokeObjectURL(previewURL);
-    setPreviewURL(URL.createObjectURL(imageFile));
-
-    if (imageFile.type === "image/gif") {
+      const imageFile = file[0];
       setImage(imageFile);
-      return;
-    }
 
-    const compressOptions: Options = { maxSizeMB: 3, useWebWorker: true };
-    try {
-      const compressFile = async () => {
-        await imageCompression(file[0], compressOptions).then(
-          (compressedFile) => {
-            setImage(compressedFile);
-          }
-        );
-      };
-      compressFile();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [previewURL]);
+      if (previewURL) URL.revokeObjectURL(previewURL);
+      setPreviewURL(URL.createObjectURL(imageFile));
+
+      if (imageFile.type === "image/gif") {
+        setImage(imageFile);
+        return;
+      }
+
+      const compressOptions: Options = { maxSizeMB: 3, useWebWorker: true };
+      try {
+        const compressFile = async () => {
+          const imageCompression = await import("browser-image-compression");
+          await imageCompression
+            .default(file[0], compressOptions)
+            .then((compressedFile) => {
+              setImage(compressedFile);
+            });
+        };
+        compressFile();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [previewURL]
+  );
 
   const validator = (file: File) => {
     if (file && file.length >= 2) {

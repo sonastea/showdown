@@ -1,15 +1,17 @@
 import { appRouter } from "@router/_app";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import { InferGetStaticPropsType } from "next";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useState } from "react";
 import { TopAllMemes } from "src/backend/trpc";
-import FilterListBox from "src/components/FilterListBox";
-import MemeListing from "src/components/MemeListing";
-import MobileNav from "src/components/MobileNav";
-import UploadForm from "src/components/UploadForm";
 import superjson from "superjson";
+
+const FilterListBox = dynamic(() => import("src/components/FilterListBox"));
+const MemeListing = dynamic(() => import("src/components/MemeListing"));
+const MobileNav = dynamic(() => import("src/components/MobileNav"));
+const UploadForm = dynamic(() => import("src/components/UploadForm"));
 
 export async function getStaticProps() {
   const ssg = createServerSideHelpers({

@@ -5,15 +5,17 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from "next";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import FilterListBox from "src/components/FilterListBox";
-import MemeListing from "src/components/MemeListing";
-import MobileNav from "src/components/MobileNav";
-import UploadForm from "src/components/UploadForm";
 import { trpc } from "src/utils/trpc";
 import superjson from "superjson";
+
+const FilterListBox = dynamic(() => import("src/components/FilterListBox"));
+const MemeListing = dynamic(() => import("src/components/MemeListing"));
+const MobileNav = dynamic(() => import("src/components/MobileNav"));
+const UploadForm = dynamic(() => import("src/components/UploadForm"));
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

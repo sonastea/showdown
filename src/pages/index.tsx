@@ -1,13 +1,17 @@
 import { NextPage } from "next";
 import { CldImage } from "next-cloudinary";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useState } from "react";
-import MobileNav from "src/components/MobileNav";
-import SubmitMemeButton from "src/components/SubmitMemeButton";
-import UploadForm from "src/components/UploadForm";
 import { Meme } from "src/lib/drizzle";
 import { trpc } from "src/utils/trpc";
+
+const UploadForm = dynamic(() => import("src/components/UploadForm"));
+const MobileNav = dynamic(() => import("src/components/MobileNav"));
+const SubmitMemeButton = dynamic(
+  () => import("src/components/SubmitMemeButton")
+);
 
 const Home: NextPage = () => {
   const [showUploadForm, setShowUploadForm] = useState<boolean>(false);
