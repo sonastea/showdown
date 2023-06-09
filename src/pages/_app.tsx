@@ -1,9 +1,9 @@
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
 import { trpc } from "src/utils/trpc";
 import "../styles/globals.css";
-import Script from "next/script";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (

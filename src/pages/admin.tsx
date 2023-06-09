@@ -6,6 +6,7 @@ import { trpc } from "src/utils/trpc";
 
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context: any) {
   const session = await getServerSession(context.req, context.res, authOptions);
@@ -29,25 +30,15 @@ export async function getServerSideProps(context: any) {
 const skeleton = new Array(10).fill(0);
 
 const Admin: NextPage = () => {
+  const router = useRouter();
+
+  const [page, setPage] = useState<number>(
+    router.query.page ? Number(router.query.page) : 1
+  );
   const [removed, setRemoved] = useState<number[]>([]);
-  const [page, setPage] = useState<number>(1);
-  const {
-    data,
-    fetchPreviousPage,
-    fetchNextPage,
-    isFetching,
-    hasPreviousPage,
-  } = trpc.admin.getRecentMemes.useInfiniteQuery(
-    {
-      getPreviousPageParam: (firstPage: { prevCursor: number }) =>
-        firstPage.prevCursor,
-      getNextPageParam: (lastPage: { nextCursor: number }) =>
-        lastPage.nextCursor,
-    },
-    {
-      refetchInterval: false,
-      refetchOnWindowFocus: false,
-    }
+  const { data, isFetching } = trpc.admin.getRecentMemes.useQuery(
+    { cursor: page - 1 ?? 0 },
+    { refetchInterval: false, refetchOnWindowFocus: false }
   );
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -74,13 +65,10 @@ const Admin: NextPage = () => {
               <li>
                 <button
                   className="px-4 py-1 text-mina-200 transition-colors duration-150 bg-mina-800 hover:bg-mina-800/70 rounded-l-lg focus:shadow-outline disabled:bg-mina-800/70 disabled:cursor-not-allowed"
-                  disabled={page === 1 || hasPreviousPage}
+                  disabled={page === 1}
                   onClick={() => {
-                    fetchPreviousPage().then((res) => {
-                      if (res.isSuccess) {
-                        setPage((page) => page - 1);
-                      }
-                    });
+                    setPage((page) => page - 1);
+                    router.push(`/admin?page=${page - 1}`);
                   }}
                 >
                   Prev
@@ -95,13 +83,10 @@ const Admin: NextPage = () => {
               <li>
                 <button
                   className="px-4 py-1 text-mina-200 transition-colors duration-150 bg-mina-800 hover:bg-mina-800/70 rounded-r-lg focus:shadow-outline disabled:bg-mina-800/70 disabled:cursor-not-allowed"
-                  disabled={!data?.pages[page - 1].nextCursor}
+                  disabled={!data?.nextCursor}
                   onClick={() => {
-                    fetchNextPage().then((res) => {
-                      if (res.isSuccess) {
-                        setPage((page) => page + 1);
-                      }
-                    });
+                    setPage((page) => page + 1);
+                    router.push(`/admin?page=${page + 1}`);
                   }}
                 >
                   Next
@@ -113,7 +98,7 @@ const Admin: NextPage = () => {
         <div className="flex flex-col">
           <ul>
             {data &&
-              data.pages[page - 1].memes.map((meme) => (
+              data.memes.map((meme) => (
                 <li className="flex flex-wrap justify-around p-2" key={meme.id}>
                   <span className="text-mina-50 self-center m-2 w-24 overflow-x-auto">
                     {meme.id}

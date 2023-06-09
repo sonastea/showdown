@@ -5,16 +5,17 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from "next";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import { TopAllMemes, TopDayMemes, TopWeekMemes } from "src/backend/trpc";
-import FilterListBox from "src/components/FilterListBox";
-import MemeListing from "src/components/MemeListing";
-import MobileNav from "src/components/MobileNav";
-import UploadForm from "src/components/UploadForm";
 import { trpc } from "src/utils/trpc";
 import superjson from "superjson";
+
+const FilterListBox = dynamic(() => import("src/components/FilterListBox"));
+const MemeListing = dynamic(() => import("src/components/MemeListing"));
+const MobileNav = dynamic(() => import("src/components/MobileNav"));
+const UploadForm = dynamic(() => import("src/components/UploadForm"));
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -47,7 +48,7 @@ export const getStaticProps = async (
       trpcState: ssg.dehydrate(),
       filter,
     },
-    revalidate: 10,
+    revalidate: 360,
   };
 };
 
@@ -85,14 +86,8 @@ const ResultsFilter = (
       <FilterListBox />
       {data && (
         <div className="flex flex-col w-full max-w-3xl divide-y divide-slate-500">
-          {data.map((meme: TopDayMemes | TopWeekMemes, index: number) => {
-            return (
-              <MemeListing
-                meme={meme as TopAllMemes}
-                rank={index + 1}
-                key={index}
-              />
-            );
+          {data.map((meme, index: number) => {
+            return <MemeListing meme={meme} rank={index + 1} key={index} />;
           })}
         </div>
       )}

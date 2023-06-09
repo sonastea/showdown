@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { XMarkIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
   const [isActive, setActive] = React.useState(false);
@@ -38,24 +38,24 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
         onClick={() => setActive((open: boolean) => !open)}
       >
         <button className="absolute right-6 top-6">
-          <XMarkIcon className="w-6 h-6 text-slate-100 hover:text-slate-300"/>
+          <XMarkIcon className="w-6 h-6 text-slate-100 hover:text-slate-300" />
         </button>
         <div
           id="mobileNav"
-          className={`rounded-l-md shadow-slate-500 shadow-md w-2/3 place-items-end bg-slate-700 overflow-auto`}
+          className={`rounded-l-md shadow-slate-500 shadow-md w-2/3 flex place-items-end bg-slate-500 overflow-auto`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="self-end mt-32">
+          <div className="self-center w-full">
+            <div className="border-slate-400/40 border-t mb-8 w-full absolute top-[6rem]" />
             <nav className="flex flex-col items-end space-y-4 w-full text-slate-100">
-              <div className="border-slate-600 border-t mb-8 w-full" />
               <ul className="flex flex-col items-end w-full space-y-4">
                 <li
                   className={`${
-                    router.pathname === "/" ? "bg-slate-600/75 " : ""
+                    router.pathname === "/" ? "bg-slate-700/20 " : ""
                   }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2 py-1`}
                 >
                   <Link
-                    className="group-hover:text-slate-100 ml-10"
+                    className="group-hover:text-slate-300 ml-10"
                     href="/"
                   >
                     Home
@@ -86,7 +86,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                       toggleForm(true);
                     }}
                   >
-                    <span className="ml-10 cursor-pointer group-hover:text-slate-100">
+                    <span className="ml-10 cursor-pointer group-hover:text-slate-300">
                       Submit Meme
                     </span>
                     <svg
@@ -111,11 +111,11 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                 </li>
                 <li
                   className={`${
-                    router.pathname === "/results" ? "bg-slate-600/75 " : ""
+                    router.pathname === "/results" ? "bg-slate-700/20 " : ""
                   }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2 py-1`}
                 >
                   <Link
-                    className="ml-10 group-hover:text-slate-100"
+                    className="ml-10 group-hover:text-slate-300"
                     href="/results"
                   >
                     Results
