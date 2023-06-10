@@ -1,14 +1,20 @@
-import { Meme } from "src/lib/drizzle";
 import { CldImage } from "next-cloudinary";
+import { useState } from "react";
+import { Meme } from "src/lib/drizzle";
 
 const Meme: React.FC<{
   meme: Meme;
   vote: () => void;
   disabled: boolean;
 }> = ({ meme, vote, disabled }) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   return (
     <div className="flex flex-col items-center" key={meme.id}>
       <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
+        {!isLoaded && (
+          <div className="object-fill bg-slate-500/50 w-full h-full animate-pulse"></div>
+        )}
         <CldImage
           className="object-contain"
           alt={meme.name.split("/")[1]}
@@ -19,6 +25,7 @@ const Meme: React.FC<{
                   (max-width: 1280px) 24rem,
                   12rem
           "
+          onLoadingComplete={() => setIsLoaded(true)}
         />
       </div>
       <button
@@ -31,4 +38,5 @@ const Meme: React.FC<{
     </div>
   );
 };
+
 export default Meme;
