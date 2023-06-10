@@ -62,7 +62,7 @@ const Home: NextPage = () => {
         {memePair && (
           <div className="flex flex-col">
             <div className="mb-4 font-semibold text-xl text-mina-200 text-center">
-              Which is funnier?
+              Which sparks more joy?
             </div>
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
               <Meme
