@@ -1,8 +1,10 @@
 import { Options } from "browser-image-compression";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import AlertSuccess from "./AlertSuccess";
+
+const AlertSuccess = dynamic(() => import("src/components/AlertSuccess"));
 
 const url = "https://api.cloudinary.com/v1_1/k-showdown/auto/upload";
 const preset = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET ?? "development";

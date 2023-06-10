@@ -1,17 +1,16 @@
 import { NextPage } from "next";
-import { CldImage } from "next-cloudinary";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import Link from "next/link";
 import React, { useState } from "react";
-import { Meme } from "src/lib/drizzle";
 import { trpc } from "src/utils/trpc";
 
-const UploadForm = dynamic(() => import("src/components/UploadForm"));
+const Footer = dynamic(() => import("src/components/Footer"));
+const Meme = dynamic(() => import("src/components/Meme"));
 const MobileNav = dynamic(() => import("src/components/MobileNav"));
 const SubmitMemeButton = dynamic(
   () => import("src/components/SubmitMemeButton")
 );
+const UploadForm = dynamic(() => import("src/components/UploadForm"));
 
 const Home: NextPage = () => {
   const [showUploadForm, setShowUploadForm] = useState<boolean>(false);
@@ -66,7 +65,7 @@ const Home: NextPage = () => {
               Which is funnier?
             </div>
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
-              <MemeContainer
+              <Meme
                 meme={memePair.meme1}
                 vote={() => handleVoteForFunnier(memePair.meme1.id)}
                 disabled={fetchingNext}
@@ -76,7 +75,7 @@ const Home: NextPage = () => {
                   <div className="hidden md:block md:p-6 text-xl text-mina-50">
                     ⚔️
                   </div>
-                  <MemeContainer
+                  <Meme
                     meme={memePair.meme2}
                     vote={() => handleVoteForFunnier(memePair.meme2.id)}
                     disabled={fetchingNext}
@@ -98,51 +97,9 @@ const Home: NextPage = () => {
             alt="Ripple loader indicator"
           />
         )}
-        <footer>
-          <div className="w-full text-xl text-mina-50 text-center p-2 hidden sm:block">
-            <Link className="text-mina-50 hover:text-mina-300" href="/">
-              Home
-            </Link>
-            <span>{" • "}</span>
-            <Link className="text-mina-50 hover:text-mina-200" href="/results">
-              Results
-            </Link>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
 };
-
-const MemeContainer: React.FC<{
-  meme: Meme;
-  vote: () => void;
-  disabled: boolean;
-}> = ({ meme, vote, disabled }) => {
-  return (
-    <div className="flex flex-col items-center" key={meme.id}>
-      <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
-        <CldImage
-          className="object-contain"
-          alt={meme.name.split("/")[1]}
-          src={meme.url}
-          fill
-          priority
-          sizes="(max-width: 768px) 18rem,
-                  (max-width: 1280px) 24rem,
-                  12rem
-          "
-        />
-      </div>
-      <button
-        className="font-medium shadow-[0_1px_3px_0_hsla(0,0%,0%,.5)] m-4 p-2 px-6 text-xl md:text-3xl bg-mina-200 text-mina-900 hover:bg-mina-300 disabled:bg-mina-200/70 disabled:cursor-not-allowed rounded-md focus:outline-none focus:ring-mina focus:ring-2 focus:ring-offset-2"
-        onClick={() => vote()}
-        disabled={disabled}
-      >
-        😂
-      </button>
-    </div>
-  );
-};
-
 export default Home;

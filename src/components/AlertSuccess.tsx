@@ -1,10 +1,7 @@
-const AlertSuccess = ({
-  onSuccess,
-  toggleActive,
-}: {
+const AlertSuccess: React.FC<{
   onSuccess: boolean;
   toggleActive: Function;
-}) => {
+}> = ({ onSuccess, toggleActive }) => {
   if (!onSuccess) return null;
   return (
     <div className="flex p-4 mb-4 rounded-lg bg-mina-50" role="alert">

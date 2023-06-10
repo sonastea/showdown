@@ -1,7 +1,9 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+
+const XMarkIcon = dynamic(() => import("@heroicons/react/24/solid/XMarkIcon"));
 
 const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
   const [isActive, setActive] = React.useState(false);
@@ -54,10 +56,7 @@ const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
                     router.pathname === "/" ? "bg-slate-700/20 " : ""
                   }flex flex-wrap justify-between relative w-full group rounded-r-xl mr-2 py-1`}
                 >
-                  <Link
-                    className="group-hover:text-slate-300 ml-10"
-                    href="/"
-                  >
+                  <Link className="group-hover:text-slate-300 ml-10" href="/">
                     Home
                   </Link>
                   <svg
