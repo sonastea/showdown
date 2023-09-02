@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+let nextConfig = {
   reactStrictMode: true,
 };
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 const headers = async () => {
   return [
@@ -34,11 +38,11 @@ const redirects = async () => {
   ];
 };
 
-module.exports = {
+module.exports = withBundleAnalyzer({
   ...nextConfig,
   ...headers,
   ...redirects,
   images: {
     domains: ["res.cloudinary.com"],
   },
-};
+});
