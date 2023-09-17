@@ -36,8 +36,8 @@ dependencies:
     specifier: ^0.28.6
     version: 0.28.6(@planetscale/database@1.11.0)
   express-rate-limit:
-    specifier: ^7.0.0
-    version: 7.0.0(express@4.18.2)
+    specifier: ^7.0.1
+    version: 7.0.1(express@4.18.2)
   firebase:
     specifier: ^10.4.0
     version: 10.4.0
@@ -77,8 +77,8 @@ devDependencies:
     specifier: ^2.2.2
     version: 2.2.2
   '@types/node':
-    specifier: ^20.6.1
-    version: 20.6.1
+    specifier: ^20.6.2
+    version: 20.6.2
   '@types/react':
     specifier: 18.2.21
     version: 18.2.21
@@ -1074,7 +1074,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.9
-      '@types/node': 20.6.1
+      '@types/node': 20.6.2
     dev: false
 
   /@grpc/proto-loader@0.7.9:
@@ -1431,8 +1431,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@20.6.1:
-    resolution: {integrity: sha512-4LcJvuXQlv4lTHnxwyHQZ3uR9Zw2j7m1C9DfuwoTFQQP4Pmu04O6IfLYgMmHoOCt0nosItLLZAH+sOrRE0Bo8g==}
+  /@types/node@20.6.2:
+    resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==}
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
@@ -2745,8 +2745,8 @@ packages:
       es5-ext: 0.10.62
     dev: true
 
-  /express-rate-limit@7.0.0(express@4.18.2):
-    resolution: {integrity: sha512-zKMQ9meikj7j3ILeVvHIaBejAYljgDBtGuCfbzNS2d0VCW4s68ONdtEhBJnOGW/Ty1wGeNXgC4m/C1bBUIX0LA==}
+  /express-rate-limit@7.0.1(express@4.18.2):
+    resolution: {integrity: sha512-oTIPm094gh8c7nbShl4TNLqnayzOcbDGY7dCRnFqUAvptyb0pp5231LaH34JtvVEbZlOJMiixikU5AVK8VN3FA==}
     engines: {node: '>= 16'}
     peerDependencies:
       express: ^4 || ^5
@@ -4137,7 +4137,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.6.1
+      '@types/node': 20.6.2
       long: 5.2.3
     dev: false
 
