@@ -48,8 +48,8 @@ dependencies:
     specifier: 4.23.2
     version: 4.23.2(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)
   next-cloudinary:
-    specifier: ^4.24.1
-    version: 4.24.1(next@13.5.4)(react@18.2.0)
+    specifier: ^4.25.0
+    version: 4.25.0(next@13.5.4)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -77,8 +77,8 @@ devDependencies:
     specifier: ^2.2.2
     version: 2.2.2
   '@types/node':
-    specifier: ^20.8.5
-    version: 20.8.5
+    specifier: ^20.8.6
+    version: 20.8.6
   '@types/react':
     specifier: 18.2.28
     version: 18.2.28
@@ -1074,7 +1074,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.10
-      '@types/node': 20.8.5
+      '@types/node': 20.8.6
     dev: false
 
   /@grpc/proto-loader@0.7.10:
@@ -1431,8 +1431,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@20.8.5:
-    resolution: {integrity: sha512-SPlobFgbidfIeOYlzXiEjSYeIJiOCthv+9tSQVpvk4PAdIIc+2SmjNVzWXk9t0Y7dl73Zdf+OgXKHX9XtkqUpw==}
+  /@types/node@20.8.6:
+    resolution: {integrity: sha512-eWO4K2Ji70QzKUqRy6oyJWUeB7+g2cRagT3T/nxYibYcT4y2BDL8lqolRXjTHmkZCdJfIPaY73KbJAZmcryxTQ==}
     dependencies:
       undici-types: 5.25.3
 
@@ -3747,8 +3747,8 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-cloudinary@4.24.1(next@13.5.4)(react@18.2.0):
-    resolution: {integrity: sha512-ysZAWWGaFqWk4rfL7hwTJ3DOli0f2lwb0WBF7Na6pEikEsws1TPtR7rz+gnLMbXwvOclV5YmqIkFGlwjjcLDsA==}
+  /next-cloudinary@4.25.0(next@13.5.4)(react@18.2.0):
+    resolution: {integrity: sha512-CgPvoA9s3JbV0h5YorYrfv2I+08WyoRoFSp6xvB85wRWAMbzL/qE5bbJfSEX+2doUb/yW+PKGAXkOZmPNXjMXA==}
     peerDependencies:
       next: ^12 || ^13
       react: ^17 || ^18
@@ -4138,7 +4138,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.8.5
+      '@types/node': 20.8.6
       long: 5.2.3
     dev: false
 
