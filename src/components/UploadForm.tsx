@@ -22,6 +22,14 @@ const UploadForm: React.FC<{
     (file: File[]) => {
       if (file.length === 0) return;
 
+      if (file && file.length >= 2) {
+        (document.getElementById("filesInput") as HTMLInputElement).value = "";
+        return {
+          code: "too-many-files",
+          message: "You can upload only 1 image at a time",
+        };
+      }
+
       const imageFile = file[0];
       setImage(imageFile);
 
@@ -52,13 +60,6 @@ const UploadForm: React.FC<{
   );
 
   const validator = (file: File) => {
-    if (file && file.length >= 2) {
-      (document.getElementById("filesInput") as HTMLInputElement).value = "";
-      return {
-        code: "too-many-files",
-        message: "You can upload only 1 image at a time",
-      };
-    }
     if (file && file.size > 9000000) {
       (document.getElementById("filesInput") as HTMLInputElement).value = "";
       alert("File can not be more than 9MB");
