@@ -39,7 +39,7 @@ const Home: NextPage = () => {
     refetch();
   };
 
-  const fetchingNext = isLoading || voteForMeme.isLoading || !memePair?.meme2;
+  const fetchingNext = isLoading || voteForMeme.isPending || !memePair?.meme2;
 
   return (
     <>
