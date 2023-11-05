@@ -45,4 +45,7 @@ module.exports = withBundleAnalyzer({
   images: {
     domains: ["res.cloudinary.com"],
   },
+  experimental: {
+    webpackBuildWorker: true,
+  },
 });
