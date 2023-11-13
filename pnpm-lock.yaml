@@ -95,8 +95,8 @@ devDependencies:
     specifier: ^16.3.1
     version: 16.3.1
   drizzle-kit:
-    specifier: ^0.20.1
-    version: 0.20.1
+    specifier: ^0.20.2
+    version: 0.20.2
   eslint:
     specifier: 8.53.0
     version: 8.53.0
@@ -104,8 +104,8 @@ devDependencies:
     specifier: 14.0.2
     version: 14.0.2(eslint@8.53.0)(typescript@5.2.2)
   eslint_d:
-    specifier: ^13.0.0
-    version: 13.0.0
+    specifier: ^13.1.0
+    version: 13.1.0
   postcss:
     specifier: ^8.4.31
     version: 8.4.31
@@ -684,8 +684,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fastify/busboy@2.0.0:
-    resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
+  /@fastify/busboy@2.1.0:
+    resolution: {integrity: sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==}
     engines: {node: '>=14'}
     dev: true
 
@@ -2081,8 +2081,8 @@ packages:
     requiresBuild: true
     dev: false
 
-  /core_d@6.0.0:
-    resolution: {integrity: sha512-r0d8vUgwRyf6Ln45YrJUYXBTrEdrj5XrljmdY5DpLuN+xQ2I5SKZ3iSTnnxEfSxnrhUmyiPIRr6WfRYqVT2huA==}
+  /core_d@6.1.0:
+    resolution: {integrity: sha512-vYgenhJ8CYCj+7LPbPdyFo2u0Doavfbi/vhFpR/BsW9/iUAhuKd+sw2l4CHXhaXIo4/058p2nlsAtbL7iswm5A==}
     dependencies:
       supports-color: 8.1.1
     dev: true
@@ -2242,8 +2242,8 @@ packages:
       wordwrap: 1.0.0
     dev: true
 
-  /drizzle-kit@0.20.1:
-    resolution: {integrity: sha512-W6YAFeT15LcirtAbFmfKOjN+p0EhTW+8KZaPqIEz0VpkBrq3GbBUtaoYWa7l8OLzlOBY54XPG2fa9j+iv3pQRQ==}
+  /drizzle-kit@0.20.2:
+    resolution: {integrity: sha512-4iwjsIj2sY3B3MleKeyNzg/6myjXbTE/CBOXwfePoRVXayM3VwHGZboMkxUkmIQk6o7UAKRb2ODDpO24YNoL2g==}
     hasBin: true
     dependencies:
       '@drizzle-team/studio': 0.0.27
@@ -2811,11 +2811,11 @@ packages:
       - supports-color
     dev: true
 
-  /eslint_d@13.0.0:
-    resolution: {integrity: sha512-j9QABrJYIIm2hheAs5PbyTYtONP1dOYOJ1Nn007XxyEmsw1oplR0c+S8SxxIcL87UEAFB+q0/IiwFKm37oUnFQ==}
+  /eslint_d@13.1.0:
+    resolution: {integrity: sha512-OdKYE7BVeXjXd9D2Q67/6F9xP5OxxmTTbMgRlFWU9DGzB8VeQF5H8l+QpVJQTxyM8hweoFomBj0aHbIFE26DOw==}
     hasBin: true
     dependencies:
-      core_d: 6.0.0
+      core_d: 6.1.0
       eslint: 8.53.0
       nanolru: 1.0.0
       optionator: 0.9.3
@@ -5067,7 +5067,7 @@ packages:
     resolution: {integrity: sha512-iS857PdOEy/y3wlM3yRp+6SNQQ6xU0mmZcwRSriqk+et/cwWAtwmIGf6WkoDN2EK/AMdCO/dfXzIwi+rFMrjjQ==}
     engines: {node: '>=14.0'}
     dependencies:
-      '@fastify/busboy': 2.0.0
+      '@fastify/busboy': 2.1.0
     dev: true
 
   /unload@2.2.0:
