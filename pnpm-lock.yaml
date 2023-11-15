@@ -48,8 +48,8 @@ dependencies:
     specifier: 4.24.5
     version: 4.24.5(next@14.0.2)(react-dom@18.2.0)(react@18.2.0)
   next-cloudinary:
-    specifier: ^5.6.0
-    version: 5.6.0(next@14.0.2)(react@18.2.0)
+    specifier: ^5.7.0
+    version: 5.7.0(next@14.0.2)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -3933,8 +3933,8 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-cloudinary@5.6.0(next@14.0.2)(react@18.2.0):
-    resolution: {integrity: sha512-IeoA52a92PI/yzrEmapew4zegxE3QCQoMf57IBUNOX8Cb0H1igmIhpjkWlAtUAfq/Yn+h++MZTAlIMxGRg8ZUg==}
+  /next-cloudinary@5.7.0(next@14.0.2)(react@18.2.0):
+    resolution: {integrity: sha512-5Zk01Dur4tbTJOI2sd0R6KEE0w79ywSjdkOK1hdvQ/jm0Utj8JAovQo96S7/AWY9ZbqSz7MiEAkkzgtRtuxRqQ==}
     peerDependencies:
       next: ^12 || ^13 || ^14
       react: ^17 || ^18
