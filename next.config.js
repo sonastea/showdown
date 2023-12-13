@@ -46,6 +46,7 @@ module.exports = withBundleAnalyzer({
     domains: ["res.cloudinary.com"],
   },
   experimental: {
+    esmExternals: false,
     webpackBuildWorker: true,
   },
 });
