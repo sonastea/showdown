@@ -104,8 +104,8 @@ devDependencies:
     specifier: 14.0.4
     version: 14.0.4(eslint@8.56.0)(typescript@5.3.3)
   eslint_d:
-    specifier: ^13.1.1
-    version: 13.1.1
+    specifier: ^13.1.2
+    version: 13.1.2
   postcss:
     specifier: ^8.4.32
     version: 8.4.32
@@ -3052,8 +3052,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint_d@13.1.1:
-    resolution: {integrity: sha512-xI5RssZEIiGyHjC9w4u+2dIqcXAD3mwBDxQ88Z5lpIH8dOvijLhcgsHYD8SmctftNKiC0k6gmJrdv8y+eio3vg==}
+  /eslint_d@13.1.2:
+    resolution: {integrity: sha512-kRQ6oxtY9TL+NtHaLrPPmqHmZ4bY9iE+A2LACQ9CMzzbatZbIXq55X8Tz76KaTlH2NQ1F2vccQ8UEKvL49zPOg==}
     hasBin: true
     dependencies:
       core_d: 6.1.0
