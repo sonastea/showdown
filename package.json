@@ -13,7 +13,7 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.1.1",
     "@planetscale/database": "^1.13.0",
-    "@tanstack/react-query": "^5.14.6",
+    "@tanstack/react-query": "^5.17.0",
     "@trpc/client": "11.0.0-next-alpha.149",
     "@trpc/next": "11.0.0-next-alpha.149",
     "@trpc/react-query": "11.0.0-next-alpha.149",
