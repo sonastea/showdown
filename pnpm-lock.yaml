@@ -77,8 +77,8 @@ devDependencies:
     specifier: ^2.2.2
     version: 2.2.2
   '@types/node':
-    specifier: ^20.11.5
-    version: 20.11.5
+    specifier: ^20.11.6
+    version: 20.11.6
   '@types/react':
     specifier: 18.2.48
     version: 18.2.48
@@ -92,8 +92,8 @@ devDependencies:
     specifier: ^2.0.2
     version: 2.0.2
   dotenv:
-    specifier: ^16.3.2
-    version: 16.3.2
+    specifier: ^16.4.0
+    version: 16.4.0
   drizzle-kit:
     specifier: ^0.20.13
     version: 0.20.13
@@ -1097,7 +1097,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.10
-      '@types/node': 20.11.5
+      '@types/node': 20.11.6
     dev: false
 
   /@grpc/proto-loader@0.7.10:
@@ -1484,8 +1484,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@20.11.5:
-    resolution: {integrity: sha512-g557vgQjUUfN76MZAN/dt1z3dzcUsimuysco0KeluHgrPdJXkP/XdAURgyO2W9fZWHRtRBiVKzKn8vyOAwlG+w==}
+  /@types/node@20.11.6:
+    resolution: {integrity: sha512-+EOokTnksGVgip2PbYbr3xnR7kZigh4LbybAfBAw5BpnQ+FqBYUsvCEjYd70IXKlbohQ64mzEYmMtlWUY8q//Q==}
     dependencies:
       undici-types: 5.26.5
 
@@ -2192,8 +2192,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /dotenv@16.3.2:
-    resolution: {integrity: sha512-HTlk5nmhkm8F6JcdXvHIzaorzCoziNQT9mGxLPVXW8wJF1TiGSL60ZGB4gHWabHOaMmWmhvk2/lPHfnBiT78AQ==}
+  /dotenv@16.4.0:
+    resolution: {integrity: sha512-WvImr5kpN5NGNn7KaDjJnLTh5rDVLZiDf/YLA8T1ZEZEBZNEDOE+mnkS0PVjPax8ZxBP5zC5SLMB3/9VV5de9g==}
     engines: {node: '>=12'}
     dev: true
 
@@ -4272,7 +4272,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.11.5
+      '@types/node': 20.11.6
       long: 5.2.3
     dev: false
 
