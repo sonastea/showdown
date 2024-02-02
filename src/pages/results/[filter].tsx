@@ -25,7 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps = async (
-  context: GetStaticPropsContext<{ filter: string }>
+  context: GetStaticPropsContext<{ filter: string }>,
 ) => {
   const ssg = createServerSideHelpers({
     router: appRouter,
@@ -53,7 +53,7 @@ export const getStaticProps = async (
 };
 
 const ResultsFilter = (
-  props: InferGetStaticPropsType<typeof getStaticProps>
+  props: InferGetStaticPropsType<typeof getStaticProps>,
 ) => {
   const [showUploadForm, setShowUploadForm] = useState<boolean>(false);
   const { filter } = props;
