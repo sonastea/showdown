@@ -95,8 +95,8 @@ devDependencies:
     specifier: ^2.0.2
     version: 2.0.2
   dotenv:
-    specifier: ^16.4.1
-    version: 16.4.1
+    specifier: ^16.4.2
+    version: 16.4.2
   drizzle-kit:
     specifier: ^0.20.14
     version: 0.20.14
@@ -2332,8 +2332,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /dotenv@16.4.1:
-    resolution: {integrity: sha512-CjA3y+Dr3FyFDOAMnxZEGtnW9KBR2M0JvvUtXNW+dYJL5ROWxP9DUHCwgFqpMk0OXCc0ljhaNTr2w/kutYIcHQ==}
+  /dotenv@16.4.2:
+    resolution: {integrity: sha512-rZSSFxke7d9nYQ5NeMIwp5PP+f8wXgKNljpOb7KtH6SKW1cEqcXAz9VSJYVLKe7Jhup/gUYOkaeSVyK8GJ+nBg==}
     engines: {node: '>=12'}
     dev: true
 
@@ -3276,7 +3276,7 @@ packages:
       function-bind: 1.1.2
       has-proto: 1.0.1
       has-symbols: 1.0.3
-      hasown: 2.0.0
+      hasown: 2.0.1
     dev: false
 
   /get-symbol-description@1.0.0:
@@ -3438,6 +3438,13 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       function-bind: 1.1.2
+
+  /hasown@2.0.1:
+    resolution: {integrity: sha512-1/th4MHjnwncwXsIW6QMzlvYL9kG5e/CpVvLRZe4XPa8TOUNbCELqmvhDmnkNsAjwaG4+I8gJJL0JBvTTLO9qA==}
+    engines: {node: '>= 0.4'}
+    dependencies:
+      function-bind: 1.1.2
+    dev: false
 
   /heap@0.2.7:
     resolution: {integrity: sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==}
