@@ -8,7 +8,7 @@ const Footer = dynamic(() => import("src/components/Footer"));
 const Meme = dynamic(() => import("src/components/Meme"));
 const MobileNav = dynamic(() => import("src/components/MobileNav"));
 const SubmitMemeButton = dynamic(
-  () => import("src/components/SubmitMemeButton")
+  () => import("src/components/SubmitMemeButton"),
 );
 const UploadForm = dynamic(() => import("src/components/UploadForm"));
 
@@ -28,11 +28,11 @@ const Home: NextPage = () => {
   const voteForMeme = trpc.meme.addVote.useMutation();
 
   const handleVoteForFunnier = (select: number) => {
-    if (!memePair) return;
+    if (!memePair || select === -1) return;
 
     if (memePair?.meme1.id === select) {
       voteForMeme.mutate({ votedFor: memePair.meme1.id });
-    } else {
+    } else if (memePair?.meme2.id === select) {
       voteForMeme.mutate({ votedFor: memePair.meme2.id });
     }
 
@@ -67,7 +67,7 @@ const Home: NextPage = () => {
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
               <Meme
                 meme={memePair.meme1}
-                vote={() => handleVoteForFunnier(memePair.meme1.id)}
+                vote={() => handleVoteForFunnier(memePair.meme1.id ?? -1)}
                 disabled={fetchingNext}
               />
               {memePair.meme2 ? (
@@ -77,7 +77,7 @@ const Home: NextPage = () => {
                   </div>
                   <Meme
                     meme={memePair.meme2}
-                    vote={() => handleVoteForFunnier(memePair.meme2.id)}
+                    vote={() => handleVoteForFunnier(memePair.meme2.id ?? -1)}
                     disabled={fetchingNext}
                   />
                 </>
