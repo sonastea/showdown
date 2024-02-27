@@ -56,7 +56,7 @@ const UploadForm: React.FC<{
         console.log(error);
       }
     },
-    [previewURL]
+    [previewURL],
   );
 
   const validator = (file: File) => {

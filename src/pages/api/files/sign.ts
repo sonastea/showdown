@@ -21,7 +21,7 @@ export const sign = async (req: NextApiRequest, res: NextApiResponse) => {
       upload_preset: process.env.NEXT_PUBLIC_CLOUDINARY_PRESET ?? "development",
       timestamp: timestamp,
     },
-    process.env.CLOUDINARY_API_SECRET
+    process.env.CLOUDINARY_API_SECRET,
   );
 
   return res.json({ timestamp, signature });
