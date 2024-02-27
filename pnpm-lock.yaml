@@ -34,7 +34,7 @@ dependencies:
     version: 2.0.1
   drizzle-orm:
     specifier: ^0.29.4
-    version: 0.29.4(@planetscale/database@1.16.0)(@types/react@18.2.58)(react@18.2.0)
+    version: 0.29.4(@planetscale/database@1.16.0)(@types/react@18.2.59)(react@18.2.0)
   express-rate-limit:
     specifier: ^7.1.5
     version: 7.1.5(express@4.18.2)
@@ -48,8 +48,8 @@ dependencies:
     specifier: 4.24.6
     version: 4.24.6(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
   next-cloudinary:
-    specifier: ^5.20.0
-    version: 5.20.0(next@14.1.0)(react@18.2.0)
+    specifier: ^6.0.1
+    version: 6.0.1(next@14.1.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -83,8 +83,8 @@ devDependencies:
     specifier: ^20.11.20
     version: 20.11.20
   '@types/react':
-    specifier: 18.2.58
-    version: 18.2.58
+    specifier: 18.2.59
+    version: 18.2.59
   '@types/react-dom':
     specifier: 18.2.19
     version: 18.2.19
@@ -174,24 +174,24 @@ packages:
       regenerator-runtime: 0.14.1
     dev: false
 
-  /@cloudinary-util/url-loader@4.2.0:
-    resolution: {integrity: sha512-fpCFqFPAN/f9Gt//25qLXNDYwy5EcOudRzDPOrsEBH6aMwEdFaJuPxvLiP0IP5MCihKji/XDr9QJQ9Wa+amNSA==}
+  /@cloudinary-util/types@1.0.0:
+    resolution: {integrity: sha512-h7rGVFjOWHhxUiN41sAQako54pLqLQAfp7pr3PdA1sui24zTubV1PTRlhg0hOpvzxFknaFbNwJ+6aj2fYIoKIQ==}
+    dev: false
+
+  /@cloudinary-util/url-loader@5.0.0:
+    resolution: {integrity: sha512-WjfzbI/l6uqQsnq6xnPrR6gvicQzI9jMZnhJK1fpeM9FrLemRjqXZNEsJyx909BfKtE2WKMzzw2Tw7iQ7/R6LQ==}
     dependencies:
       '@cloudinary-util/util': 3.0.0
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
     dev: false
 
-  /@cloudinary-util/util@2.4.0:
-    resolution: {integrity: sha512-RJW/K1hvm+qL2civTWgg7iKdTPDMLmpFBvH03KUkDxuDk/xi9E9x9nPthEsmdDy65GdCcZm0UKnErXXgKzMOQQ==}
-    dev: false
-
   /@cloudinary-util/util@3.0.0:
     resolution: {integrity: sha512-o6cJsN49OIelLcSkqUf4WzgefpePDFsAaeQfJbpcKhVdtvmWv71K0oZwMXuX62IY1OolqIg0etMiHtWZPhvPNA==}
     dev: false
 
-  /@cloudinary/transformation-builder-sdk@1.10.1:
-    resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
+  /@cloudinary/transformation-builder-sdk@1.13.0:
+    resolution: {integrity: sha512-RCP+/B97t+rhh5ZmnOBerM45b73QATIXBv10SqOh9SU03GlNhsK3D3Ol9hrdCd1dcYks/rrTaK41Li5GNSEDJQ==}
     dependencies:
       '@cloudinary/url-gen': 1.15.0
     dev: false
@@ -199,7 +199,7 @@ packages:
   /@cloudinary/url-gen@1.15.0:
     resolution: {integrity: sha512-bjU67eZxLUgoRy/Plli4TQio7q6P31OYqnEgXxeN9TKXrzr6h0DeEdIUhKI9gy3HkEBWXWWJIPh7j7gkOJPnyA==}
     dependencies:
-      '@cloudinary/transformation-builder-sdk': 1.10.1
+      '@cloudinary/transformation-builder-sdk': 1.13.0
     dev: false
 
   /@discoveryjs/json-ext@0.5.7:
@@ -1535,6 +1535,10 @@ packages:
     resolution: {integrity: sha512-wwz78kfl4c8WQ3ytjzYf3SM8uxhvhSRYVxqqChPM+IbDb9scfNyEsZOUzSWds8brFNgO3LHeHYkP0l8S4YdDXA==}
     dev: false
 
+  /@tsconfig/recommended@1.0.3:
+    resolution: {integrity: sha512-+jby/Guq9H8O7NWgCv6X8VAiQE8Dr/nccsCtL74xyHKhu2Knu5EAKmOZj3nLCnLm1KooUzKY+5DsnGVqhM8/wQ==}
+    dev: false
+
   /@types/istanbul-lib-coverage@2.0.6:
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
     dev: true
@@ -1573,11 +1577,11 @@ packages:
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.58
+      '@types/react': 18.2.59
     dev: true
 
-  /@types/react@18.2.58:
-    resolution: {integrity: sha512-TaGvMNhxvG2Q0K0aYxiKfNDS5m5ZsoIBBbtfUorxdH4NGSXIlYvZxLJI+9Dd3KjeB3780bciLyAb7ylO8pLhPw==}
+  /@types/react@18.2.59:
+    resolution: {integrity: sha512-DE+F6BYEC8VtajY85Qr7mmhTd/79rJKIHCg99MU9SWPB4xvLb6D1za2vYflgZfmPqQVEr6UqJTnLXEwzpVPuOg==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -2360,7 +2364,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.29.4(@planetscale/database@1.16.0)(@types/react@18.2.58)(react@18.2.0):
+  /drizzle-orm@0.29.4(@planetscale/database@1.16.0)(@types/react@18.2.59)(react@18.2.0):
     resolution: {integrity: sha512-ZnSM8TAxFhzH7p1s3+w3pRE/eKaOeNkH9SKitm717pubDVVcV2I0BCDBPGKV+pe02+wMfw37ntlTcCyo2rA3IA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -2432,7 +2436,7 @@ packages:
         optional: true
     dependencies:
       '@planetscale/database': 1.16.0
-      '@types/react': 18.2.58
+      '@types/react': 18.2.59
       react: 18.2.0
     dev: false
 
@@ -4130,14 +4134,16 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-cloudinary@5.20.0(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-oEe//iguL/fZAJH2zTSs0Kyfv6k0vhXoA07L1rX4UzQrqEmyT741UwwasnYN1qOYSZuLdum97CbJO9JkDARwIQ==}
+  /next-cloudinary@6.0.1(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-T+w6AVP94JGrbifvzSApsLFnZym75v9mGgmE6OnnCVbD7411+o8vZZNu1u8+LxjwXLPk9unopt9pJXv8go7thA==}
     peerDependencies:
       next: ^12 || ^13 || ^14
       react: ^17 || ^18
     dependencies:
-      '@cloudinary-util/url-loader': 4.2.0
-      '@cloudinary-util/util': 2.4.0
+      '@cloudinary-util/types': 1.0.0
+      '@cloudinary-util/url-loader': 5.0.0
+      '@cloudinary-util/util': 3.0.0
+      '@tsconfig/recommended': 1.0.3
       next: 14.1.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false
