@@ -1,6 +1,6 @@
 import { CldImage } from "next-cloudinary";
 import { useState } from "react";
-import { Meme } from "src/lib/drizzle";
+import type { Meme } from "src/lib/drizzle";
 
 const Meme: React.FC<{
   meme: Meme;
@@ -25,7 +25,7 @@ const Meme: React.FC<{
                   (max-width: 1280px) 24rem,
                   12rem
           "
-          onLoadingComplete={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
         />
       </div>
       <button
