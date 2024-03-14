@@ -1,9 +1,7 @@
-import dynamic from "next/dynamic";
+import XMarkIcon from "@heroicons/react/24/solid/XMarkIcon";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-
-const XMarkIcon = dynamic(() => import("@heroicons/react/24/solid/XMarkIcon"));
 
 const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
   const [isActive, setActive] = React.useState(false);
