@@ -21,11 +21,12 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, _req) {
+        if (!credentials) return null;
         let user: User | null = null;
         await signInWithEmailAndPassword(
           auth,
-          credentials!.email!,
-          credentials!.password!
+          credentials.email!,
+          credentials.password!
         )
           .then((userCredential) => {
             user = {

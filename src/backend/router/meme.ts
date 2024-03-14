@@ -11,10 +11,10 @@ const WEEK = new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000);
 export const memeRouter = router({
   getMemePair: publicProcedure.query(async () => {
     const bothMemes: Meme[] = await db
-      .execute(
-        sql`SELECT * FROM Meme AS t1 JOIN (SELECT id FROM Meme ORDER BY rand() LIMIT 2) AS t2 ON t1.id = t2.id`
-      )
-      .then((res) => res.rows as Meme[]);
+      .select()
+      .from(meme)
+      .limit(2)
+      .orderBy(sql`RANDOM()`);
 
     if (bothMemes.length < 1) {
       throw new Error("Could not retrieve memes");
@@ -26,7 +26,7 @@ export const memeRouter = router({
     .input(
       z.object({
         votedFor: z.number(),
-      })
+      }),
     )
     .mutation(async ({ input }) => {
       const voted = await db.insert(vote).values({

@@ -18,7 +18,7 @@ export const adminRouter = router({
     .input(
       z.object({
         cursor: z.number().default(0),
-      })
+      }),
     )
     .query(async ({ input }) => {
       let memes;
@@ -62,23 +62,28 @@ export const adminRouter = router({
         return { success: false, meme: `Unable to delete ${input.id}` };
       }
 
-      await db
+      const result = await db
         .delete(meme)
         .where(eq(meme.id, input.id))
-        .then(async (res) => {
-          if (res.rowsAffected === 1) {
-            const destroy: { result: string } =
-              await cloudinary.uploader.destroy(deleting[0].name);
-
-            if (destroy.result === "ok")
-              console.log(`Deleted from cloudinary ${deleting[0].name}`);
-            if (destroy.result !== "ok")
-              console.log(
-                `Unable to delete from cloudinary ${deleting[0].name}`
-              );
-          }
-        })
+        .returning({ id: meme.id })
         .catch((err) => console.error(err));
+
+      if (result && result[0].id) {
+        const destroy: { result: string } = await cloudinary.uploader.destroy(
+          deleting[0].name,
+        );
+
+        if (destroy.result !== "ok") {
+          console.log(
+            `Unable to delete from cloudinary ${deleting[0].name} - ${result[0].id}`,
+          );
+          return { success: false, meme: input.id };
+        }
+
+        console.log(
+          `Deleted from cloudinary ${deleting[0].name} - ${result[0].id}`,
+        );
+      }
 
       return { success: true, meme: input.id };
     }),
