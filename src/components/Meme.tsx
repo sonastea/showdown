@@ -4,20 +4,23 @@ import type { Meme } from "src/lib/drizzle";
 
 const Meme: React.FC<{
   meme: Meme;
+  number: number;
   vote: () => void;
   disabled: boolean;
-}> = ({ meme, vote, disabled }) => {
+}> = ({ meme, number, vote, disabled }) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const name = meme.name.split("/")[1];
 
   return (
     <div className="flex flex-col items-center" key={meme.id}>
       <div className="relative w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96">
         {!isLoaded && (
-          <div className="object-fill bg-slate-500/50 w-full h-full animate-pulse"></div>
+          <div className="object-fill bg-slate-500/50 w-full h-full animate-pulse" />
         )}
         <CldImage
+          aria-label={`meme ${number}`}
           className="object-contain"
-          alt={meme.name.split("/")[1]}
+          alt={name}
           src={meme.url}
           fill
           priority
@@ -33,7 +36,9 @@ const Meme: React.FC<{
         onClick={vote}
         disabled={disabled}
       >
-        😂
+        <span role="img" aria-label={`Vote for meme ${number}`}>
+          😂
+        </span>
       </button>
     </div>
   );

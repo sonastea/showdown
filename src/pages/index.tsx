@@ -67,16 +67,18 @@ const Home: NextPage = () => {
             <div className="flex shrink justify-between items-center flex-col md:flex-row animate-fade-in">
               <Meme
                 meme={memePair.meme1}
+                number={1}
                 vote={() => handleVoteForFunnier(memePair.meme1.id ?? -1)}
                 disabled={fetchingNext}
               />
               {memePair.meme2 ? (
                 <>
-                  <div className="hidden md:block md:p-6 text-xl text-mina-50">
+                  <div className="hidden md:block md:p-6 text-xl text-mina-50" aria-label="versus">
                     ⚔️
                   </div>
                   <Meme
                     meme={memePair.meme2}
+                    number={2}
                     vote={() => handleVoteForFunnier(memePair.meme2.id ?? -1)}
                     disabled={fetchingNext}
                   />
