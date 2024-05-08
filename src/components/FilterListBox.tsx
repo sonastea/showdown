@@ -1,4 +1,10 @@
-import { Listbox, Transition } from "@headlessui/react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+  Transition,
+} from "@headlessui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -17,7 +23,7 @@ const FilterListBox: React.FC = () => {
     setQuery(
       (queries.find((query) => query.name === router.query.filter) as {
         name: string;
-      }) || queries[0]
+      }) || queries[0],
     );
   }, [router.query.filter]);
 
@@ -26,7 +32,7 @@ const FilterListBox: React.FC = () => {
       <Listbox value={selectedQuery} onChange={setQuery}>
         {({ open }) => (
           <div className="relative mt-1">
-            <Listbox.Button className="flex justify-between w-full cursor-default text-mina-950 bg-slate-300 rounded-lg py-2 pr-10 pl-4 text-left shadow-md focus-outline-none focus-visible:border-mina focus-visible:ring-2">
+            <ListboxButton className="flex justify-between w-full cursor-default text-mina-950 bg-slate-300 rounded-lg py-2 pr-10 pl-4 text-left shadow-md focus-outline-none focus-visible:border-mina focus-visible:ring-2">
               <span className="font-bold">{selectedQuery?.name}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -40,66 +46,66 @@ const FilterListBox: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </Listbox.Button>
-            <Transition
-              show={open}
-              className="fixed z-10 w-auto sm:w-36"
-              enter="transition duration-100 ease-out"
-              enterFrom="transform scale-95 opacity-0"
-              enterTo="transform scale-100 opacity-100"
-              leave="transition duration-75 ease-out"
-              leaveFrom="transform scale-100 opacity-100"
-              leaveTo="transform scale-95 opacity-0"
-            >
-              <Listbox.Options className="mt-1 overflow-auto rounded-md text-base ring-1 bg-slate-400">
-                {queries.map((query, index) => (
-                  <Link
-                    key={index}
-                    href={`${
-                      index === 0 ? "/results" : `/results/${query.name}`
-                    }`}
-                    legacyBehavior
-                  >
-                    <Listbox.Option
-                      className={({ active }) =>
-                        `relative cursor-default select-none pl-10 pr-4 flex items-center justify-between w-full ${
-                          active ? "bg-slate-300" : "text-black"
-                        }`
-                      }
-                      value={query}
+            </ListboxButton>
+            {open && (
+              <Transition
+                enter="transition duration-100 ease-out"
+                enterFrom="transform scale-95 opacity-0"
+                enterTo="transform scale-100 opacity-100"
+                leave="transition duration-75 ease-out"
+                leaveFrom="transform scale-100 opacity-100"
+                leaveTo="transform scale-95 opacity-0"
+              >
+                <ListboxOptions className="fixed z-10 w-auto sm:w-36 mt-1 overflow-auto rounded-md text-base ring-1 bg-slate-400">
+                  {queries.map((query, index) => (
+                    <Link
+                      key={index}
+                      href={`${
+                        index === 0 ? "/results" : `/results/${query.name}`
+                      }`}
+                      legacyBehavior
                     >
-                      {({ selected }) => (
-                        <>
-                          {selected ? (
-                            <span className="pl-3 left-0 text-once-800 absolute">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-4 w-4"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
+                      <ListboxOption
+                        className={({ focus }) =>
+                          `relative cursor-default select-none pl-10 pr-4 flex items-center justify-between w-full ${
+                            focus ? "bg-slate-300" : "text-black"
+                          }`
+                        }
+                        value={query}
+                      >
+                        {({ selected }) => (
+                          <>
+                            {selected ? (
+                              <span className="pl-3 left-0 text-once-800 absolute">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-4 w-4"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </span>
+                            ) : null}
+                            <span
+                              className={`block truncate text-mina-950 cursor-auto ${
+                                selected ? "font-bold" : "font-normal"
+                              }`}
+                            >
+                              {query.name}
                             </span>
-                          ) : null}
-                          <span
-                            className={`block truncate text-mina-950 cursor-auto ${
-                              selected ? "font-bold" : "font-normal"
-                            }`}
-                          >
-                            {query.name}
-                          </span>
-                        </>
-                      )}
-                    </Listbox.Option>
-                  </Link>
-                ))}
-              </Listbox.Options>
-            </Transition>
+                          </>
+                        )}
+                      </ListboxOption>
+                    </Link>
+                  ))}
+                </ListboxOptions>
+              </Transition>
+            )}
           </div>
         )}
       </Listbox>
