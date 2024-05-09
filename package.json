@@ -23,7 +23,7 @@
     "drizzle-orm": "^0.30.10",
     "express-rate-limit": "^7.2.0",
     "firebase": "^10.11.1",
-    "next": "14.3.0-canary.48",
+    "next": "14.3.0-canary.51",
     "next-auth": "4.24.7",
     "next-cloudinary": "^6.5.2",
     "postgres": "^3.4.4",
@@ -32,7 +32,7 @@
     "react-dropzone": "^14.2.3",
     "react-query": "^3.39.3",
     "superjson": "^2.2.1",
-    "zod": "^3.23.7"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.2.3",
