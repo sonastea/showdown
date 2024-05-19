@@ -10,22 +10,22 @@ importers:
     dependencies:
       '@headlessui/react':
         specifier: ^2.0.3
-        version: 2.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 2.0.3(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       '@heroicons/react':
         specifier: ^2.1.3
-        version: 2.1.3(react@18.3.1)
+        version: 2.1.3(react@19.0.0-rc-915b914b3a-20240515)
       '@tanstack/react-query':
         specifier: ^5.37.1
-        version: 5.37.1(react@18.3.1)
+        version: 5.37.1(react@19.0.0-rc-915b914b3a-20240515)
       '@trpc/client':
         specifier: 11.0.0-rc.373
         version: 11.0.0-rc.373(@trpc/server@11.0.0-rc.373)
       '@trpc/next':
         specifier: 11.0.0-rc.373
-        version: 11.0.0-rc.373(@tanstack/react-query@5.37.1(react@18.3.1))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/react-query@11.0.0-rc.373(@tanstack/react-query@5.37.1(react@18.3.1))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@trpc/server@11.0.0-rc.373)(next@14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 11.0.0-rc.373(@tanstack/react-query@5.37.1(react@19.0.0-rc-915b914b3a-20240515))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/react-query@11.0.0-rc.373(@tanstack/react-query@5.37.1(react@19.0.0-rc-915b914b3a-20240515))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515))(@trpc/server@11.0.0-rc.373)(next@14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515))(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       '@trpc/react-query':
         specifier: 11.0.0-rc.373
-        version: 11.0.0-rc.373(@tanstack/react-query@5.37.1(react@18.3.1))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 11.0.0-rc.373(@tanstack/react-query@5.37.1(react@19.0.0-rc-915b914b3a-20240515))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       '@trpc/server':
         specifier: 11.0.0-rc.373
         version: 11.0.0-rc.373
@@ -34,7 +34,7 @@ importers:
         version: 2.2.0
       drizzle-orm:
         specifier: ^0.30.10
-        version: 0.30.10(@types/react@18.3.2)(pg@8.11.5)(postgres@3.4.4)(react@18.3.1)
+        version: 0.30.10(@types/react@18.3.2)(pg@8.11.5)(postgres@3.4.4)(react@19.0.0-rc-915b914b3a-20240515)
       express-rate-limit:
         specifier: ^7.2.0
         version: 7.2.0(express@4.19.2)
@@ -43,28 +43,28 @@ importers:
         version: 10.12.0
       next:
         specifier: 14.3.0-canary.70
-        version: 14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       next-auth:
         specifier: 4.24.7
-        version: 4.24.7(next@14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 4.24.7(next@14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515))(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       next-cloudinary:
         specifier: ^6.5.2
-        version: 6.5.2(next@14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        version: 6.5.2(next@14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       postgres:
         specifier: ^3.4.4
         version: 3.4.4
       react:
-        specifier: ^18.3.1
-        version: 18.3.1
+        specifier: 19.0.0-rc-915b914b3a-20240515
+        version: 19.0.0-rc-915b914b3a-20240515
       react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
+        specifier: 19.0.0-rc-915b914b3a-20240515
+        version: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
       react-dropzone:
         specifier: ^14.2.3
-        version: 14.2.3(react@18.3.1)
+        version: 14.2.3(react@19.0.0-rc-915b914b3a-20240515)
       react-query:
         specifier: ^3.39.3
-        version: 3.39.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.39.3(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       superjson:
         specifier: ^2.2.1
         version: 2.2.1
@@ -2947,10 +2947,10 @@ packages:
     resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
     engines: {node: '>= 0.8'}
 
-  react-dom@18.3.1:
-    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
+  react-dom@19.0.0-rc-915b914b3a-20240515:
+    resolution: {integrity: sha512-Njv9p2b7/3ZEk7hcWAzgxbLfYbYJfI01bwI0V+a1WKbhhxwth1o2mQejIsUtnDwkXZ34Oej8rIY5Z93pUfSCdQ==}
     peerDependencies:
-      react: ^18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
   react-dropzone@14.2.3:
     resolution: {integrity: sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==}
@@ -2976,8 +2976,8 @@ packages:
       react-native:
         optional: true
 
-  react@18.3.1:
-    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
+  react@19.0.0-rc-915b914b3a-20240515:
+    resolution: {integrity: sha512-/XKPm2pbDBheMbNUV/uRoL0/RZXg+CCyen3YBjDetySqGZjsRBQKKtK9sWMjQO8J6y8PoC02HzjAP4/OQ2Wmow==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -3048,8 +3048,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  scheduler@0.23.2:
-    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
+  scheduler@0.25.0-rc-915b914b3a-20240515:
+    resolution: {integrity: sha512-NeqcaiiRfnXjrrtI8CxyU9FlT9UTdRvpSCy/fnAK+hwwrMjk6BhtCmdziCOkCat5bI3p6uUIwR2NNCK2F/1bZg==}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -4057,18 +4057,18 @@ snapshots:
       '@floating-ui/core': 1.6.1
       '@floating-ui/utils': 0.2.2
 
-  '@floating-ui/react-dom@2.0.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@floating-ui/react-dom@2.0.9(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
       '@floating-ui/dom': 1.6.5
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 19.0.0-rc-915b914b3a-20240515
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
 
-  '@floating-ui/react@0.26.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@floating-ui/react@0.26.13(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
-      '@floating-ui/react-dom': 2.0.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@floating-ui/react-dom': 2.0.9(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       '@floating-ui/utils': 0.2.2
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 19.0.0-rc-915b914b3a-20240515
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
       tabbable: 6.2.0
 
   '@floating-ui/utils@0.2.2': {}
@@ -4085,18 +4085,18 @@ snapshots:
       protobufjs: 7.3.0
       yargs: 17.7.2
 
-  '@headlessui/react@2.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@headlessui/react@2.0.3(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
-      '@floating-ui/react': 0.26.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@react-aria/focus': 3.17.0(react@18.3.1)
-      '@react-aria/interactions': 3.21.2(react@18.3.1)
-      '@tanstack/react-virtual': 3.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      '@floating-ui/react': 0.26.13(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
+      '@react-aria/focus': 3.17.0(react@19.0.0-rc-915b914b3a-20240515)
+      '@react-aria/interactions': 3.21.2(react@19.0.0-rc-915b914b3a-20240515)
+      '@tanstack/react-virtual': 3.5.0(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
+      react: 19.0.0-rc-915b914b3a-20240515
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
 
-  '@heroicons/react@2.1.3(react@18.3.1)':
+  '@heroicons/react@2.1.3(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
@@ -4316,45 +4316,45 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@react-aria/focus@3.17.0(react@18.3.1)':
+  '@react-aria/focus@3.17.0(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
-      '@react-aria/interactions': 3.21.2(react@18.3.1)
-      '@react-aria/utils': 3.24.0(react@18.3.1)
-      '@react-types/shared': 3.23.0(react@18.3.1)
+      '@react-aria/interactions': 3.21.2(react@19.0.0-rc-915b914b3a-20240515)
+      '@react-aria/utils': 3.24.0(react@19.0.0-rc-915b914b3a-20240515)
+      '@react-types/shared': 3.23.0(react@19.0.0-rc-915b914b3a-20240515)
       '@swc/helpers': 0.5.11
       clsx: 2.1.1
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
-  '@react-aria/interactions@3.21.2(react@18.3.1)':
+  '@react-aria/interactions@3.21.2(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
-      '@react-aria/ssr': 3.9.3(react@18.3.1)
-      '@react-aria/utils': 3.24.0(react@18.3.1)
-      '@react-types/shared': 3.23.0(react@18.3.1)
+      '@react-aria/ssr': 3.9.3(react@19.0.0-rc-915b914b3a-20240515)
+      '@react-aria/utils': 3.24.0(react@19.0.0-rc-915b914b3a-20240515)
+      '@react-types/shared': 3.23.0(react@19.0.0-rc-915b914b3a-20240515)
       '@swc/helpers': 0.5.11
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
-  '@react-aria/ssr@3.9.3(react@18.3.1)':
+  '@react-aria/ssr@3.9.3(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
       '@swc/helpers': 0.5.11
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
-  '@react-aria/utils@3.24.0(react@18.3.1)':
+  '@react-aria/utils@3.24.0(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
-      '@react-aria/ssr': 3.9.3(react@18.3.1)
-      '@react-stately/utils': 3.10.0(react@18.3.1)
-      '@react-types/shared': 3.23.0(react@18.3.1)
+      '@react-aria/ssr': 3.9.3(react@19.0.0-rc-915b914b3a-20240515)
+      '@react-stately/utils': 3.10.0(react@19.0.0-rc-915b914b3a-20240515)
+      '@react-types/shared': 3.23.0(react@19.0.0-rc-915b914b3a-20240515)
       '@swc/helpers': 0.5.11
       clsx: 2.1.1
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
-  '@react-stately/utils@3.10.0(react@18.3.1)':
+  '@react-stately/utils@3.10.0(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
       '@swc/helpers': 0.5.11
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
-  '@react-types/shared@3.23.0(react@18.3.1)':
+  '@react-types/shared@3.23.0(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
   '@rushstack/eslint-patch@1.10.2': {}
 
@@ -4366,16 +4366,16 @@ snapshots:
 
   '@tanstack/query-core@5.36.1': {}
 
-  '@tanstack/react-query@5.37.1(react@18.3.1)':
+  '@tanstack/react-query@5.37.1(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
       '@tanstack/query-core': 5.36.1
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
-  '@tanstack/react-virtual@3.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@tanstack/react-virtual@3.5.0(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
       '@tanstack/virtual-core': 3.5.0
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 19.0.0-rc-915b914b3a-20240515
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
 
   '@tanstack/virtual-core@3.5.0': {}
 
@@ -4383,24 +4383,24 @@ snapshots:
     dependencies:
       '@trpc/server': 11.0.0-rc.373
 
-  '@trpc/next@11.0.0-rc.373(@tanstack/react-query@5.37.1(react@18.3.1))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/react-query@11.0.0-rc.373(@tanstack/react-query@5.37.1(react@18.3.1))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@trpc/server@11.0.0-rc.373)(next@14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@trpc/next@11.0.0-rc.373(@tanstack/react-query@5.37.1(react@19.0.0-rc-915b914b3a-20240515))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/react-query@11.0.0-rc.373(@tanstack/react-query@5.37.1(react@19.0.0-rc-915b914b3a-20240515))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515))(@trpc/server@11.0.0-rc.373)(next@14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515))(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
       '@trpc/client': 11.0.0-rc.373(@trpc/server@11.0.0-rc.373)
       '@trpc/server': 11.0.0-rc.373
-      next: 14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      next: 14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
+      react: 19.0.0-rc-915b914b3a-20240515
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
     optionalDependencies:
-      '@tanstack/react-query': 5.37.1(react@18.3.1)
-      '@trpc/react-query': 11.0.0-rc.373(@tanstack/react-query@5.37.1(react@18.3.1))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@tanstack/react-query': 5.37.1(react@19.0.0-rc-915b914b3a-20240515)
+      '@trpc/react-query': 11.0.0-rc.373(@tanstack/react-query@5.37.1(react@19.0.0-rc-915b914b3a-20240515))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
 
-  '@trpc/react-query@11.0.0-rc.373(@tanstack/react-query@5.37.1(react@18.3.1))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@trpc/react-query@11.0.0-rc.373(@tanstack/react-query@5.37.1(react@19.0.0-rc-915b914b3a-20240515))(@trpc/client@11.0.0-rc.373(@trpc/server@11.0.0-rc.373))(@trpc/server@11.0.0-rc.373)(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)':
     dependencies:
-      '@tanstack/react-query': 5.37.1(react@18.3.1)
+      '@tanstack/react-query': 5.37.1(react@19.0.0-rc-915b914b3a-20240515)
       '@trpc/client': 11.0.0-rc.373(@trpc/server@11.0.0-rc.373)
       '@trpc/server': 11.0.0-rc.373
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 19.0.0-rc-915b914b3a-20240515
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
 
   '@trpc/server@11.0.0-rc.373': {}
 
@@ -4933,12 +4933,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.30.10(@types/react@18.3.2)(pg@8.11.5)(postgres@3.4.4)(react@18.3.1):
+  drizzle-orm@0.30.10(@types/react@18.3.2)(pg@8.11.5)(postgres@3.4.4)(react@19.0.0-rc-915b914b3a-20240515):
     optionalDependencies:
       '@types/react': 18.3.2
       pg: 8.11.5
       postgres: 3.4.4
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
   duplexer@0.1.2: {}
 
@@ -6050,33 +6050,33 @@ snapshots:
 
   negotiator@0.6.3: {}
 
-  next-auth@4.24.7(next@14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next-auth@4.24.7(next@14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515))(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515):
     dependencies:
       '@babel/runtime': 7.24.0
       '@panva/hkdf': 1.1.1
       cookie: 0.5.0
       jose: 4.15.5
-      next: 14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
       oauth: 0.9.15
       openid-client: 5.6.5
       preact: 10.19.6
       preact-render-to-string: 5.2.6(preact@10.19.6)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 19.0.0-rc-915b914b3a-20240515
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
       uuid: 8.3.2
 
-  next-cloudinary@6.5.2(next@14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+  next-cloudinary@6.5.2(next@14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515):
     dependencies:
       '@cloudinary-util/types': 1.0.3
       '@cloudinary-util/url-loader': 5.2.2
       '@cloudinary-util/util': 3.0.0
       '@tsconfig/recommended': 1.0.6
-      next: 14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
+      next: 14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515)
+      react: 19.0.0-rc-915b914b3a-20240515
 
   next-tick@1.1.0: {}
 
-  next@14.3.0-canary.70(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next@14.3.0-canary.70(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515):
     dependencies:
       '@next/env': 14.3.0-canary.70
       '@swc/helpers': 0.5.11
@@ -6084,9 +6084,9 @@ snapshots:
       caniuse-lite: 1.0.30001615
       graceful-fs: 4.2.11
       postcss: 8.4.31
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      styled-jsx: 5.1.3(react@18.3.1)
+      react: 19.0.0-rc-915b914b3a-20240515
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
+      styled-jsx: 5.1.3(react@19.0.0-rc-915b914b3a-20240515)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.3.0-canary.70
       '@next/swc-darwin-x64': 14.3.0-canary.70
@@ -6383,35 +6383,32 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-dom@18.3.1(react@18.3.1):
+  react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515):
     dependencies:
-      loose-envify: 1.4.0
-      react: 18.3.1
-      scheduler: 0.23.2
+      react: 19.0.0-rc-915b914b3a-20240515
+      scheduler: 0.25.0-rc-915b914b3a-20240515
 
-  react-dropzone@14.2.3(react@18.3.1):
+  react-dropzone@14.2.3(react@19.0.0-rc-915b914b3a-20240515):
     dependencies:
       attr-accept: 2.2.2
       file-selector: 0.6.0
       prop-types: 15.8.1
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
   react-is@16.13.1: {}
 
   react-is@18.2.0: {}
 
-  react-query@3.39.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-query@3.39.3(react-dom@19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515))(react@19.0.0-rc-915b914b3a-20240515):
     dependencies:
       '@babel/runtime': 7.22.3
       broadcast-channel: 3.7.0
       match-sorter: 6.3.1
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
     optionalDependencies:
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 19.0.0-rc-915b914b3a-20240515(react@19.0.0-rc-915b914b3a-20240515)
 
-  react@18.3.1:
-    dependencies:
-      loose-envify: 1.4.0
+  react@19.0.0-rc-915b914b3a-20240515: {}
 
   read-cache@1.0.0:
     dependencies:
@@ -6489,9 +6486,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  scheduler@0.23.2:
-    dependencies:
-      loose-envify: 1.4.0
+  scheduler@0.25.0-rc-915b914b3a-20240515: {}
 
   semver@6.3.1: {}
 
@@ -6678,10 +6673,10 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  styled-jsx@5.1.3(react@18.3.1):
+  styled-jsx@5.1.3(react@19.0.0-rc-915b914b3a-20240515):
     dependencies:
       client-only: 0.0.1
-      react: 18.3.1
+      react: 19.0.0-rc-915b914b3a-20240515
 
   sucrase@3.35.0:
     dependencies:
