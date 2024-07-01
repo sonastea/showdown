@@ -1,6 +1,6 @@
 {
   "name": "kpopshowdown",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true next build",
@@ -15,10 +15,10 @@
     "@headlessui/react": "^2.1.1",
     "@heroicons/react": "^2.1.4",
     "@tanstack/react-query": "^5.49.2",
-    "@trpc/client": "11.0.0-rc.421",
-    "@trpc/next": "11.0.0-rc.421",
-    "@trpc/react-query": "11.0.0-rc.421",
-    "@trpc/server": "11.0.0-rc.421",
+    "@trpc/client": "11.0.0-rc.433",
+    "@trpc/next": "11.0.0-rc.433",
+    "@trpc/react-query": "11.0.0-rc.433",
+    "@trpc/server": "11.0.0-rc.433",
     "cloudinary": "^2.2.0",
     "drizzle-orm": "^0.31.2",
     "express-rate-limit": "^7.3.1",
