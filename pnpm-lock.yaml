@@ -15,17 +15,17 @@ importers:
         specifier: ^2.1.5
         version: 2.1.5(react@19.0.0-rc-fb9a90fa48-20240614)
       '@tanstack/react-query':
-        specifier: ^5.51.9
-        version: 5.51.9(react@19.0.0-rc-fb9a90fa48-20240614)
+        specifier: ^5.51.11
+        version: 5.51.11(react@19.0.0-rc-fb9a90fa48-20240614)
       '@trpc/client':
         specifier: 11.0.0-rc.466
         version: 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
       '@trpc/next':
         specifier: 11.0.0-rc.466
-        version: 11.0.0-rc.466(@tanstack/react-query@5.51.9(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.51.9(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/server@11.0.0-rc.466)(next@15.0.0-rc.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
+        version: 11.0.0-rc.466(@tanstack/react-query@5.51.11(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.51.11(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/server@11.0.0-rc.466)(next@15.0.0-rc.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@trpc/react-query':
         specifier: 11.0.0-rc.466
-        version: 11.0.0-rc.466(@tanstack/react-query@5.51.9(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
+        version: 11.0.0-rc.466(@tanstack/react-query@5.51.11(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@trpc/server':
         specifier: 11.0.0-rc.466
         version: 11.0.0-rc.466
@@ -1169,8 +1169,8 @@ packages:
   '@tanstack/query-core@5.51.9':
     resolution: {integrity: sha512-HsAwaY5J19MD18ykZDS3aVVh+bAt0i7m6uQlFC2b77DLV9djo+xEN7MWQAQQTR8IM+7r/zbozTQ7P0xr0bHuew==}
 
-  '@tanstack/react-query@5.51.9':
-    resolution: {integrity: sha512-F8j6i42wfKvFrRcxfOyFyYME+bPfNthAGOSkjdv4UwZZXJjnBnBs/yRQGT0bD23LVCTuBzlIfZ0GKSIyclZ9rQ==}
+  '@tanstack/react-query@5.51.11':
+    resolution: {integrity: sha512-4Kq2x0XpDlpvSnaLG+8pHNH60zEc3mBvb3B2tOMDjcPCi/o+Du3p/9qpPLwJOTliVxxPJAP27fuIhLrsRdCr7A==}
     peerDependencies:
       react: ^18.0.0
 
@@ -4348,7 +4348,7 @@ snapshots:
 
   '@tanstack/query-core@5.51.9': {}
 
-  '@tanstack/react-query@5.51.9(react@19.0.0-rc-fb9a90fa48-20240614)':
+  '@tanstack/react-query@5.51.11(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:
       '@tanstack/query-core': 5.51.9
       react: 19.0.0-rc-fb9a90fa48-20240614
@@ -4365,7 +4365,7 @@ snapshots:
     dependencies:
       '@trpc/server': 11.0.0-rc.466
 
-  '@trpc/next@11.0.0-rc.466(@tanstack/react-query@5.51.9(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.51.9(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/server@11.0.0-rc.466)(next@15.0.0-rc.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
+  '@trpc/next@11.0.0-rc.466(@tanstack/react-query@5.51.11(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.51.11(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/server@11.0.0-rc.466)(next@15.0.0-rc.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:
       '@trpc/client': 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
       '@trpc/server': 11.0.0-rc.466
@@ -4373,12 +4373,12 @@ snapshots:
       react: 19.0.0-rc-fb9a90fa48-20240614
       react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
     optionalDependencies:
-      '@tanstack/react-query': 5.51.9(react@19.0.0-rc-fb9a90fa48-20240614)
-      '@trpc/react-query': 11.0.0-rc.466(@tanstack/react-query@5.51.9(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
+      '@tanstack/react-query': 5.51.11(react@19.0.0-rc-fb9a90fa48-20240614)
+      '@trpc/react-query': 11.0.0-rc.466(@tanstack/react-query@5.51.11(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
 
-  '@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.51.9(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
+  '@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.51.11(react@19.0.0-rc-fb9a90fa48-20240614))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:
-      '@tanstack/react-query': 5.51.9(react@19.0.0-rc-fb9a90fa48-20240614)
+      '@tanstack/react-query': 5.51.11(react@19.0.0-rc-fb9a90fa48-20240614)
       '@trpc/client': 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
       '@trpc/server': 11.0.0-rc.466
       react: 19.0.0-rc-fb9a90fa48-20240614
