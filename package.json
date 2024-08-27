@@ -1,6 +1,6 @@
 {
   "name": "kpopshowdown",
-  "version": "0.2.51",
+  "version": "0.2.52",
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true next build",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@headlessui/react": "^2.1.3",
     "@heroicons/react": "^2.1.5",
-    "@tanstack/react-query": "^5.52.1",
+    "@tanstack/react-query": "^5.52.2",
     "@trpc/client": "11.0.0-rc.485",
     "@trpc/next": "11.0.0-rc.485",
     "@trpc/react-query": "11.0.0-rc.485",
@@ -44,7 +44,7 @@
     "autoprefixer": "^10.4.20",
     "browser-image-compression": "^2.0.2",
     "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.24.1",
+    "drizzle-kit": "^0.24.2",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.6",
     "pg": "^8.12.0",
