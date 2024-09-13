@@ -1,6 +1,6 @@
 {
   "name": "kpopshowdown",
-  "version": "0.2.56",
+  "version": "0.2.57",
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true next build",
@@ -12,20 +12,20 @@
     "postinstall": "npm run migration:run"
   },
   "dependencies": {
-    "@headlessui/react": "^2.1.5",
+    "@headlessui/react": "^2.1.8",
     "@heroicons/react": "^2.1.5",
     "@tanstack/react-query": "^5.55.0",
-    "@trpc/client": "11.0.0-rc.498",
-    "@trpc/next": "11.0.0-rc.498",
-    "@trpc/react-query": "11.0.0-rc.498",
-    "@trpc/server": "11.0.0-rc.498",
+    "@trpc/client": "11.0.0-rc.502",
+    "@trpc/next": "11.0.0-rc.502",
+    "@trpc/react-query": "11.0.0-rc.502",
+    "@trpc/server": "11.0.0-rc.502",
     "cloudinary": "^2.4.0",
     "drizzle-orm": "^0.33.0",
     "express-rate-limit": "^7.4.0",
     "firebase": "^10.13.1",
     "next": "15.0.0-rc.0",
     "next-auth": "4.24.7",
-    "next-cloudinary": "^6.12.0",
+    "next-cloudinary": "^6.13.0",
     "postgres": "^3.4.4",
     "react": "19.0.0-rc-fb9a90fa48-20240614",
     "react-dom": "19.0.0-rc-fb9a90fa48-20240614",
@@ -35,9 +35,9 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^14.2.8",
+    "@next/bundle-analyzer": "^14.2.11",
     "@paralleldrive/cuid2": "^2.2.2",
-    "@types/jest": "^29.5.12",
+    "@types/jest": "^29.5.13",
     "@types/node": "^22.5.4",
     "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0",
@@ -46,12 +46,12 @@
     "dotenv": "^16.4.5",
     "drizzle-kit": "^0.24.2",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.8",
+    "eslint-config-next": "14.2.11",
     "pg": "^8.12.0",
     "postcss": "^8.4.45",
     "prettier": "^3.3.3",
-    "tailwindcss": "^3.4.10",
-    "tsx": "^4.19.0",
+    "tailwindcss": "^3.4.11",
+    "tsx": "^4.19.1",
     "typescript": "^5.4.5"
   },
   "overrides": {
