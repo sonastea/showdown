@@ -1,6 +1,6 @@
 {
   "name": "kpopshowdown",
-  "version": "0.2.59",
+  "version": "0.2.60",
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true next build",
@@ -22,7 +22,7 @@
     "cloudinary": "^2.5.0",
     "drizzle-orm": "^0.33.0",
     "express-rate-limit": "^7.4.0",
-    "firebase": "^10.13.1",
+    "firebase": "^10.13.2",
     "next": "15.0.0-rc.0",
     "next-auth": "4.24.7",
     "next-cloudinary": "^6.13.0",
@@ -35,11 +35,11 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^14.2.11",
+    "@next/bundle-analyzer": "^14.2.12",
     "@paralleldrive/cuid2": "^2.2.2",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.5.5",
-    "@types/react": "18.3.5",
+    "@types/react": "18.3.7",
     "@types/react-dom": "18.3.0",
     "autoprefixer": "^10.4.20",
     "browser-image-compression": "^2.0.2",
@@ -47,10 +47,10 @@
     "drizzle-kit": "^0.24.2",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.11",
-    "pg": "^8.12.0",
+    "pg": "^8.13.0",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
-    "tailwindcss": "^3.4.11",
+    "tailwindcss": "^3.4.12",
     "tsx": "^4.19.1",
     "typescript": "^5.4.5"
   },
