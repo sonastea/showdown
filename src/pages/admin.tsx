@@ -38,7 +38,7 @@ const Admin: NextPage = () => {
   );
   const [removed, setRemoved] = useState<number[]>([]);
   const { data, isFetching } = trpc.admin.getRecentMemes.useQuery(
-    { cursor: page - 1 ?? 0 },
+    { cursor: page - 1 || 0 },
     { refetchInterval: false, refetchOnWindowFocus: false }
   );
 
