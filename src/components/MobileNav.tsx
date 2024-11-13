@@ -3,7 +3,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-const MobileNav: React.FC<{ toggleForm: Function }> = ({ toggleForm }) => {
+const MobileNav: React.FC<{
+  toggleForm: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ toggleForm }) => {
   const [isActive, setActive] = React.useState(false);
   const router = useRouter();
 

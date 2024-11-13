@@ -5,10 +5,8 @@ import { db } from "src/lib/drizzle";
 
 export const uploadSuccess = async (
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) => {
-  req;
-  res;
   const data: UploadApiResponse = req.body;
   const added = await db.insert(meme).values({
     assetId: data.asset_id,

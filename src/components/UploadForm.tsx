@@ -10,8 +10,8 @@ const url = "https://api.cloudinary.com/v1_1/k-showdown/auto/upload";
 const preset = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET ?? "development";
 
 const UploadForm: React.FC<{
-  refetchPair: Function;
-  toggleActive: Function;
+  refetchPair: () => void;
+  toggleActive: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ refetchPair, toggleActive }) => {
   const [image, setImage] = useState<File | null>();
   const [previewURL, setPreviewURL] = useState<string | null>(null);

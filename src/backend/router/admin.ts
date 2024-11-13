@@ -1,9 +1,9 @@
+import { v2 as cloudinary } from "cloudinary";
 import { asc, eq } from "drizzle-orm";
 import { meme } from "drizzle/schema";
 import { db } from "src/lib/drizzle";
 import { z } from "zod";
 import { publicProcedure, router } from "../trpc";
-const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -21,9 +21,7 @@ export const adminRouter = router({
       }),
     )
     .query(async ({ input }) => {
-      let memes;
-
-      memes = await db
+      const memes = await db
         .select({
           id: meme.id,
           name: meme.name,

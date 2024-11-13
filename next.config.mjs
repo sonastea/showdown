@@ -1,11 +1,13 @@
+import NextBundleAnalyzer from "@next/bundle-analyzer";
+
 /** @type {import('next').NextConfig} */
 let nextConfig = {
   reactStrictMode: true,
 };
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+const withBundleAnalyzer = NextBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const headers = async () => {
   return [
@@ -38,7 +40,7 @@ const redirects = async () => {
   ];
 };
 
-module.exports = withBundleAnalyzer({
+export default withBundleAnalyzer({
   ...nextConfig,
   ...headers,
   ...redirects,
@@ -46,7 +48,6 @@ module.exports = withBundleAnalyzer({
     domains: ["res.cloudinary.com"],
   },
   experimental: {
-    esmExternals: false,
     webpackBuildWorker: true,
   },
 });

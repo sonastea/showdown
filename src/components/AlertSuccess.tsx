@@ -1,6 +1,6 @@
 const AlertSuccess: React.FC<{
   onSuccess: boolean;
-  toggleActive: Function;
+  toggleActive: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ onSuccess, toggleActive }) => {
   if (!onSuccess) return null;
   return (
