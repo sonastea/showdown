@@ -1,3 +1,5 @@
+// need to import in order to define custom properties
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import NextAuth from "next-auth";
 
 declare module "next-auth" {

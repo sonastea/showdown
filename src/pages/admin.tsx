@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
 import { CldImage } from "next-cloudinary";
 import Head from "next/head";
 import React, { useState } from "react";
@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import MemeListingSkeleton from "src/components/MemeListingSkeleton";
 import { authOptions } from "./api/auth/[...nextauth]";
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions);
 
   if (!session) {

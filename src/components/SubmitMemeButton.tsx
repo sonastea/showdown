@@ -2,7 +2,7 @@ import React from "react";
 
 const SubmitMemeButton: React.FC<{
   formIsActive: boolean;
-  toggleForm: Function;
+  toggleForm: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ formIsActive, toggleForm: toggleForm }) => {
   return (
     <button
