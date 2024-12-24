@@ -1,6 +1,6 @@
 {
   "name": "kpopshowdown",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true next build",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
-    "@tanstack/react-query": "^5.62.8",
+    "@tanstack/react-query": "^5.62.9",
     "@trpc/client": "11.0.0-rc.666",
     "@trpc/next": "11.0.0-rc.666",
     "@trpc/react-query": "11.0.0-rc.666",
