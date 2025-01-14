@@ -1,6 +1,6 @@
 import { AppRouter } from "@router/_app";
 import { createTRPCNext } from "@trpc/next";
-import { httpBatchLink, loggerLink } from "@trpc/react-query";
+import { httpBatchLink, loggerLink } from "@trpc/client";
 import superjson from "superjson";
 
 function getBaseUrl() {
