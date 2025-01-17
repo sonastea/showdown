@@ -1,6 +1,6 @@
 {
   "name": "kpopshowdown",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true next build",
