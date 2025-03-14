@@ -32,7 +32,7 @@ const Meme: React.FC<{
         />
       </div>
       <button
-        className="font-medium shadow-[0_1px_3px_0_hsla(0,0%,0%,.5)] m-4 p-2 px-6 text-xl md:text-3xl bg-mina-200 text-mina-900 hover:bg-mina-300 disabled:bg-mina-200/70 disabled:cursor-not-allowed rounded-md focus:outline-none focus:ring-mina focus:ring-2 focus:ring-offset-2"
+        className="font-medium shadow-[0_1px_3px_0_hsla(0,0%,0%,.5)] m-4 p-2 px-6 text-xl md:text-3xl bg-mina-200 text-mina-900 hover:bg-mina-300 disabled:bg-mina-200/70 disabled:cursor-not-allowed rounded-md focus:outline-hidden focus:ring-mina focus:ring-2 focus:ring-offset-2"
         onClick={vote}
         disabled={disabled}
       >

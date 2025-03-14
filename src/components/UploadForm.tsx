@@ -134,13 +134,13 @@ const UploadForm: React.FC<{
 
   return (
     <div
-      className="z-10 fixed flex justify-center w-full min-h-screen backdrop-blur"
+      className="z-10 fixed flex justify-center w-full min-h-screen backdrop-blur-sm"
       onClick={() => toggleActive(false)}
     >
       <div
         {...getRootProps({
           className:
-            "text-mina-50 bg-slate-500 absolute rounded shadow-xl w-3/4 md:w-1/2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inset-x-auto p-2",
+            "text-mina-50 bg-slate-500 absolute rounded-sm shadow-xl w-3/4 md:w-1/2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inset-x-auto p-2",
           onClick: (e: React.MouseEvent<HTMLElement>) => e.stopPropagation(),
         })}
       >

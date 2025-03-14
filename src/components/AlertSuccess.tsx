@@ -7,7 +7,7 @@ const AlertSuccess: React.FC<{
     <div className="flex p-4 mb-4 rounded-lg bg-mina-50" role="alert">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="flex-shrink-0 h-5 w-5 text-mina-800"
+        className="shrink-0 h-5 w-5 text-mina-800"
         viewBox="0 0 20 20"
         fill="currentColor"
       >

@@ -36,7 +36,7 @@ const MobileNav: React.FC<{
       <div
         className={`${
           isActive ? "flex" : "hidden"
-        } z-50 min-h-full min-w-full backdrop-blur-sm sm:hidden absolute justify-end right-0`}
+        } z-50 min-h-full min-w-full backdrop-blur-xs sm:hidden absolute justify-end right-0`}
         onClick={() => setActive((open: boolean) => !open)}
       >
         <button className="absolute right-6 top-6">

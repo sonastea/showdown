@@ -1,7 +1,7 @@
 const MemeListingSkeleton = () => {
   return (
     <li className="flex flex-wrap justify-around animate-pulse p-2">
-      <div className="text-gray-200 self-center m-2 blur-sm w-24">0</div>
+      <div className="text-gray-200 self-center m-2 blur-xs w-24">0</div>
       <div
         className="bg-gray-200"
         style={{ width: "96px", height: "96px" }}
