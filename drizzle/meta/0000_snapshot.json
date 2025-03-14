@@ -1,10 +1,8 @@
 {
-  "id": "39f5fc68-deaa-483b-aca2-f9648aa52191",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "Meme": {
+    "public.Meme": {
       "name": "Meme",
       "schema": "",
       "columns": {
@@ -35,25 +33,44 @@
       },
       "indexes": {
         "asset_id_key": {
-          "name": "asset_id_key",
           "columns": [
-            "asset_id"
+            {
+              "expression": "asset_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "asset_id_key",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         },
         "id_idx": {
-          "name": "id_idx",
           "columns": [
-            "id"
+            {
+              "expression": "id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": false
+          "with": {},
+          "name": "id_idx",
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "Vote": {
+    "public.Vote": {
       "name": "Vote",
       "schema": "",
       "columns": {
@@ -79,23 +96,40 @@
       },
       "indexes": {
         "votedForId_idx": {
-          "name": "votedForId_idx",
           "columns": [
-            "votedForId"
+            {
+              "expression": "votedForId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": false
+          "with": {},
+          "name": "votedForId_idx",
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     }
   },
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "39f5fc68-deaa-483b-aca2-f9648aa52191",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "sequences": {},
+  "policies": {},
+  "views": {},
+  "roles": {}
 }

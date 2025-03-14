@@ -22,12 +22,18 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "@db/*": [
+      "@/db/*": [
         "src/backend/prisma/*"
       ],
-      "@router/*": [
+      "@/router/*": [
         "src/backend/router/*"
-      ]
+      ],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/lib/*": [
+        "src/lib/*"
+      ],
     },
     "plugins": [
       {
