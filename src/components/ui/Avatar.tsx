@@ -25,10 +25,18 @@ export default function Avatar({
       className={cn(
         "relative rounded-full overflow-hidden bg-slate-200",
         sizeClasses[size],
-        className,
+        className
       )}
     >
-      {src && <Image src={src} alt={alt} fill className="object-cover" />}
+      {src && (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 640px) 32px, (max-width: 1024px) 40px, 56px"
+          className="object-cover"
+        />
+      )}
     </div>
   );
 }

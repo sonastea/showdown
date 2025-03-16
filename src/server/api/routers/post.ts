@@ -9,14 +9,22 @@ export const postRouter = createTRPCRouter({
         id: posts.id,
         title: posts.title,
         content: posts.content,
-        createdAt: posts.createdAt,
+        createdAt:
+          sql<string>`TO_CHAR(${posts.createdAt}, 'YYYY-MM-DD"T"HH24:MI:SS"Z"')`.as(
+            "createdAt"
+          ),
         category: posts.category,
-        tags: posts.tags,
+        tags: sql<string[]>`${posts.tags}::jsonb`.as("tags"),
         author: {
-          id: users.id,
-          name: users.name,
-          username: users.username,
-          image: users.image,
+          id: sql<string>`COALESCE(${users.id}, 'unknown')`.as("id"),
+          name: sql<string>`COALESCE(${users.name}, 'Deleted User')`.as("name"),
+          username: sql<string>`COALESCE(${users.username}, '[deleted]')`.as(
+            "username"
+          ),
+          image:
+            sql<string>`COALESCE(${users.image}, '/default_avatar.png')`.as(
+              "image"
+            ),
         },
         _count: {
           comments: sql<number>`COUNT(DISTINCT ${comments.id})`.as("comments"),

@@ -1,34 +1,13 @@
 "use client";
 
+import CommentModal from "@/components/CommentModal";
+import Avatar from "@/components/ui/Avatar";
+import { formatDate, formatNumber } from "@/lib/utils";
+import type { PostData } from "@/server/api/trpc";
 import Link from "next/link";
 import { useState } from "react";
-import { formatDate, formatNumber } from "@/lib/utils";
-import Avatar from "@/components/ui/Avatar";
-import CommentModal from "@/components/CommentModal";
 
-type PostCardProps = {
-  post: {
-    id: number;
-    title: string;
-    content: string;
-    createdAt: Date | string;
-    author: {
-      id: string;
-      name: string | null;
-      username: string | null;
-      image: string | null;
-    };
-    _count: {
-      comments: number;
-      votes: number;
-    };
-    userVote?: number | null;
-    tags?: string[];
-    category?: string | null;
-  };
-};
-
-export default function PostCard({ post }: PostCardProps) {
+export default function PostCard({ post }: { post: PostData }) {
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
   const voteCount = post._count.votes;
 
@@ -88,7 +67,7 @@ export default function PostCard({ post }: PostCardProps) {
             )}
 
             <div className="flex items-center gap-6 mt-4 text-slate-500">
-              <VoteButtons voteCount={voteCount} userVote={post.userVote} />
+              <VoteButtons voteCount={voteCount} userVote={null} />
 
               <button
                 onClick={() => setIsCommentModalOpen(true)}
