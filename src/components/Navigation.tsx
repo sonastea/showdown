@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -22,30 +22,32 @@ export default function Navigation({ user }: NavigationProps) {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold text-blue-600">KpopShowdown</span>
+              <span className="text-xl font-bold text-blue-600">
+                KpopShowdown
+              </span>
             </Link>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="border-blue-500 text-slate-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 Home
               </Link>
-              <Link 
-                href="/trending" 
+              <Link
+                href="/trending"
                 className="border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 Trending
               </Link>
-              <Link 
-                href="/categories" 
+              <Link
+                href="/categories"
                 className="border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 Categories
               </Link>
             </div>
           </div>
-          
+
           <div className="flex items-center">
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
               {user ? (
@@ -59,14 +61,14 @@ export default function Navigation({ user }: NavigationProps) {
                       aria-haspopup="true"
                     >
                       <span className="sr-only">Open user menu</span>
-                      <Avatar 
-                        src={user.image} 
-                        alt={user.name || "User"} 
-                        size="sm" 
+                      <Avatar
+                        src={user.image}
+                        alt={user.name || "User"}
+                        size="sm"
                       />
                     </button>
                   </div>
-                  
+
                   {isProfileMenuOpen && (
                     <div
                       className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
@@ -120,7 +122,7 @@ export default function Navigation({ user }: NavigationProps) {
                 </div>
               )}
             </div>
-            
+
             <div className="flex items-center sm:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -129,7 +131,7 @@ export default function Navigation({ user }: NavigationProps) {
               >
                 <span className="sr-only">Open main menu</span>
                 <svg
-                  className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
+                  className={`${isMenuOpen ? "hidden" : "block"} h-6 w-6`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -144,7 +146,7 @@ export default function Navigation({ user }: NavigationProps) {
                   />
                 </svg>
                 <svg
-                  className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
+                  className={`${isMenuOpen ? "block" : "hidden"} h-6 w-6`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -164,7 +166,7 @@ export default function Navigation({ user }: NavigationProps) {
         </div>
       </div>
 
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
+      <div className={`${isMenuOpen ? "block" : "hidden"} sm:hidden`}>
         <div className="pt-2 pb-3 space-y-1">
           <Link
             href="/"
@@ -188,16 +190,12 @@ export default function Navigation({ user }: NavigationProps) {
             Categories
           </Link>
         </div>
-        
+
         {user ? (
           <div className="pt-4 pb-3 border-t border-slate-200">
             <div className="flex items-center px-4">
               <div className="flex-shrink-0">
-                <Avatar 
-                  src={user.image} 
-                  alt={user.name || "User"} 
-                  size="md" 
-                />
+                <Avatar src={user.image} alt={user.name || "User"} size="md" />
               </div>
               <div className="ml-3">
                 <div className="text-base font-medium text-slate-800">

@@ -11,6 +11,7 @@ import {
   uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
 
 const pgTable = pgTableCreator((name) => `comeback_${name}`);
 
@@ -28,18 +29,29 @@ export const users = pgTable(
     createdAt: timestamp("created_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
     updatedAt: timestamp("updated_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
     username: varchar("username", { length: 255 }),
     bio: text("bio"),
   },
   (table) => [
-      uniqueIndex("users_email_idx").on(table.email),
-      uniqueIndex("users_username_idx").on(table.username),
-  ]);
+    uniqueIndex("email_idx").on(table.email),
+    uniqueIndex("username_idx").on(table.username),
+  ]
+);
+
+export const usersRelations = relations(users, ({ many }) => ({
+  posts: many(posts),
+  comments: many(comments),
+  votes: many(votes),
+}));
 
 export const accounts = pgTable(
   "accounts",
@@ -48,7 +60,9 @@ export const accounts = pgTable(
     userId: varchar("user_id", { length: 255 }).notNull(),
     type: varchar("type", { length: 255 }).notNull(),
     provider: varchar("provider", { length: 255 }).notNull(),
-    providerAccountId: varchar("provider_account_id", { length: 255 }).notNull(),
+    providerAccountId: varchar("provider_account_id", {
+      length: 255,
+    }).notNull(),
     refreshToken: text("refresh_token"),
     accessToken: text("access_token"),
     expiresAt: integer("expires_at"),
@@ -58,12 +72,13 @@ export const accounts = pgTable(
     sessionState: varchar("session_state", { length: 255 }),
   },
   (table) => [
-      uniqueIndex("accounts_provider_account_id_key").on(
-        table.provider,
-        table.providerAccountId
-      ),
-     index("accounts_user_id_idx").on(table.userId),
-  ]);
+    uniqueIndex("provider_provider_account_id_key").on(
+      table.provider,
+      table.providerAccountId
+    ),
+    index("user_id_idx").on(table.userId),
+  ]
+);
 
 export const sessions = pgTable(
   "sessions",
@@ -74,9 +89,10 @@ export const sessions = pgTable(
     expires: timestamp("expires", { mode: "date", precision: 3 }).notNull(),
   },
   (table) => [
-      uniqueIndex("sessions_token_key").on(table.sessionToken),
-      index("sessions_user_id_idx").on(table.userId),
-  ]);
+    uniqueIndex("session_token_key").on(table.sessionToken),
+    index("user_id_idx").on(table.userId),
+  ]
+);
 
 export const verificationTokens = pgTable(
   "verification_tokens",
@@ -85,9 +101,8 @@ export const verificationTokens = pgTable(
     token: varchar("token", { length: 255 }).notNull(),
     expires: timestamp("expires", { mode: "date", precision: 3 }).notNull(),
   },
-  (table) => [
-      primaryKey({ columns: [table.identifier, table.token] }),
-  ]);
+  (table) => [primaryKey({ columns: [table.identifier, table.token] })]
+);
 
 export const posts = pgTable(
   "posts",
@@ -99,20 +114,35 @@ export const posts = pgTable(
     createdAt: timestamp("created_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
     updatedAt: timestamp("updated_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
     imageUrl: varchar("image_url", { length: 255 }),
     tags: jsonb("tags").default([]),
     category: varchar("category", { length: 100 }),
     isPublished: boolean("is_published").default(true),
   },
   (table) => [
-      index("posts_author_id_idx").on(table.authorId),
-      index("posts_created_at_idx").on(table.createdAt),
-  ]);
+    index("author_id_idx").on(table.authorId),
+    index("created_at_idx").on(table.createdAt),
+  ]
+);
+
+export const postsRelations = relations(posts, ({ one, many }) => ({
+  author: one(users, {
+    fields: [posts.authorId],
+    references: [users.id],
+  }),
+  comments: many(comments),
+  votes: many(votes),
+  tags: many(postTags),
+}));
 
 export const comments = pgTable(
   "comments",
@@ -125,17 +155,39 @@ export const comments = pgTable(
     createdAt: timestamp("created_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
     updatedAt: timestamp("updated_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
   },
   (table) => [
-      index("comments_post_id_idx").on(table.postId),
-      index("comments_author_id_idx").on(table.authorId),
-      index("comments_parent_id_idx").on(table.parentId)
-  ]);
+    index("post_id_idx").on(table.postId),
+    index("author_id_idx").on(table.authorId),
+    index("parent_id_idx").on(table.parentId),
+  ]
+);
+
+export const commentsRelations = relations(comments, ({ one, many }) => ({
+  author: one(users, {
+    fields: [comments.authorId],
+    references: [users.id],
+  }),
+  post: one(posts, {
+    fields: [comments.postId],
+    references: [posts.id],
+  }),
+  parent: one(comments, {
+    fields: [comments.parentId],
+    references: [comments.id],
+  }),
+  replies: many(comments, { relationName: "parent_child" }),
+  votes: many(votes),
+}));
 
 export const votes = pgTable(
   "votes",
@@ -148,21 +200,33 @@ export const votes = pgTable(
     createdAt: timestamp("created_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
   },
   (table) => [
-       index("votes_user_id_idx").on(table.userId),
-       index("votes_post_id_idx").on(table.postId),
-      index("votes_comment_id_idx").on(table.commentId),
-      uniqueIndex("votes_user_post_unique_idx").on(
-        table.userId,
-        table.postId
-      ),
-      uniqueIndex("votes_user_comment_unique_idx").on(
-        table.userId,
-        table.commentId
-      )
-    ]);
+    index("user_id_idx").on(table.userId),
+    index("post_id_idx").on(table.postId),
+    index("comment_id_idx").on(table.commentId),
+    uniqueIndex("user_post_unique_idx").on(table.userId, table.postId),
+    uniqueIndex("user_comment_unique_idx").on(table.userId, table.commentId),
+  ]
+);
+
+export const votesRelations = relations(votes, ({ one }) => ({
+  user: one(users, {
+    fields: [votes.userId],
+    references: [users.id],
+  }),
+  post: one(posts, {
+    fields: [votes.postId],
+    references: [posts.id],
+  }),
+  comment: one(comments, {
+    fields: [votes.commentId],
+    references: [comments.id],
+  }),
+}));
 
 export const followers = pgTable(
   "followers",
@@ -173,16 +237,16 @@ export const followers = pgTable(
     createdAt: timestamp("created_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
   },
   (table) => [
-      index("followers_follower_id_idx").on(table.followerId),
-      index("followers_following_id_idx").on(table.followingId),
-      uniqueIndex("followers_unique_follow_idx").on(
-        table.followerId,
-        table.followingId
-      ) 
-    ]);
+    index("follower_id_idx").on(table.followerId),
+    index("following_id_idx").on(table.followingId),
+    uniqueIndex("unique_follow_idx").on(table.followerId, table.followingId),
+  ]
+);
 
 export const tags = pgTable(
   "tags",
@@ -192,11 +256,16 @@ export const tags = pgTable(
     createdAt: timestamp("created_at", {
       mode: "date",
       precision: 3,
-    }).defaultNow().notNull(),
+    })
+      .defaultNow()
+      .notNull(),
   },
-  (table) => [
-      uniqueIndex("tags_name_idx").on(table.name),
-  ]);
+  (table) => [uniqueIndex("name_idx").on(table.name)]
+);
+
+export const tagsRelations = relations(tags, ({ many }) => ({
+  posts: many(postTags),
+}));
 
 export const postTags = pgTable(
   "post_tags",
@@ -205,7 +274,19 @@ export const postTags = pgTable(
     tagId: integer("tag_id").notNull(),
   },
   (table) => [
-      primaryKey({ columns: [table.postId, table.tagId] }),
-      index("post_tags_post_id_idx").on(table.postId),
-      index("post_tags_tag_id_idx").on(table.tagId),
-  ]);
+    primaryKey({ columns: [table.postId, table.tagId] }),
+    index("post_id_idx").on(table.postId),
+    index("tag_id_idx").on(table.tagId),
+  ]
+);
+
+export const postTagsRelations = relations(postTags, ({ one }) => ({
+  post: one(posts, {
+    fields: [postTags.postId],
+    references: [posts.id],
+  }),
+  tag: one(tags, {
+    fields: [postTags.tagId],
+    references: [tags.id],
+  }),
+}));

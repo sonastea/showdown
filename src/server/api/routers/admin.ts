@@ -3,7 +3,7 @@ import { asc, eq } from "drizzle-orm";
 import { meme } from "drizzle/schema";
 import { db } from "src/lib/drizzle";
 import { z } from "zod";
-import { publicProcedure, router } from "../trpc";
+import { publicProcedure, createTRPCRouter } from "../trpc";
 
 cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -13,12 +13,12 @@ cloudinary.config({
 
 const LIMIT_MEMES: number = 10;
 
-export const adminRouter = router({
+export const adminRouter = createTRPCRouter({
   getRecentMemes: publicProcedure
     .input(
       z.object({
         cursor: z.number().default(0),
-      }),
+      })
     )
     .query(async ({ input }) => {
       const memes = await db
@@ -68,18 +68,18 @@ export const adminRouter = router({
 
       if (result && result[0].id) {
         const destroy: { result: string } = await cloudinary.uploader.destroy(
-          deleting[0].name,
+          deleting[0].name
         );
 
         if (destroy.result !== "ok") {
           console.log(
-            `Unable to delete from cloudinary ${deleting[0].name} - ${result[0].id}`,
+            `Unable to delete from cloudinary ${deleting[0].name} - ${result[0].id}`
           );
           return { success: false, meme: input.id };
         }
 
         console.log(
-          `Deleted from cloudinary ${deleting[0].name} - ${result[0].id}`,
+          `Deleted from cloudinary ${deleting[0].name} - ${result[0].id}`
         );
       }
 

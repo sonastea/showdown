@@ -1,7 +1,6 @@
-import { AppRouter } from "@router/_app";
-import { createTRPCNext } from "@trpc/next";
+import { AppRouter } from "@/server/api/_app";
 import { httpBatchLink, loggerLink } from "@trpc/client";
-import superjson from "superjson";
+import { createTRPCNext } from "@trpc/next";
 
 function getBaseUrl() {
   if (typeof window === "undefined") return ""; // Browser should use current path
@@ -24,11 +23,9 @@ export const trpc = createTRPCNext<AppRouter>({
         }),
         httpBatchLink({
           url,
-          transformer: superjson,
         }),
       ],
     };
   },
   ssr: false,
-  transformer: superjson,
 });

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import Avatar from "@/components/ui/Avatar";
@@ -28,7 +28,10 @@ type CommentSectionProps = {
   postId: number;
 };
 
-export default function CommentSection({ comments, postId }: CommentSectionProps) {
+export default function CommentSection({
+  comments,
+  postId,
+}: CommentSectionProps) {
   const [newComment, setNewComment] = useState("");
 
   const handleSubmitComment = async (e: React.FormEvent) => {
@@ -41,7 +44,7 @@ export default function CommentSection({ comments, postId }: CommentSectionProps
   return (
     <div className="mt-8">
       <h2 className="text-xl font-bold mb-4">Discussion</h2>
-      
+
       <form onSubmit={handleSubmitComment} className="mb-6">
         <textarea
           value={newComment}
@@ -60,14 +63,16 @@ export default function CommentSection({ comments, postId }: CommentSectionProps
           </button>
         </div>
       </form>
-      
+
       <div className="space-y-4">
         {comments.length > 0 ? (
           comments.map((comment) => (
             <CommentThread key={comment.id} comment={comment} level={0} />
           ))
         ) : (
-          <p className="text-slate-500 text-center py-8">No comments yet. Be the first to comment!</p>
+          <p className="text-slate-500 text-center py-8">
+            No comments yet. Be the first to comment!
+          </p>
         )}
       </div>
     </div>
@@ -83,7 +88,7 @@ function CommentThread({ comment, level }: CommentThreadProps) {
   const [isReplying, setIsReplying] = useState(false);
   const [replyContent, setReplyContent] = useState("");
   const [showReplies, setShowReplies] = useState(true);
-  
+
   const handleSubmitReply = async (e: React.FormEvent) => {
     e.preventDefault();
     // In a real app, you would submit the reply to the server here
@@ -91,64 +96,71 @@ function CommentThread({ comment, level }: CommentThreadProps) {
     setReplyContent("");
     setIsReplying(false);
   };
-  
+
   return (
-    <div className={`${level > 0 ? 'ml-6 pl-4 border-l-2 border-slate-200' : ''}`}>
+    <div
+      className={`${level > 0 ? "ml-6 pl-4 border-l-2 border-slate-200" : ""}`}
+    >
       <div className="bg-white rounded-lg p-4">
         <div className="flex items-start gap-3">
           <Link href={`/profile/${comment.author.id}`}>
-            <Avatar 
-              src={comment.author.image} 
-              alt={comment.author.name || "User"} 
-              size="sm" 
+            <Avatar
+              src={comment.author.image}
+              alt={comment.author.name || "User"}
+              size="sm"
             />
           </Link>
-          
+
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
-              <Link href={`/profile/${comment.author.id}`} className="font-semibold text-slate-900 hover:underline">
+              <Link
+                href={`/profile/${comment.author.id}`}
+                className="font-semibold text-slate-900 hover:underline"
+              >
                 {comment.author.name || "Anonymous"}
               </Link>
-              
+
               <span className="text-slate-500 text-xs">
                 @{comment.author.username || "user"}
               </span>
-              
+
               <span className="text-slate-400 text-xs">·</span>
-              
+
               <span className="text-slate-500 text-xs">
                 {formatDate(comment.createdAt)}
               </span>
             </div>
-            
+
             <div className="text-slate-700 whitespace-pre-wrap">
               {comment.content}
             </div>
-            
+
             <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
-              <CommentVoteButtons 
-                commentId={comment.id} 
-                voteCount={comment._count.votes} 
-                userVote={comment.userVote} 
+              <CommentVoteButtons
+                commentId={comment.id}
+                voteCount={comment._count.votes}
+                userVote={comment.userVote}
               />
-              
-              <button 
+
+              <button
                 onClick={() => setIsReplying(!isReplying)}
                 className="hover:text-slate-700"
               >
                 Reply
               </button>
-              
+
               {comment.replies && comment.replies.length > 0 && (
-                <button 
+                <button
                   onClick={() => setShowReplies(!showReplies)}
                   className="hover:text-slate-700"
                 >
-                  {showReplies ? 'Hide replies' : `Show replies (${comment.replies.length})`}
+                  {showReplies
+                    ? "Hide replies"
+                    : `Show replies (${comment.replies.length})`}
                 </button>
               )}
             </div>
-            
+
             {isReplying && (
               <form onSubmit={handleSubmitReply} className="mt-3">
                 <textarea
@@ -179,7 +191,7 @@ function CommentThread({ comment, level }: CommentThreadProps) {
           </div>
         </div>
       </div>
-      
+
       {showReplies && comment.replies && comment.replies.length > 0 && (
         <div className="mt-2">
           {comment.replies.map((reply) => (
@@ -191,37 +203,57 @@ function CommentThread({ comment, level }: CommentThreadProps) {
   );
 }
 
-function CommentVoteButtons({ 
-  commentId, 
-  voteCount, 
-  userVote 
-}: { 
-  commentId: number; 
-  voteCount: number; 
+function CommentVoteButtons({
+  commentId,
+  voteCount,
+  userVote,
+}: {
+  commentId: number;
+  voteCount: number;
   userVote?: number | null;
 }) {
   // In a real app, you would handle the voting logic here
   // with server actions or API calls
-  
+
   return (
     <div className="flex items-center">
-      <button 
-        className={`p-1 rounded hover:bg-slate-100 ${userVote === 1 ? 'text-orange-500' : ''}`}
+      <button
+        className={`p-1 rounded hover:bg-slate-100 ${userVote === 1 ? "text-orange-500" : ""}`}
         aria-label="Upvote"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill={userVote === 1 ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill={userVote === 1 ? "currentColor" : "none"}
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="m12 19-7-7 7-7"></path>
           <path d="M19 12H5"></path>
         </svg>
       </button>
-      
+
       <span className="mx-1 font-medium">{formatNumber(voteCount)}</span>
-      
-      <button 
-        className={`p-1 rounded hover:bg-slate-100 ${userVote === -1 ? 'text-blue-500' : ''}`}
+
+      <button
+        className={`p-1 rounded hover:bg-slate-100 ${userVote === -1 ? "text-blue-500" : ""}`}
         aria-label="Downvote"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill={userVote === -1 ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill={userVote === -1 ? "currentColor" : "none"}
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="m12 5 7 7-7 7"></path>
           <path d="M5 12h14"></path>
         </svg>

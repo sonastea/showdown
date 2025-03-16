@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@theme {
+:root {
   --color-once-50: #ffffff;
   --color-once-100: #ffffff;
   --color-once-200: #ffd9e9;
@@ -19,29 +19,40 @@
   --color-mina-200: #c8ece4;
   --color-mina-300: #aae2d6;
   --color-mina-400: #8bd7c7;
-  --color-mina-500: #6dcdb8;
-  --color-mina-600: #43bfa4;
-  --color-mina-700: #339681;
-  --color-mina-800: #256d5d;
-  --color-mina-900: #174339;
-  --color-mina-950: #102e27;
-  --color-mina: #6dcdb8;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+  body {
+    background-color: theme(colors.slate.50);
+    color: theme(colors.slate.900);
+  }
+}
+
+@layer utilities {
+  .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  .btn-primary {
+    background-color: theme(colors.blue.600);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: theme(colors.blue.700);
+  }
+  
+  .btn-secondary {
+    background-color: theme(colors.slate.200);
+    color: theme(colors.slate.800);
+  }
+  
+  .btn-secondary:hover {
+    background-color: theme(colors.slate.300);
   }
 }
