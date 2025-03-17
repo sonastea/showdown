@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
-import TvChatRoom from "@/components/TvChatRoom";
+import AuthenticatedTvChatRoom from "@/components/AuthenticatedTvChatRoom";
+import UserProfile from "@/components/UserProfile";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-900 to-black">
       <Navbar />
@@ -11,18 +12,19 @@ export default function HomePage() {
           Welcome to kpopshowdown
         </h1>
 
-        <TvChatRoom />
+        <div className="mb-8">
+          <AuthenticatedTvChatRoom />
+        </div>
 
-        <div className="mt-12 text-center text-gray-400 max-w-2xl mx-auto">
+        <div className="max-w-md mx-auto mb-8">
+          <UserProfile />
+        </div>
+
+        <div className="mt-8 text-center text-gray-400 max-w-2xl mx-auto">
           <p className="mb-4">
             Join the conversation in our retro TV chat room!
           </p>
-          <p className="text-sm">
-            This is a mock implementation with simulated authentication and
-            messaging. Click &quot;Mock Login&quot; in the navigation bar to
-            simulate signing in, and then you can send messages in the chat
-            room.
-          </p>
+          <p className="text-sm">Sign in to participate in the chat.</p>
         </div>
       </div>
     </main>

@@ -3,56 +3,48 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-// Mock user type
-type User = {
-  id: string;
-  email?: string;
-  user_metadata?: {
-    avatar_url?: string;
-    name?: string;
-    username?: string;
-  };
-};
-
-// Mock user data
-const MOCK_USER: User = {
-  id: "123456",
-  email: "user@example.com",
-  user_metadata: {
-    avatar_url: "/default_avatar.png",
-    name: "Demo User",
-    username: "demouser",
-  },
-};
+import { createClient } from "@/utils/supabase/client";
+import { useRouter } from "next/navigation";
+import { User } from "@supabase/supabase-js";
 
 export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const supabase = createClient();
+  const router = useRouter();
 
   useEffect(() => {
-    // Simulate getting user from localStorage
-    const savedUser = localStorage.getItem("mockUser");
-    if (savedUser) {
-      try {
-        setUser(JSON.parse(savedUser));
-      } catch (e) {
-        console.error("Error parsing saved user:", e);
+    // Get the user from Supabase
+    const getUser = async () => {
+      setIsLoading(true);
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user);
+      setIsLoading(false);
+    };
+
+    getUser();
+
+    // Set up auth state change listener
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user || null);
+      if (event === "SIGNED_IN" || event === "SIGNED_OUT") {
+        router.refresh();
       }
-    }
-  }, []);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [supabase, router]);
 
   const handleSignOut = async () => {
-    // Mock sign out
-    localStorage.removeItem("mockUser");
-    setUser(null);
+    await supabase.auth.signOut();
     setIsMenuOpen(false);
-  };
-
-  // Mock sign in function (for demo purposes)
-  const handleMockSignIn = () => {
-    setUser(MOCK_USER);
-    localStorage.setItem("mockUser", JSON.stringify(MOCK_USER));
   };
 
   return (
@@ -66,7 +58,9 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center">
-            {user ? (
+            {isLoading ? (
+              <div className="h-8 w-8 rounded-full bg-gray-700 animate-pulse"></div>
+            ) : user ? (
               <div className="relative ml-3">
                 <div>
                   <button
@@ -115,14 +109,14 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="flex space-x-4">
-                <button
-                  onClick={handleMockSignIn}
+                <Link
+                  href="/login"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Mock Login
-                </button>
+                  Sign In
+                </Link>
                 <Link
-                  href="#"
+                  href="/signup"
                   className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Sign Up

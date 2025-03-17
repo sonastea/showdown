@@ -13,6 +13,8 @@
     "postinstall": "npm run migration:run"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.1",
     "@tanstack/react-query": "^5.68.0",
     "@trpc/client": "11.0.0-rc.833",
     "@trpc/next": "11.0.0-rc.833",

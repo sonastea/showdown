@@ -22,7 +22,8 @@
       "@/router/*": ["src/server/api/routers/*"],
       "@/components/*": ["src/components/*"],
       "@/lib/*": ["src/lib/*"],
-      "@/server/*": ["src/server/*"]
+      "@/server/*": ["src/server/*"],
+      "@/utils/*": ["src/utils/*"]
     },
     "plugins": [
       {
