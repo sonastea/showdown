@@ -1,5 +1,4 @@
-import { inferRouterOutputs, initTRPC } from "@trpc/server";
-import { AppRouter } from "./_app";
+import { initTRPC } from "@trpc/server";
 import { db } from "./db";
 
 export const createTRPCContext = async (opts: { headers: Headers }) => {
@@ -18,5 +17,3 @@ export const createTRPCRouter = t.router;
 export const middleware = t.middleware;
 
 export const publicProcedure = t.procedure;
-
-type RouterOutput = inferRouterOutputs<AppRouter>;
