@@ -1,6 +1,10 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
   --color-once-50: #ffffff;
   --color-once-100: #ffffff;
   --color-once-200: #ffd9e9;
@@ -19,6 +23,13 @@
   --color-mina-200: #c8ece4;
   --color-mina-300: #aae2d6;
   --color-mina-400: #8bd7c7;
+  --color-mina-500: #6dcdb8;
+  --color-mina-600: #43bfa4;
+  --color-mina-700: #339681;
+  --color-mina-800: #256d5d;
+  --color-mina-900: #174339;
+  --color-mina-950: #102e27;
+  --color-mina: #6dcdb8;
 }
 
 @layer base {
@@ -37,22 +48,45 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
   }
-  
+
   .btn-primary {
     background-color: theme(colors.blue.600);
     color: white;
   }
-  
+
   .btn-primary:hover {
     background-color: theme(colors.blue.700);
   }
-  
+
   .btn-secondary {
     background-color: theme(colors.slate.200);
     color: theme(colors.slate.800);
   }
-  
+
   .btn-secondary:hover {
     background-color: theme(colors.slate.300);
   }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* TV Stand Clip Path */
+.clip-tv-stand {
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
 }

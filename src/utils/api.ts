@@ -1,6 +1,7 @@
 import { AppRouter } from "@/server/api/_app";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
+import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
 function getBaseUrl() {
   if (typeof window === "undefined") return ""; // Browser should use current path
@@ -12,8 +13,6 @@ function getBaseUrl() {
 
 export const trpc = createTRPCNext<AppRouter>({
   config() {
-    const url = `${getBaseUrl()}/api/trpc`;
-
     return {
       links: [
         loggerLink({
@@ -22,10 +21,13 @@ export const trpc = createTRPCNext<AppRouter>({
             (opts.direction === "down" && opts.result instanceof Error),
         }),
         httpBatchLink({
-          url,
+          url: `${getBaseUrl()}/api/trpc`,
         }),
       ],
     };
   },
   ssr: false,
 });
+
+export type RouterInputs = inferRouterInputs<AppRouter>;
+export type RouterOutputs = inferRouterOutputs<AppRouter>;

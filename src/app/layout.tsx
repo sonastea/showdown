@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 
 export const metadata = {
-  title: "KpopShowdown",
+  title: "kpopshowdown",
   description: "The Ultimate K-Pop Moments",
 };
 

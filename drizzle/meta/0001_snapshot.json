@@ -1,110 +1,42 @@
 {
-  "id": "063f3f59-d67c-477a-adf6-54f377ab27cd",
+  "id": "e7bb8adb-d4bc-4db9-8a6a-f9201217e204",
   "prevId": "39f5fc68-deaa-483b-aca2-f9648aa52191",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.comeback_accounts": {
-      "name": "comeback_accounts",
+    "public.comeback_chat_messages": {
+      "name": "comeback_chat_messages",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar(255)",
+          "type": "serial",
           "primaryKey": true,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
           "notNull": true
         },
         "user_id": {
           "name": "user_id",
-          "type": "varchar(255)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
-        "type": {
-          "name": "type",
-          "type": "varchar(255)",
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp (3)",
           "primaryKey": false,
-          "notNull": true
-        },
-        "provider": {
-          "name": "provider",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "provider_account_id": {
-          "name": "provider_account_id",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "refresh_token": {
-          "name": "refresh_token",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "access_token": {
-          "name": "access_token",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "expires_at": {
-          "name": "expires_at",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "token_type": {
-          "name": "token_type",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "scope": {
-          "name": "scope",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "id_token": {
-          "name": "id_token",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "session_state": {
-          "name": "session_state",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "now()"
         }
       },
       "indexes": {
-        "accounts_provider_account_id_key": {
-          "name": "accounts_provider_account_id_key",
-          "columns": [
-            {
-              "expression": "provider",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "provider_account_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "accounts_user_id_idx": {
-          "name": "accounts_user_id_idx",
+        "chat_messages_user_id_idx": {
+          "name": "chat_messages_user_id_idx",
           "columns": [
             {
               "expression": "user_id",
@@ -117,359 +49,9 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.comeback_comments": {
-      "name": "comeback_comments",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
         },
-        "content": {
-          "name": "content",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "post_id": {
-          "name": "post_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "author_id": {
-          "name": "author_id",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "parent_id": {
-          "name": "parent_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "comments_post_id_idx": {
-          "name": "comments_post_id_idx",
-          "columns": [
-            {
-              "expression": "post_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "comments_author_id_idx": {
-          "name": "comments_author_id_idx",
-          "columns": [
-            {
-              "expression": "author_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "comments_parent_id_idx": {
-          "name": "comments_parent_id_idx",
-          "columns": [
-            {
-              "expression": "parent_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.comeback_followers": {
-      "name": "comeback_followers",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "follower_id": {
-          "name": "follower_id",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "following_id": {
-          "name": "following_id",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "followers_follower_id_idx": {
-          "name": "followers_follower_id_idx",
-          "columns": [
-            {
-              "expression": "follower_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "followers_following_id_idx": {
-          "name": "followers_following_id_idx",
-          "columns": [
-            {
-              "expression": "following_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "followers_unique_follow_idx": {
-          "name": "followers_unique_follow_idx",
-          "columns": [
-            {
-              "expression": "follower_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "following_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.comeback_post_tags": {
-      "name": "comeback_post_tags",
-      "schema": "",
-      "columns": {
-        "post_id": {
-          "name": "post_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "tag_id": {
-          "name": "tag_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "post_tags_post_id_idx": {
-          "name": "post_tags_post_id_idx",
-          "columns": [
-            {
-              "expression": "post_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "post_tags_tag_id_idx": {
-          "name": "post_tags_tag_id_idx",
-          "columns": [
-            {
-              "expression": "tag_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "comeback_post_tags_post_id_tag_id_pk": {
-          "name": "comeback_post_tags_post_id_tag_id_pk",
-          "columns": [
-            "post_id",
-            "tag_id"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.comeback_posts": {
-      "name": "comeback_posts",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "title": {
-          "name": "title",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "content": {
-          "name": "content",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "author_id": {
-          "name": "author_id",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "image_url": {
-          "name": "image_url",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "tags": {
-          "name": "tags",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false,
-          "default": "'[]'::jsonb"
-        },
-        "category": {
-          "name": "category",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "is_published": {
-          "name": "is_published",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": false,
-          "default": true
-        }
-      },
-      "indexes": {
-        "posts_author_id_idx": {
-          "name": "posts_author_id_idx",
-          "columns": [
-            {
-              "expression": "author_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "posts_created_at_idx": {
-          "name": "posts_created_at_idx",
+        "chat_messages_created_at_idx": {
+          "name": "chat_messages_created_at_idx",
           "columns": [
             {
               "expression": "created_at",
@@ -491,41 +73,41 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.comeback_sessions": {
-      "name": "comeback_sessions",
+    "public.Meme": {
+      "name": "Meme",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar(255)",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
-        "session_token": {
-          "name": "session_token",
-          "type": "varchar(255)",
+        "asset_id": {
+          "name": "asset_id",
+          "type": "varchar(191)",
           "primaryKey": false,
           "notNull": true
         },
-        "user_id": {
-          "name": "user_id",
-          "type": "varchar(255)",
+        "name": {
+          "name": "name",
+          "type": "varchar(191)",
           "primaryKey": false,
           "notNull": true
         },
-        "expires": {
-          "name": "expires",
-          "type": "timestamp (3)",
+        "url": {
+          "name": "url",
+          "type": "varchar(191)",
           "primaryKey": false,
           "notNull": true
         }
       },
       "indexes": {
-        "sessions_token_key": {
-          "name": "sessions_token_key",
+        "asset_id_key": {
+          "name": "asset_id_key",
           "columns": [
             {
-              "expression": "session_token",
+              "expression": "asset_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -536,11 +118,11 @@
           "method": "btree",
           "with": {}
         },
-        "sessions_user_id_idx": {
-          "name": "sessions_user_id_idx",
+        "id_idx": {
+          "name": "id_idx",
           "columns": [
             {
-              "expression": "user_id",
+              "expression": "id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -559,85 +141,37 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.comeback_tags": {
-      "name": "comeback_tags",
+    "public.comeback_user_profiles": {
+      "name": "comeback_user_profiles",
       "schema": "",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
-        "name": {
-          "name": "name",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "tags_name_idx": {
-          "name": "tags_name_idx",
-          "columns": [
-            {
-              "expression": "name",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.comeback_users": {
-      "name": "comeback_users",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "varchar(255)",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "name": {
-          "name": "name",
+        "username": {
+          "name": "username",
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
         },
-        "email": {
-          "name": "email",
+        "name": {
+          "name": "name",
           "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "email_verified": {
-          "name": "email_verified",
-          "type": "timestamp (3)",
           "primaryKey": false,
           "notNull": false
         },
         "image": {
           "name": "image",
           "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bio": {
+          "name": "bio",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -654,38 +188,11 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
-        },
-        "username": {
-          "name": "username",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "bio": {
-          "name": "bio",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
         }
       },
       "indexes": {
-        "users_email_idx": {
-          "name": "users_email_idx",
-          "columns": [
-            {
-              "expression": "email",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "users_username_idx": {
-          "name": "users_username_idx",
+        "username_idx": {
+          "name": "username_idx",
           "columns": [
             {
               "expression": "username",
@@ -698,6 +205,21 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
+        },
+        "user_profiles_user_id_idx": {
+          "name": "user_profiles_user_id_idx",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
         }
       },
       "foreignKeys": {},
@@ -707,171 +229,79 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.comeback_verification_tokens": {
-      "name": "comeback_verification_tokens",
-      "schema": "",
-      "columns": {
-        "identifier": {
-          "name": "identifier",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "token": {
-          "name": "token",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "expires": {
-          "name": "expires",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "comeback_verification_tokens_identifier_token_pk": {
-          "name": "comeback_verification_tokens_identifier_token_pk",
-          "columns": [
-            "identifier",
-            "token"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.comeback_votes": {
-      "name": "comeback_votes",
-      "schema": "",
+    "auth.users": {
+      "name": "users",
+      "schema": "auth",
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
-        "user_id": {
-          "name": "user_id",
+        "email": {
+          "name": "email",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
-        },
-        "post_id": {
-          "name": "post_id",
-          "type": "integer",
-          "primaryKey": false,
           "notNull": false
-        },
-        "comment_id": {
-          "name": "comment_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "value": {
-          "name": "value",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
         },
         "created_at": {
           "name": "created_at",
           "type": "timestamp (3)",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Vote": {
+      "name": "Vote",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false,
           "default": "now()"
+        },
+        "votedForId": {
+          "name": "votedForId",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {
-        "votes_user_id_idx": {
-          "name": "votes_user_id_idx",
+        "votedForId_idx": {
+          "name": "votedForId_idx",
           "columns": [
             {
-              "expression": "user_id",
+              "expression": "votedForId",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
             }
           ],
           "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "votes_post_id_idx": {
-          "name": "votes_post_id_idx",
-          "columns": [
-            {
-              "expression": "post_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "votes_comment_id_idx": {
-          "name": "votes_comment_id_idx",
-          "columns": [
-            {
-              "expression": "comment_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "votes_user_post_unique_idx": {
-          "name": "votes_user_post_unique_idx",
-          "columns": [
-            {
-              "expression": "user_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "post_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "votes_user_comment_unique_idx": {
-          "name": "votes_user_comment_unique_idx",
-          "columns": [
-            {
-              "expression": "user_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "comment_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
           "concurrently": false,
           "method": "btree",
           "with": {}
