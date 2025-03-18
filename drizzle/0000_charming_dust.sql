@@ -1,11 +1,11 @@
-CREATE TABLE IF NOT EXISTS "Meme" (
+CREATE TABLE IF NOT EXISTS public."Meme" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"asset_id" varchar(191) NOT NULL,
 	"name" varchar(191) NOT NULL,
 	"url" varchar(191) NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "Vote" (
+CREATE TABLE IF NOT EXISTS public."Vote" (
 	"id" varchar(191) PRIMARY KEY NOT NULL,
 	"createdAt" timestamp(3) with time zone DEFAULT now(),
 	"votedForId" serial NOT NULL
